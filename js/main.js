@@ -22,7 +22,7 @@ function initMonochromeAnimations() {
 
         window.addEventListener('scroll', () => {
             if (window.scrollY > 100) {
-                header.style.background = 'rgba(255, 255, 255, 0.98)';
+                header.style.background = 'rgba(0, 0, 0, 0.98)';
                 header.style.backdropFilter = 'blur(30px)';
 
                 if (window.scrollY > lastScrollY) {
@@ -31,7 +31,7 @@ function initMonochromeAnimations() {
                     header.style.transform = 'translateY(0)';
                 }
             } else {
-                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.background = 'rgba(0, 0, 0, 0.95)';
                 header.style.backdropFilter = 'blur(20px)';
                 header.style.transform = 'translateY(0)';
             }
@@ -212,8 +212,8 @@ function showNotification(message, type = 'info') {
         position: fixed;
         top: 100px;
         right: 20px;
-        background: ${type === 'error' ? '#dc2626' : '#000000'};
-        color: white;
+        background: ${type === 'error' ? '#dc2626' : '#ffffff'};
+        color: ${type === 'error' ? 'white' : 'black'};
         padding: 1rem 1.5rem;
         border-radius: 8px;
         z-index: 10000;
