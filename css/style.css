@@ -131,25 +131,28 @@ body {
 }
 
 
-/* Monochrome Background Elements - FIXED Z-INDEX */
+/* Monochrome Background Elements - FIXED */
 
 .background-elements {
-    position: absolute;
+    position: fixed;
+    /* Changed from absolute to fixed */
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     pointer-events: none;
     z-index: 0;
-    /* Changed from -1 to 0 */
+    /* Lower z-index */
+    overflow: hidden;
 }
 
 .monochrome-glow {
     position: absolute;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0) 70%);
-    filter: blur(40px);
-    opacity: 0.3;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0) 70%);
+    filter: blur(60px);
+    opacity: 0.2;
+    /* Reduced opacity */
 }
 
 .glow-1 {
@@ -336,17 +339,17 @@ body {
 }
 
 
-/* Main Content - FIXED Z-INDEX */
+/* Main Content - FIXED */
 
 .main-content {
+    position: relative;
+    z-index: 10;
+    /* Higher z-index */
     padding: 8rem 5% 4rem;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    position: relative;
-    z-index: 1;
-    /* Added to ensure content is above background */
 }
 
 
@@ -356,6 +359,8 @@ body {
     font-family: var(--font-primary);
     font-weight: 700;
     margin-bottom: 3rem;
+    position: relative;
+    z-index: 20;
 }
 
 .title-main {
@@ -382,6 +387,8 @@ body {
     font-size: clamp(2rem, 5vw, 4rem);
     line-height: 1.1;
     margin-bottom: 2rem;
+    position: relative;
+    z-index: 20;
 }
 
 .monochrome-text {
@@ -390,6 +397,8 @@ body {
     color: var(--secondary-text);
     margin-bottom: 1.5rem;
     font-weight: 400;
+    position: relative;
+    z-index: 20;
 }
 
 .monochrome-quote {
@@ -399,6 +408,8 @@ body {
     color: var(--primary-text);
     margin-bottom: 0.5rem;
     font-weight: 400;
+    position: relative;
+    z-index: 20;
 }
 
 .quote-author {
@@ -406,6 +417,8 @@ body {
     color: var(--secondary-text);
     font-style: italic;
     font-weight: 300;
+    position: relative;
+    z-index: 20;
 }
 
 
@@ -442,6 +455,8 @@ body {
 
 .card-hover-lift {
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    z-index: 20;
 }
 
 .card-hover-lift:hover {
@@ -451,6 +466,8 @@ body {
 
 .floating {
     animation: floating 6s ease-in-out infinite;
+    position: relative;
+    z-index: 20;
 }
 
 @keyframes floating {
@@ -472,6 +489,7 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.1);
     position: relative;
     overflow: hidden;
+    z-index: 20;
 }
 
 .glass-card::before {
@@ -494,6 +512,8 @@ body {
 
 .hero-section {
     margin-bottom: 6rem;
+    position: relative;
+    z-index: 20;
 }
 
 .hero-content {
@@ -503,6 +523,8 @@ body {
     align-items: center;
     max-width: 1200px;
     margin: 0 auto;
+    position: relative;
+    z-index: 20;
 }
 
 
@@ -518,6 +540,7 @@ body {
     position: relative;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
     overflow: hidden;
+    z-index: 20;
 }
 
 .monochrome-card::before {
@@ -621,18 +644,20 @@ body {
 }
 
 
-/* Content Sections */
+/* Content Sections - FIXED */
 
 .content-section {
     max-width: 800px;
     margin: 0 auto;
     position: relative;
-    z-index: 2;
-    /* Ensure content is above background */
+    z-index: 20;
+    /* Higher z-index */
 }
 
 .monochrome-content {
     text-align: center;
+    position: relative;
+    z-index: 20;
 }
 
 .quote-section {
@@ -640,6 +665,8 @@ body {
     padding: 2rem 0;
     border-top: 1px solid var(--border-color);
     border-bottom: 1px solid var(--border-color);
+    position: relative;
+    z-index: 20;
 }
 
 
@@ -649,7 +676,7 @@ body {
     text-align: center;
     margin-bottom: 4rem;
     position: relative;
-    z-index: 2;
+    z-index: 20;
 }
 
 .page-title {
@@ -681,13 +708,15 @@ body {
     max-width: 900px;
     margin: 0 auto;
     position: relative;
-    z-index: 2;
+    z-index: 20;
 }
 
 .about-sections {
     display: flex;
     flex-direction: column;
     gap: 3rem;
+    position: relative;
+    z-index: 20;
 }
 
 .section-heading {
@@ -696,6 +725,8 @@ body {
     font-size: clamp(1.5rem, 3vw, 2rem);
     margin-bottom: 1.5rem;
     line-height: 1.4;
+    position: relative;
+    z-index: 20;
 }
 
 
@@ -707,7 +738,7 @@ body {
     gap: 2rem;
     margin-top: 2rem;
     position: relative;
-    z-index: 2;
+    z-index: 20;
 }
 
 .pillar-card {
@@ -717,6 +748,8 @@ body {
     padding: 2rem;
     text-align: center;
     transition: transform 0.3s ease, border-color 0.3s ease;
+    position: relative;
+    z-index: 20;
 }
 
 .pillar-card:hover {
@@ -753,7 +786,7 @@ body {
     padding: 3rem 0;
     border-top: 1px solid var(--border-color);
     position: relative;
-    z-index: 2;
+    z-index: 20;
 }
 
 .monochrome-cta {
@@ -769,6 +802,8 @@ body {
     letter-spacing: 1px;
     text-decoration: none;
     transition: all 0.3s ease;
+    position: relative;
+    z-index: 20;
 }
 
 .monochrome-cta:hover {
@@ -788,7 +823,7 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     position: relative;
-    z-index: 2;
+    z-index: 20;
 }
 
 .products-grid {
@@ -797,7 +832,7 @@ body {
     gap: 2rem;
     margin-top: 3rem;
     position: relative;
-    z-index: 2;
+    z-index: 20;
 }
 
 .product-card {
@@ -808,6 +843,7 @@ body {
     text-align: center;
     position: relative;
     transition: all 0.3s ease;
+    z-index: 20;
 }
 
 .product-card:hover {
@@ -923,7 +959,7 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     position: relative;
-    z-index: 2;
+    z-index: 20;
 }
 
 .services-grid {
@@ -932,7 +968,7 @@ body {
     gap: 2rem;
     margin-bottom: 4rem;
     position: relative;
-    z-index: 2;
+    z-index: 20;
 }
 
 .service-card {
@@ -942,6 +978,7 @@ body {
     padding: 2.5rem 2rem;
     text-align: center;
     transition: all 0.3s ease;
+    z-index: 20;
 }
 
 .service-card:hover {
@@ -977,7 +1014,7 @@ body {
     border: 1px solid var(--border-color);
     border-radius: 16px;
     position: relative;
-    z-index: 2;
+    z-index: 20;
 }
 
 .cta-title {
@@ -1006,7 +1043,7 @@ body {
     margin: 0 auto;
     align-items: start;
     position: relative;
-    z-index: 2;
+    z-index: 20;
 }
 
 .wallet-preview-section {
@@ -1015,7 +1052,7 @@ body {
     align-items: center;
     height: 100%;
     position: relative;
-    z-index: 2;
+    z-index: 20;
 }
 
 .preview-card {
@@ -1025,7 +1062,7 @@ body {
 .wallet-form-section {
     padding: 1rem 0;
     position: relative;
-    z-index: 2;
+    z-index: 20;
 }
 
 .form-header {
@@ -1202,7 +1239,7 @@ body {
     padding: 4rem 0 2rem;
     margin-top: 6rem;
     position: relative;
-    z-index: 2;
+    z-index: 20;
 }
 
 .footer-grid {

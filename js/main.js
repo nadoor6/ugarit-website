@@ -1,6 +1,8 @@
-// Enhanced Ugarit Website JavaScript with Backend Integration
+// Enhanced Ugarit Website JavaScript with Critical Fixes
 
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('Ugarit website initializing...');
+
     // Initialize all enhanced features
     initPageLoader();
     initAdvancedCursor();
@@ -14,17 +16,44 @@ document.addEventListener('DOMContentLoaded', function() {
     initScrollAnimations();
     initParallax();
     initRealTimeFormValidation();
+
+    // Force content visibility
+    forceContentVisibility();
 });
+
+function forceContentVisibility() {
+    // Ensure all content elements are visible
+    const contentElements = document.querySelectorAll('.main-content, .hero-section, .content-section, .about-content, .products-content, .services-content, .wallet-creation-content');
+
+    contentElements.forEach(element => {
+        if (element) {
+            element.style.opacity = '1';
+            element.style.visibility = 'visible';
+            element.style.display = 'block';
+        }
+    });
+
+    // Force body to be visible
+    document.body.style.opacity = '1';
+    document.body.style.visibility = 'visible';
+}
 
 function initPageLoader() {
     const loader = document.querySelector('.page-loader');
     if (loader) {
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                loader.classList.add('hidden');
-                document.body.style.opacity = '1';
-            }, 1000);
-        });
+        // Show content immediately, then hide loader
+        setTimeout(() => {
+            loader.classList.add('hidden');
+            document.body.style.opacity = '1';
+            document.body.style.overflow = 'visible';
+
+            // Force all content to be visible
+            forceContentVisibility();
+        }, 1000);
+    } else {
+        // If no loader, ensure content is visible
+        document.body.style.opacity = '1';
+        forceContentVisibility();
     }
 }
 
@@ -98,6 +127,8 @@ function initScrollAnimations() {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.style.animationPlayState = 'running';
+                entry.target.style.opacity = '1';
+                entry.target.style.visibility = 'visible';
             }
         });
     }, observerOptions);
@@ -260,14 +291,6 @@ function validateField(field) {
 function initFormHandling() {
     const walletForm = document.querySelector('.wallet-form');
     if (walletForm) {
-        // Add focus lines to form groups
-        const formGroups = walletForm.querySelectorAll('.form-group');
-        formGroups.forEach(group => {
-            const focusLine = document.createElement('div');
-            focusLine.className = 'focus-line';
-            group.appendChild(focusLine);
-        });
-
         walletForm.addEventListener('submit', async function(e) {
             e.preventDefault();
 
@@ -515,9 +538,19 @@ function initPageTransitions() {
 
 // Initialize when page loads
 window.addEventListener('load', () => {
-    // Additional initialization after everything is loaded
     console.log('Ugarit website fully loaded with enhanced features');
 
-    // Remove loading states
+    // Force content to be visible
     document.body.style.opacity = '1';
+    forceContentVisibility();
+
+    // Remove any hidden states
+    document.querySelectorAll('*').forEach(el => {
+        if (el.style.opacity === '0') {
+            el.style.opacity = '1';
+        }
+        if (el.style.visibility === 'hidden') {
+            el.style.visibility = 'visible';
+        }
+    });
 });
