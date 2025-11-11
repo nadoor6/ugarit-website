@@ -690,7 +690,7 @@ function initFormHandling() {
 
             } catch (error) {
 
-                showNotification('There was an error processing your request. Please contact @UgaritAdmin directly on Telegram.', 'error');
+                showNotification('There was an error processing your request. Please contact @UgaritSupport directly on Telegram.', 'error');
 
             } finally {
 
