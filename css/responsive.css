@@ -112,11 +112,6 @@
     .footer-brand {
         text-align: center;
     }
-    /* Luxury mobile tab adjustments */
-    .tab-link::before,
-    .tab-link::after {
-        display: none;
-    }
 }
 
 
@@ -137,9 +132,11 @@
     }
     .title-main {
         font-size: 2rem;
+        letter-spacing: 2px;
     }
     .title-sub {
         font-size: 0.8rem;
+        letter-spacing: 2px;
     }
     .monochrome-card {
         height: 200px;
@@ -222,9 +219,6 @@
         animation: none !important;
         transition: none !important;
     }
-    .dynamic-gradient-bg {
-        animation: none !important;
-    }
 }
 
 
@@ -249,13 +243,6 @@
         letter-spacing: 0px;
     }
     .glass-card::before {
-        display: none;
-    }
-    .tab-link:hover {
-        transform: none;
-    }
-    .tab-link::before,
-    .tab-link::after {
         display: none;
     }
 }
