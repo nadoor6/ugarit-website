@@ -1,0 +1,198 @@
+/* Tablet Styles */
+
+@media (max-width: 1024px) {
+    .header {
+        padding: 1.25rem 5%;
+    }
+    .tabs {
+        gap: 2rem;
+    }
+    .hero-content {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        text-align: center;
+    }
+    .monochrome-title {
+        margin-bottom: 2rem;
+    }
+    .title-main {
+        font-size: 3rem;
+    }
+    .wallet-creation-content {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+    .wallet-preview-section {
+        order: 2;
+    }
+    .wallet-form-section {
+        order: 1;
+    }
+    .preview-card {
+        transform: none;
+    }
+    .products-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+    .product-card.featured {
+        transform: none;
+    }
+}
+
+
+/* Mobile Styles */
+
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem 5%;
+    }
+    .tabs {
+        order: 2;
+        gap: 1.5rem;
+    }
+    .create-wallet-btn {
+        order: 1;
+    }
+    .main-content {
+        padding: 7rem 5% 3rem;
+    }
+    .title-main {
+        font-size: 2.5rem;
+    }
+    .elegant-heading {
+        font-size: 1.5rem;
+    }
+    .page-title {
+        font-size: 2rem;
+    }
+    .monochrome-card {
+        width: 100%;
+        max-width: 350px;
+        height: 220px;
+        padding: 1.5rem;
+    }
+    .card-number {
+        font-size: 1rem;
+    }
+    .products-grid,
+    .services-grid,
+    .pillars-grid {
+        grid-template-columns: 1fr;
+    }
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+    .glow-1,
+    .glow-2,
+    .glow-3 {
+        display: none;
+    }
+}
+
+
+/* Small Mobile Styles */
+
+@media (max-width: 480px) {
+    .tabs {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+    }
+    .tab-link {
+        font-size: 0.8rem;
+    }
+    .create-wallet-btn {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.75rem;
+    }
+    .title-main {
+        font-size: 2rem;
+        letter-spacing: 2px;
+    }
+    .title-sub {
+        font-size: 0.8rem;
+        letter-spacing: 2px;
+    }
+    .monochrome-card {
+        height: 200px;
+        padding: 1.25rem;
+    }
+    .card-header {
+        margin-bottom: 1.5rem;
+    }
+    .card-number {
+        font-size: 0.9rem;
+        margin-bottom: 1.5rem;
+    }
+    .product-card,
+    .service-card,
+    .pillar-card {
+        padding: 2rem 1.5rem;
+    }
+    .contact-info,
+    .wallet-benefits {
+        padding: 1.25rem;
+    }
+    .services-cta {
+        padding: 3rem 1.5rem;
+    }
+}
+
+
+/* Large Screen Optimization */
+
+@media (min-width: 1921px) {
+    .main-content {
+        max-width: 1600px;
+        margin: 0 auto;
+    }
+    .header {
+        max-width: 1600px;
+        margin: 0 auto;
+    }
+    .hero-content,
+    .about-content,
+    .products-content,
+    .services-content,
+    .wallet-creation-content {
+        max-width: 1400px;
+    }
+}
+
+
+/* High DPI Screens */
+
+@media (-webkit-min-device-pixel-ratio: 2),
+(min-resolution: 192dpi) {
+    .monochrome-card {
+        border-width: 0.5px;
+    }
+    .create-wallet-btn {
+        border-width: 0.5px;
+    }
+}
+
+
+/* Reduced Motion */
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+
+/* Dark mode support */
+
+@media (prefers-color-scheme: dark) {
+     :root {
+        --primary-bg: #000000;
+        --primary-text: #ffffff;
+        --secondary-text: rgba(255, 255, 255, 0.7);
+    }
+}
