@@ -10,6 +10,22 @@
 </head>
 
 <body>
+    <!-- Page Loader -->
+    <div class="page-loader">
+        <div class="loading-animation">
+            <div class="loading-dot"></div>
+            <div class="loading-dot"></div>
+            <div class="loading-dot"></div>
+        </div>
+    </div>
+
+    <!-- Advanced Cursor -->
+    <div class="advanced-cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <!-- Scroll Progress -->
+    <div class="scroll-progress"></div>
+
     <div class="page-container home-page">
         <!-- Header -->
         <header class="header">
@@ -20,24 +36,42 @@
                 <a href="services.html" class="tab-link">services</a>
             </nav>
             <a href="create-wallet.html" class="create-wallet-btn">Create Wallet</a>
+
+            <!-- Mobile Menu Button -->
+            <button class="mobile-menu-btn">
+                <span class="menu-line"></span>
+                <span class="menu-line"></span>
+                <span class="menu-line"></span>
+            </button>
         </header>
+
+        <!-- Mobile Menu -->
+        <div class="mobile-menu">
+            <nav class="mobile-nav">
+                <a href="about.html">about us</a>
+                <a href="products.html">products</a>
+                <a href="services.html">services</a>
+                <a href="create-wallet.html" class="monochrome-cta">Create Wallet</a>
+            </nav>
+        </div>
 
         <!-- Main Content -->
         <main class="main-content">
             <div class="background-elements">
-                <div class="monochrome-glow glow-1"></div>
-                <div class="monochrome-glow glow-2"></div>
+                <div class="monochrome-glow glow-1 parallax" data-speed="0.3"></div>
+                <div class="monochrome-glow glow-2 parallax" data-speed="0.5"></div>
+                <div class="monochrome-glow glow-3 parallax" data-speed="0.7"></div>
             </div>
 
             <div class="hero-section">
                 <div class="hero-content">
-                    <h1 class="monochrome-title">
-                        <span class="title-main">ugarit</span>
-                        <span class="title-sub">finance reimagined</span>
+                    <h1 class="monochrome-title reveal-text">
+                        <span class="title-main gradient-text">ugarit</span>
+                        <span class="title-sub animate-spacing">finance reimagined</span>
                     </h1>
 
-                    <div class="card-preview">
-                        <div class="monochrome-card">
+                    <div class="card-preview floating">
+                        <div class="monochrome-card glass-card card-hover-lift">
                             <div class="card-header">
                                 <div class="card-u">U</div>
                                 <div class="card-chip"></div>
@@ -60,15 +94,46 @@
 
             <div class="content-section">
                 <div class="monochrome-content">
-                    <h2 class="elegant-heading">Modern Finance,<br>Built on Timeless Security.</h2>
+                    <h2 class="elegant-heading reveal-text">Modern Finance,<br>Built on Timeless Security.</h2>
                     <div class="quote-section">
-                        <p class="monochrome-quote">"The structure of essence leads to understanding of integrative capacity"</p>
-                        <p class="quote-author">— Russel Vider, The Book of Prominent Landmarks</p>
+                        <p class="monochrome-quote reveal-text">"The structure of essence leads to understanding of integrative capacity"</p>
+                        <p class="quote-author reveal-text">— Russel Vider, The Book of Prominent Landmarks</p>
                     </div>
-                    <p class="monochrome-desc">A new paradigm in financial security, crafted for the modern era while honoring ancient principles of trust and exchange.</p>
+                    <p class="monochrome-desc reveal-text">A new paradigm in financial security, crafted for the modern era while honoring ancient principles of trust and exchange.</p>
                 </div>
             </div>
         </main>
+
+        <!-- Enhanced Footer -->
+        <footer class="premium-footer">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo">ugarit</div>
+                    <p class="monochrome-text">Rebuilding finance from its first home. Modern security meets ancient trust.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Products</h4>
+                    <a href="products.html">Basic Wallet</a>
+                    <a href="products.html">Pro Wallet</a>
+                    <a href="products.html">Business Wallet</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Company</h4>
+                    <a href="about.html">About Us</a>
+                    <a href="services.html">Services</a>
+                    <a href="create-wallet.html">Contact</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Legal</h4>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Security</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Ugarit. All rights reserved. Rebuilding finance from the cradle of economics.</p>
+            </div>
+        </footer>
     </div>
 
     <script src="js/main.js"></script>

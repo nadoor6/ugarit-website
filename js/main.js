@@ -1,18 +1,126 @@
-// Monochrome Ugarit Website JavaScript
+// Enhanced Ugarit Website JavaScript
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize monochrome animations
+    // Initialize all enhanced features
+    initPageLoader();
+    initAdvancedCursor();
+    initScrollProgress();
     initMonochromeAnimations();
-
-    // Initialize form handling
     initFormHandling();
-
-    // Initialize interactive elements
     initInteractiveElements();
-
-    // Initialize performance optimizations
+    initMobileMenu();
     initPerformanceOptimizations();
+    initPageTransitions();
+    initScrollAnimations();
+    initParallax();
 });
+
+function initPageLoader() {
+    const loader = document.querySelector('.page-loader');
+    if (loader) {
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                loader.classList.add('hidden');
+                document.body.style.opacity = '1';
+            }, 1000);
+        });
+    }
+}
+
+function initAdvancedCursor() {
+    if (window.innerWidth < 768) return;
+
+    const cursor = document.querySelector('.advanced-cursor');
+    const follower = document.querySelector('.cursor-follower');
+
+    if (!cursor || !follower) return;
+
+    let mouseX = 0,
+        mouseY = 0;
+    let followerX = 0,
+        followerY = 0;
+
+    document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+    });
+
+    function animate() {
+        // Main cursor
+        cursor.style.left = `${mouseX - 4}px`;
+        cursor.style.top = `${mouseY - 4}px`;
+
+        // Follower with delay
+        followerX += (mouseX - followerX) * 0.1;
+        followerY += (mouseY - followerY) * 0.1;
+        follower.style.left = `${followerX - 12}px`;
+        follower.style.top = `${followerY - 12}px`;
+
+        requestAnimationFrame(animate);
+    }
+    animate();
+
+    // Interactive elements effect
+    const interactiveElements = document.querySelectorAll('a, button, .monochrome-card, .product-card, .service-card, .pillar-card');
+
+    interactiveElements.forEach(el => {
+        el.addEventListener('mouseenter', () => {
+            cursor.style.transform = 'scale(1.5)';
+            follower.style.transform = 'scale(1.2)';
+        });
+
+        el.addEventListener('mouseleave', () => {
+            cursor.style.transform = 'scale(1)';
+            follower.style.transform = 'scale(1)';
+        });
+    });
+}
+
+function initScrollProgress() {
+    const progressBar = document.querySelector('.scroll-progress');
+    if (!progressBar) return;
+
+    window.addEventListener('scroll', () => {
+        const windowHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrolled = (window.scrollY / windowHeight) * 100;
+        progressBar.style.width = `${scrolled}%`;
+    });
+}
+
+function initScrollAnimations() {
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const fadeObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.animationPlayState = 'running';
+            }
+        });
+    }, observerOptions);
+
+    // Observe all animated elements
+    document.querySelectorAll('.reveal-text, .card-hover-lift').forEach(el => {
+        el.style.animationPlayState = 'paused';
+        fadeObserver.observe(el);
+    });
+}
+
+function initParallax() {
+    const parallaxElements = document.querySelectorAll('.parallax');
+
+    window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+
+        parallaxElements.forEach(el => {
+            const speed = el.dataset.speed || 0.5;
+            const yPos = -(scrolled * speed);
+            el.style.transform = `translateY(${yPos}px)`;
+        });
+    });
+}
 
 function initMonochromeAnimations() {
     // Header scroll effect
@@ -57,53 +165,57 @@ function initMonochromeAnimations() {
             const rotateX = (centerY - y) / 25;
 
             card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
-
-            // Add subtle shine effect
-            const shine = document.createElement('div');
-            shine.className = 'card-shine';
-            shine.style.left = `${x}px`;
-            shine.style.top = `${y}px`;
-            card.appendChild(shine);
-
-            setTimeout(() => {
-                if (card.contains(shine)) {
-                    card.removeChild(shine);
-                }
-            }, 500);
         });
 
         card.addEventListener('mouseleave', () => {
             card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
         });
     });
+}
 
-    // Scroll animations for elements
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
+function initMobileMenu() {
+    const menuBtn = document.querySelector('.mobile-menu-btn');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const mobileLinks = document.querySelectorAll('.mobile-nav a');
 
-    const fadeObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
+    if (menuBtn && mobileMenu) {
+        menuBtn.addEventListener('click', () => {
+            menuBtn.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+        });
+
+        // Close menu when clicking links
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menuBtn.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!menuBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
+                menuBtn.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = '';
             }
         });
-    }, observerOptions);
-
-    // Observe all monochrome elements
-    document.querySelectorAll('.product-card, .service-card, .pillar-card, .monochrome-card').forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(30px)';
-        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        fadeObserver.observe(el);
-    });
+    }
 }
 
 function initFormHandling() {
     const walletForm = document.querySelector('.wallet-form');
     if (walletForm) {
+        // Add focus lines to form groups
+        const formGroups = walletForm.querySelectorAll('.form-group');
+        formGroups.forEach(group => {
+            const focusLine = document.createElement('div');
+            focusLine.className = 'focus-line';
+            group.appendChild(focusLine);
+        });
+
         walletForm.addEventListener('submit', function(e) {
             e.preventDefault();
 
@@ -129,6 +241,14 @@ function initFormHandling() {
             setTimeout(() => {
                 showNotification('Thank you for your interest in Ugarit! Our admin will contact you on Telegram within 24 hours to complete your wallet setup.', 'success');
                 this.reset();
+
+                // Reset form labels
+                const labels = this.querySelectorAll('label');
+                labels.forEach(label => {
+                    label.style.top = '1rem';
+                    label.style.fontSize = '0.8rem';
+                });
+
                 submitBtn.textContent = originalText;
                 submitBtn.disabled = false;
                 submitBtn.style.opacity = '1';
@@ -144,6 +264,16 @@ function initFormHandling() {
 
             input.addEventListener('input', function() {
                 clearFieldError(this);
+
+                // Auto-update label position if value exists
+                if (this.value.trim()) {
+                    const label = this.previousElementSibling;
+                    if (label && label.tagName === 'LABEL') {
+                        label.style.top = '-1rem';
+                        label.style.fontSize = '0.7rem';
+                        label.style.color = 'var(--primary-text)';
+                    }
+                }
             });
         });
     }
@@ -255,24 +385,13 @@ function initInteractiveElements() {
             this.style.transform = 'translateY(0)';
         });
     });
-
-    // Parallax effect for background elements
-    if (window.innerWidth >= 768) {
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const monochromeGlows = document.querySelectorAll('.monochrome-glow');
-
-            monochromeGlows.forEach((glow, index) => {
-                const speed = 0.5 + (index * 0.1);
-                const yPos = -(scrolled * speed);
-                glow.style.transform = `translateY(${yPos}px)`;
-            });
-        });
-    }
 }
 
 function initPerformanceOptimizations() {
-    // Lazy loading for future images
+    // Lazy loading with intersection observer
+    const lazyImages = document.querySelectorAll('img[data-src]');
+    const lazyBackgrounds = document.querySelectorAll('[data-bg]');
+
     if ('IntersectionObserver' in window) {
         const imageObserver = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
@@ -285,9 +404,18 @@ function initPerformanceOptimizations() {
             });
         });
 
-        document.querySelectorAll('img[data-src]').forEach(img => {
-            imageObserver.observe(img);
+        const backgroundObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const element = entry.target;
+                    element.style.backgroundImage = `url(${element.dataset.bg})`;
+                    backgroundObserver.unobserve(element);
+                }
+            });
         });
+
+        lazyImages.forEach(img => imageObserver.observe(img));
+        lazyBackgrounds.forEach(bg => backgroundObserver.observe(bg));
     }
 
     // Debounce scroll events
@@ -299,3 +427,30 @@ function initPerformanceOptimizations() {
         }, 100);
     });
 }
+
+function initPageTransitions() {
+    const links = document.querySelectorAll('a[href^="/"], a[href^="."]');
+
+    links.forEach(link => {
+        link.addEventListener('click', (e) => {
+            if (link.getAttribute('href') && !link.getAttribute('href').startsWith('#')) {
+                e.preventDefault();
+                const href = link.getAttribute('href');
+
+                // Add page transition
+                document.body.style.opacity = '0';
+                document.body.style.transition = 'opacity 0.3s ease';
+
+                setTimeout(() => {
+                    window.location.href = href;
+                }, 300);
+            }
+        });
+    });
+}
+
+// Initialize when page loads
+window.addEventListener('load', () => {
+    // Additional initialization after everything is loaded
+    console.log('Ugarit website fully loaded with enhanced features');
+});

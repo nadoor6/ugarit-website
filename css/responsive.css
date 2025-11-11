@@ -37,6 +37,10 @@
     .product-card.featured {
         transform: none;
     }
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+    }
 }
 
 
@@ -49,11 +53,17 @@
         padding: 1rem 5%;
     }
     .tabs {
-        order: 2;
-        gap: 1.5rem;
+        display: none;
     }
     .create-wallet-btn {
-        order: 1;
+        display: none;
+    }
+    .mobile-menu-btn {
+        display: flex;
+        position: absolute;
+        right: 5%;
+        top: 50%;
+        transform: translateY(-50%);
     }
     .main-content {
         padding: 7rem 5% 3rem;
@@ -89,6 +99,18 @@
     .glow-2,
     .glow-3 {
         display: none;
+    }
+    .advanced-cursor,
+    .cursor-follower {
+        display: none;
+    }
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        text-align: center;
+    }
+    .footer-brand {
+        text-align: center;
     }
 }
 
@@ -139,6 +161,9 @@
     .services-cta {
         padding: 3rem 1.5rem;
     }
+    .mobile-nav a {
+        font-size: 1.5rem;
+    }
 }
 
 
@@ -158,6 +183,9 @@
     .products-content,
     .services-content,
     .wallet-creation-content {
+        max-width: 1400px;
+    }
+    .footer-grid {
         max-width: 1400px;
     }
 }
@@ -184,6 +212,13 @@
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
     }
+    .reveal-text,
+    .floating,
+    .card-hover-lift,
+    .animate-spacing {
+        animation: none !important;
+        transition: none !important;
+    }
 }
 
 
@@ -194,5 +229,20 @@
         --primary-bg: #000000;
         --primary-text: #ffffff;
         --secondary-text: rgba(255, 255, 255, 0.7);
+    }
+}
+
+
+/* Touch device optimizations */
+
+@media (hover: none) and (pointer: coarse) {
+    .card-hover-lift:hover {
+        transform: none;
+    }
+    .animate-spacing:hover {
+        letter-spacing: 0px;
+    }
+    .glass-card::before {
+        display: none;
     }
 }
