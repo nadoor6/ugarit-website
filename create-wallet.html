@@ -1,623 +1,417 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
+
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Create Wallet - Ugarit</title>
+
     <link rel="stylesheet" href="css/style.css">
+
     <link rel="stylesheet" href="css/responsive.css">
+
 </head>
 
+
+
 <body>
+
     <!-- Page Loader -->
+
     <div class="page-loader">
+
         <div class="loading-animation">
+
             <div class="loading-dot"></div>
+
             <div class="loading-dot"></div>
+
             <div class="loading-dot"></div>
+
         </div>
+
     </div>
+
+
 
     <!-- Advanced Cursor -->
+
     <div class="advanced-cursor"></div>
+
     <div class="cursor-follower"></div>
 
+
+
     <!-- Scroll Progress -->
+
     <div class="scroll-progress"></div>
 
+
+
     <div class="page-container create-wallet-page">
+
         <header class="header">
+
             <div class="logo">ugarit</div>
+
             <nav class="tabs">
+
                 <a href="about.html" class="tab-link">about us</a>
+
                 <a href="products.html" class="tab-link">products</a>
+
                 <a href="services.html" class="tab-link">services</a>
+
             </nav>
+
             <a href="create-wallet.html" class="create-wallet-btn">Create Wallet</a>
 
+
+
             <!-- Mobile Menu Button -->
+
             <button class="mobile-menu-btn">
+
                 <span class="menu-line"></span>
+
                 <span class="menu-line"></span>
+
                 <span class="menu-line"></span>
+
             </button>
+
         </header>
 
+
+
         <!-- Mobile Menu -->
+
         <div class="mobile-menu">
+
             <nav class="mobile-nav">
+
                 <a href="about.html">about us</a>
+
                 <a href="products.html">products</a>
+
                 <a href="services.html">services</a>
+
                 <a href="create-wallet.html" class="monochrome-cta">Create Wallet</a>
+
             </nav>
+
         </div>
+
+
 
         <main class="main-content">
+
             <div class="background-elements">
+
                 <div class="monochrome-glow glow-1 parallax" data-speed="0.3" style="left: 25%; top: 15%;"></div>
+
                 <div class="monochrome-glow glow-2 parallax" data-speed="0.5" style="right: 20%; top: 50%;"></div>
+
             </div>
+
+
 
             <div class="wallet-creation-content">
+
                 <div class="wallet-preview-section">
+
                     <div class="monochrome-card glass-card preview-card floating">
+
                         <div class="card-header">
+
                             <div class="card-u">U</div>
+
                             <div class="card-chip"></div>
+
                         </div>
+
                         <div class="card-number">4583 •••• •••• 5623</div>
+
                         <div class="card-details">
+
                             <div class="name-section">
+
                                 <div class="label">cardholder name</div>
+
                                 <div class="value">NADER UGARIT</div>
+
                             </div>
+
                             <div class="exp-section">
+
                                 <div class="label">expires</div>
+
                                 <div class="value">11/26</div>
+
                             </div>
+
                             <div class="cvv-section">
+
                                 <div class="cvv-box">•••</div>
+
                             </div>
+
                         </div>
+
                     </div>
+
                 </div>
+
+
 
                 <div class="wallet-form-section">
+
                     <div class="form-header">
+
                         <h1 class="page-title reveal-text">Create Your Ugarit Wallet</h1>
+
                         <p class="page-subtitle reveal-text">Begin your journey with financial security reimagined</p>
+
                         <div class="title-divider"></div>
+
                     </div>
+
+
 
                     <div class="contact-info glass-card reveal-text">
+
                         <h3 class="contact-title">Contact Admin on Telegram to Complete Setup</h3>
+
                         <div class="telegram-info">
+
                             <div class="telegram-icon">@</div>
+
                             <div class="telegram-details">
+
                                 <p class="telegram-handle">@UgaritAdmin</p>
+
                                 <p class="response-time">Response within 24 hours</p>
+
                             </div>
+
                         </div>
+
                     </div>
+
+
 
                     <form class="wallet-form">
+
                         <div class="form-row">
+
                             <div class="form-group reveal-text">
+
                                 <input type="text" id="fullName" name="fullName" required>
+
                                 <label for="fullName">Full Name</label>
+
                                 <div class="focus-line"></div>
+
                             </div>
+
                         </div>
 
+
+
                         <div class="form-row">
+
                             <div class="form-group reveal-text">
+
                                 <input type="tel" id="phone" name="phone" required placeholder="+963 XXX XXX XXX">
+
                                 <label for="phone">Phone Number</label>
+
                                 <div class="focus-line"></div>
+
                             </div>
+
                         </div>
 
+
+
                         <div class="form-row">
+
                             <div class="form-group reveal-text">
+
                                 <input type="email" id="email" name="email" required placeholder="your@email.com">
+
                                 <label for="email">Email Address</label>
+
                                 <div class="focus-line"></div>
+
                             </div>
+
                         </div>
+
+
 
                         <div class="form-row">
-                            <div class="form-group reveal-text">
-                                <select id="city" name="city" required>
-                                    <option value=""></option>
-                                    <option value="damascus">Damascus</option>
-                                    <option value="aleppo">Aleppo</option>
-                                    <option value="latakia">Latakia</option>
-                                    <option value="homs">Homs</option>
-                                    <option value="hama">Hama</option>
-                                    <option value="other">Other</option>
-                                </select>
-                                <label for="city">City</label>
-                                <div class="focus-line"></div>
-                            </div>
 
                             <div class="form-group reveal-text">
-                                <select id="plan" name="plan" required>
+
+                                <select id="city" name="city" required>
+
                                     <option value=""></option>
-                                    <option value="basic">Basic (Free)</option>
-                                    <option value="pro">Pro ($9.99/month)</option>
-                                    <option value="business">Business ($29.99/month)</option>
+
+                                    <option value="damascus">Damascus</option>
+
+                                    <option value="aleppo">Aleppo</option>
+
+                                    <option value="latakia">Latakia</option>
+
+                                    <option value="homs">Homs</option>
+
+                                    <option value="hama">Hama</option>
+
+                                    <option value="other">Other</option>
+
                                 </select>
-                                <label for="plan">Plan</label>
+
+                                <label for="city">City</label>
+
                                 <div class="focus-line"></div>
+
                             </div>
+
+
+
+                            <div class="form-group reveal-text">
+
+                                <select id="plan" name="plan" required>
+
+                                    <option value=""></option>
+
+                                    <option value="basic">Basic (Free)</option>
+
+                                    <option value="pro">Pro ($9.99/month)</option>
+
+                                    <option value="business">Business ($29.99/month)</option>
+
+                                </select>
+
+                                <label for="plan">Plan</label>
+
+                                <div class="focus-line"></div>
+
+                            </div>
+
                         </div>
+
+
 
                         <button type="submit" class="monochrome-cta full-width reveal-text">Create Wallet</button>
+
                     </form>
 
+
+
                     <div class="wallet-benefits glass-card reveal-text">
+
                         <h3 class="benefits-title">Ugarit Wallet Benefits</h3>
+
                         <ul class="benefits-list">
+
                             <li>Military-grade security encryption</li>
+
                             <li>Instant transfers across Syria</li>
+
                             <li>Multi-currency support</li>
+
                             <li>AI-powered financial insights</li>
+
                             <li>24/7 premium support</li>
+
                         </ul>
+
                     </div>
 
-                    <!-- TRANSACTION SECTION - ADDED -->
-                    <section class="transaction-section reveal-text">
-                        <div class="glass-card">
-                            <h3 class="benefits-title">Quick Transactions</h3>
-                            <div class="transaction-buttons">
-                                <button class="monochrome-cta outline" onclick="openDepositModal()">
-                                    💰 Deposit Funds
-                                </button>
-                                <button class="monochrome-cta outline" onclick="openWithdrawalModal()">
-                                    📤 Withdraw Funds
-                                </button>
-                            </div>
-                            <div class="transaction-history" id="transactionHistory">
-                                <!-- Transactions will appear here -->
-                            </div>
-                        </div>
-                    </section>
-
-                    <!-- SECURITY BADGES - ADDED -->
-                    <div class="security-badges reveal-text">
-                        <div class="security-badge">
-                            <div class="security-icon">🔒</div>
-                            <div>Bank-Level Security</div>
-                        </div>
-                        <div class="security-badge">
-                            <div class="security-icon">⚡</div>
-                            <div>Instant Processing</div>
-                        </div>
-                        <div class="security-badge">
-                            <div class="security-icon">🌍</div>
-                            <div>Syria-Wide</div>
-                        </div>
-                    </div>
                 </div>
+
             </div>
+
         </main>
 
-        <!-- TRANSACTION MODALS - ADDED -->
-        <div class="modal-overlay" id="depositModal">
-            <div class="modal-content glass-card">
-                <h3>💰 Deposit Funds</h3>
-                <form id="depositForm">
-                    <div class="form-group">
-                        <input type="number" id="depositAmount" required min="1">
-                        <label for="depositAmount">Amount (USD)</label>
-                        <div class="focus-line"></div>
-                    </div>
-                    <div class="form-actions">
-                        <button type="button" class="monochrome-cta outline" onclick="closeDepositModal()">Cancel</button>
-                        <button type="submit" class="monochrome-cta">Request Deposit</button>
-                    </div>
-                </form>
-            </div>
-        </div>
 
-        <div class="modal-overlay" id="withdrawalModal">
-            <div class="modal-content glass-card">
-                <h3>📤 Withdraw Funds</h3>
-                <form id="withdrawalForm">
-                    <div class="form-group">
-                        <input type="number" id="withdrawalAmount" required min="1">
-                        <label for="withdrawalAmount">Amount (USD)</label>
-                        <div class="focus-line"></div>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" id="withdrawalMethod" required placeholder="Bank Transfer, Cash, etc.">
-                        <label for="withdrawalMethod">Payment Method</label>
-                        <div class="focus-line"></div>
-                    </div>
-                    <div class="form-actions">
-                        <button type="button" class="monochrome-cta outline" onclick="closeWithdrawalModal()">Cancel</button>
-                        <button type="submit" class="monochrome-cta">Request Withdrawal</button>
-                    </div>
-                </form>
-            </div>
-        </div>
 
         <!-- Enhanced Footer -->
+
         <footer class="premium-footer">
+
             <div class="footer-grid">
+
                 <div class="footer-brand">
+
                     <div class="logo">ugarit</div>
+
                     <p class="monochrome-text">Rebuilding finance from its first home. Modern security meets ancient trust.</p>
+
                 </div>
+
                 <div class="footer-links">
+
                     <h4>Products</h4>
+
                     <a href="products.html">Basic Wallet</a>
+
                     <a href="products.html">Pro Wallet</a>
+
                     <a href="products.html">Business Wallet</a>
+
                 </div>
+
                 <div class="footer-links">
+
                     <h4>Company</h4>
+
                     <a href="about.html">About Us</a>
+
                     <a href="services.html">Services</a>
+
                     <a href="create-wallet.html">Contact</a>
+
                 </div>
+
                 <div class="footer-links">
+
                     <h4>Legal</h4>
+
                     <a href="#">Privacy Policy</a>
+
                     <a href="#">Terms of Service</a>
+
                     <a href="#">Security</a>
+
                 </div>
+
             </div>
+
             <div class="footer-bottom">
+
                 <p>&copy; 2024 Ugarit. All rights reserved. Rebuilding finance from the cradle of economics.</p>
+
             </div>
+
         </footer>
+
     </div>
 
+
+
     <script src="js/main.js"></script>
-    <script src="js/telegram-bot.js"></script>
 
-    <style>
-        /* TRANSACTION STYLES - ADDED */
-        
-        .transaction-section {
-            margin-top: 3rem;
-        }
-        
-        .transaction-buttons {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-            margin-bottom: 2rem;
-        }
-        
-        .monochrome-cta.outline {
-            background: transparent;
-            border: 1px solid var(--border-color);
-        }
-        
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(10px);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 10000;
-        }
-        
-        .modal-content {
-            width: 90%;
-            max-width: 400px;
-            padding: 2rem;
-        }
-        
-        .form-actions {
-            display: flex;
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-        
-        .form-actions .monochrome-cta {
-            flex: 1;
-        }
-        
-        .transaction-history {
-            margin-top: 1rem;
-        }
-        
-        .transaction-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem;
-            border-bottom: 1px solid var(--border-color);
-        }
-        
-        .transaction-amount {
-            font-weight: 600;
-        }
-        
-        .transaction-status {
-            font-size: 0.8rem;
-            padding: 0.25rem 0.5rem;
-            border-radius: 12px;
-        }
-        
-        .status-pending {
-            background: rgba(255, 255, 255, 0.1);
-            color: var(--secondary-text);
-        }
-        
-        .status-completed {
-            background: rgba(5, 150, 105, 0.2);
-            color: #10b981;
-        }
-        
-        .security-badges {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin: 2rem 0;
-            flex-wrap: wrap;
-        }
-        
-        .security-badge {
-            text-align: center;
-            font-size: 0.8rem;
-            color: var(--secondary-text);
-            min-width: 80px;
-        }
-        
-        .security-icon {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        .monochrome-cta:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-            transform: none !important;
-        }
-        
-        .monochrome-cta.loading {
-            position: relative;
-            color: transparent;
-        }
-        
-        .monochrome-cta.loading::after {
-            content: '';
-            position: absolute;
-            width: 16px;
-            height: 16px;
-            top: 50%;
-            left: 50%;
-            margin: -8px 0 0 -8px;
-            border: 2px solid transparent;
-            border-top-color: currentColor;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-        
-        @keyframes spin {
-            0% {
-                transform: rotate(0deg);
-            }
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .transaction-buttons {
-                grid-template-columns: 1fr;
-            }
-            .security-badges {
-                gap: 1rem;
-            }
-            .security-badge {
-                min-width: 70px;
-            }
-        }
-    </style>
-
-    <script>
-        // TRANSACTION FUNCTIONS - ADDED
-        function openDepositModal() {
-            document.getElementById('depositModal').style.display = 'flex';
-        }
-
-        function closeDepositModal() {
-            document.getElementById('depositModal').style.display = 'none';
-        }
-
-        function openWithdrawalModal() {
-            document.getElementById('withdrawalModal').style.display = 'flex';
-        }
-
-        function closeWithdrawalModal() {
-            document.getElementById('withdrawalModal').style.display = 'none';
-        }
-
-        // Handle deposit form
-        document.getElementById('depositForm') ? .addEventListener('submit', async function(e) {
-            e.preventDefault();
-            const amount = document.getElementById('depositAmount').value;
-            const button = this.querySelector('button[type="submit"]');
-
-            if (!amount || amount < 1) {
-                window.ugaritBot ? .showError('Please enter a valid amount.');
-                return;
-            }
-
-            // Show loading state
-            button.disabled = true;
-            button.classList.add('loading');
-            button.textContent = 'Processing...';
-
-            try {
-                await window.ugaritTransactions.requestDeposit(amount);
-                window.ugaritBot ? .showSuccess(`Deposit request for $${amount} submitted! Admin will process it.`);
-                closeDepositModal();
-                this.reset();
-                updateTransactionHistory();
-            } catch (error) {
-                window.ugaritBot ? .showError('Failed to submit deposit request. Please try again.');
-            } finally {
-                button.disabled = false;
-                button.classList.remove('loading');
-                button.textContent = 'Request Deposit';
-            }
-        });
-
-        // Handle withdrawal form
-        document.getElementById('withdrawalForm') ? .addEventListener('submit', async function(e) {
-            e.preventDefault();
-            const amount = document.getElementById('withdrawalAmount').value;
-            const method = document.getElementById('withdrawalMethod').value;
-            const button = this.querySelector('button[type="submit"]');
-
-            if (!amount || amount < 1) {
-                window.ugaritBot ? .showError('Please enter a valid amount.');
-                return;
-            }
-
-            if (!method) {
-                window.ugaritBot ? .showError('Please enter a payment method.');
-                return;
-            }
-
-            // Show loading state
-            button.disabled = true;
-            button.classList.add('loading');
-            button.textContent = 'Processing...';
-
-            try {
-                await window.ugaritTransactions.requestWithdrawal(amount);
-                window.ugaritBot ? .showSuccess(`Withdrawal request for $${amount} submitted! Admin will process it.`);
-                closeWithdrawalModal();
-                this.reset();
-                updateTransactionHistory();
-            } catch (error) {
-                window.ugaritBot ? .showError('Failed to submit withdrawal request. Please try again.');
-            } finally {
-                button.disabled = false;
-                button.classList.remove('loading');
-                button.textContent = 'Request Withdrawal';
-            }
-        });
-
-        // Update transaction history display
-        function updateTransactionHistory() {
-            const historyContainer = document.getElementById('transactionHistory');
-            if (!historyContainer) return;
-
-            const transactions = window.ugaritTransactions ? .getTransactionHistory() || [];
-
-            if (transactions.length === 0) {
-                historyContainer.innerHTML = '<p style="text-align: center; color: var(--secondary-text);">No transactions yet</p>';
-                return;
-            }
-
-            historyContainer.innerHTML = transactions.slice(0, 5).map(transaction => `
-                <div class="transaction-item">
-                    <div>
-                        <div style="font-weight: 600; text-transform: capitalize;">${transaction.type}</div>
-                        <div style="font-size: 0.8rem; color: var(--secondary-text);">
-                            ${new Date(transaction.timestamp).toLocaleDateString()}
-                        </div>
-                    </div>
-                    <div style="text-align: right;">
-                        <div class="transaction-amount">$${transaction.amount}</div>
-                        <div class="transaction-status status-${transaction.status}">
-                            ${transaction.status}
-                        </div>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        // Close modals when clicking outside
-        document.addEventListener('click', function(e) {
-            if (e.target.classList.contains('modal-overlay')) {
-                e.target.style.display = 'none';
-            }
-        });
-
-        // Initialize transaction history on page load
-        document.addEventListener('DOMContentLoaded', function() {
-            setTimeout(updateTransactionHistory, 1000);
-        });
-
-        // Enhanced form validation
-        document.querySelectorAll('input, select').forEach(input => {
-            input.addEventListener('blur', function() {
-                validateField(this);
-            });
-
-            input.addEventListener('input', function() {
-                clearFieldError(this);
-            });
-        });
-
-        function validateField(field) {
-            const value = field.value.trim();
-
-            if (field.required && !value) {
-                showFieldError(field, 'This field is required');
-                return false;
-            }
-
-            if (field.type === 'email' && value) {
-                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                if (!emailRegex.test(value)) {
-                    showFieldError(field, 'Please enter a valid email address');
-                    return false;
-                }
-            }
-
-            if (field.type === 'tel' && value) {
-                const phoneRegex = /^\+963[0-9]{9}$/;
-                if (!phoneRegex.test(value.replace(/\s/g, ''))) {
-                    showFieldError(field, 'Please enter a valid Syrian phone number (+963 XXX XXX XXX)');
-                    return false;
-                }
-            }
-
-            return true;
-        }
-
-        function showFieldError(field, message) {
-            clearFieldError(field);
-
-            const errorDiv = document.createElement('div');
-            errorDiv.className = 'field-error';
-            errorDiv.textContent = message;
-            errorDiv.style.cssText = `
-                color: #dc2626;
-                font-size: 0.75rem;
-                margin-top: 0.25rem;
-            `;
-
-            field.parentNode.appendChild(errorDiv);
-            field.style.borderColor = '#dc2626';
-        }
-
-        function clearFieldError(field) {
-            field.style.borderColor = '';
-            const existingError = field.parentNode.querySelector('.field-error');
-            if (existingError) {
-                existingError.remove();
-            }
-        }
-    </script>
 </body>
+
+
 
 </html>
