@@ -1,4 +1,4 @@
-// Enhanced Ugarit Website JavaScript
+// Enhanced Ugarit Website JavaScript with Backend Integration
 
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize all enhanced features
@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initPageTransitions();
     initScrollAnimations();
     initParallax();
+    initRealTimeFormValidation();
 });
 
 function initPageLoader() {
@@ -205,6 +206,57 @@ function initMobileMenu() {
     }
 }
 
+function initRealTimeFormValidation() {
+    const forms = document.querySelectorAll('form');
+    forms.forEach(form => {
+        const inputs = form.querySelectorAll('input, select, textarea');
+
+        inputs.forEach(input => {
+            input.addEventListener('input', function() {
+                validateField(this);
+            });
+
+            input.addEventListener('blur', function() {
+                validateField(this);
+            });
+        });
+    });
+}
+
+function validateField(field) {
+    const value = field.value.trim();
+    const fieldName = field.name || field.id;
+
+    // Clear previous errors
+    clearFieldError(field);
+
+    // Required field validation
+    if (field.required && !value) {
+        showFieldError(field, 'This field is required');
+        return false;
+    }
+
+    // Email validation
+    if (field.type === 'email' && value) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(value)) {
+            showFieldError(field, 'Please enter a valid email address');
+            return false;
+        }
+    }
+
+    // Phone validation (Syrian format)
+    if (field.type === 'tel' && value) {
+        const phoneRegex = /^\+963[0-9]{9}$/;
+        if (!phoneRegex.test(value.replace(/\s/g, ''))) {
+            showFieldError(field, 'Please enter a valid Syrian phone number (+963 XXX XXX XXX)');
+            return false;
+        }
+    }
+
+    return true;
+}
+
 function initFormHandling() {
     const walletForm = document.querySelector('.wallet-form');
     if (walletForm) {
@@ -216,20 +268,29 @@ function initFormHandling() {
             group.appendChild(focusLine);
         });
 
-        walletForm.addEventListener('submit', function(e) {
+        walletForm.addEventListener('submit', async function(e) {
             e.preventDefault();
+
+            // Validate all fields
+            const inputs = this.querySelectorAll('input, select');
+            let isValid = true;
+
+            inputs.forEach(input => {
+                if (!validateField(input)) {
+                    isValid = false;
+                }
+            });
+
+            if (!isValid) {
+                showNotification('Please fill in all required fields correctly.', 'error');
+                return;
+            }
 
             // Get form data
             const formData = new FormData(this);
             const data = Object.fromEntries(formData);
 
-            // Enhanced validation
-            if (!validateForm(data)) {
-                showNotification('Please fill in all required fields correctly.', 'error');
-                return;
-            }
-
-            // Simulate loading state
+            // Enhanced loading state
             const submitBtn = this.querySelector('.monochrome-cta');
             const originalText = submitBtn.textContent;
 
@@ -237,71 +298,74 @@ function initFormHandling() {
             submitBtn.disabled = true;
             submitBtn.style.opacity = '0.7';
 
-            // Simulate API call
-            setTimeout(() => {
-                showNotification('Thank you for your interest in Ugarit! Our admin will contact you on Telegram within 24 hours to complete your wallet setup.', 'success');
-                this.reset();
+            try {
+                // Simulate API call to backend
+                const response = await simulateBackendSubmission(data);
 
-                // Reset form labels
-                const labels = this.querySelectorAll('label');
-                labels.forEach(label => {
-                    label.style.top = '1rem';
-                    label.style.fontSize = '0.8rem';
-                });
+                if (response.success) {
+                    showNotification('Thank you for your interest in Ugarit! Our admin will contact you on Telegram within 24 hours to complete your wallet setup.', 'success');
 
+                    // Generate wallet ID for user
+                    const walletId = generateWalletId();
+                    showNotification(`Your temporary wallet ID: ${walletId} - Save this for reference!`, 'info');
+
+                    this.reset();
+
+                    // Reset form labels
+                    const labels = this.querySelectorAll('label');
+                    labels.forEach(label => {
+                        label.style.top = '1rem';
+                        label.style.fontSize = '0.8rem';
+                    });
+                } else {
+                    throw new Error('Submission failed');
+                }
+            } catch (error) {
+                showNotification('There was an error processing your request. Please contact @UgaritAdmin directly on Telegram.', 'error');
+            } finally {
                 submitBtn.textContent = originalText;
                 submitBtn.disabled = false;
                 submitBtn.style.opacity = '1';
-            }, 2000);
+            }
         });
 
-        // Add real-time validation
-        const inputs = walletForm.querySelectorAll('input, select');
-        inputs.forEach(input => {
-            input.addEventListener('blur', function() {
-                validateField(this);
-            });
-
-            input.addEventListener('input', function() {
-                clearFieldError(this);
-
-                // Auto-update label position if value exists
-                if (this.value.trim()) {
-                    const label = this.previousElementSibling;
-                    if (label && label.tagName === 'LABEL') {
-                        label.style.top = '-1rem';
-                        label.style.fontSize = '0.7rem';
-                        label.style.color = 'var(--primary-text)';
-                    }
+        // Real-time phone formatting
+        const phoneInput = walletForm.querySelector('input[type="tel"]');
+        if (phoneInput) {
+            phoneInput.addEventListener('input', function(e) {
+                let value = e.target.value.replace(/\D/g, '');
+                if (value.startsWith('963')) {
+                    value = '+' + value;
                 }
+                if (value.length > 0) {
+                    value = value.match(/.{1,3}/g).join(' ');
+                }
+                e.target.value = value;
             });
-        });
-    }
-}
-
-function validateForm(data) {
-    const required = ['fullName', 'phone', 'email', 'city', 'plan'];
-    return required.every(field => data[field] && data[field].trim());
-}
-
-function validateField(field) {
-    const value = field.value.trim();
-
-    if (field.required && !value) {
-        showFieldError(field, 'This field is required');
-        return false;
-    }
-
-    if (field.type === 'email' && value) {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(value)) {
-            showFieldError(field, 'Please enter a valid email address');
-            return false;
         }
     }
+}
 
-    clearFieldError(field);
-    return true;
+// Simulate backend submission
+async function simulateBackendSubmission(data) {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            // In real implementation, this would be a fetch() to your backend
+            console.log('Form data submitted:', data);
+            resolve({
+                success: true,
+                message: 'Submission successful',
+                timestamp: new Date().toISOString()
+            });
+        }, 2000);
+    });
+}
+
+// Generate unique wallet ID
+function generateWalletId() {
+    const timestamp = Date.now().toString(36);
+    const random = Math.random().toString(36).substr(2, 5);
+    return `UG${timestamp}${random}`.toUpperCase();
 }
 
 function showFieldError(field, message) {
@@ -342,8 +406,8 @@ function showNotification(message, type = 'info') {
         position: fixed;
         top: 100px;
         right: 20px;
-        background: ${type === 'error' ? '#dc2626' : '#ffffff'};
-        color: ${type === 'error' ? 'white' : 'black'};
+        background: ${type === 'error' ? '#dc2626' : type === 'success' ? '#059669' : '#ffffff'};
+        color: ${type === 'error' || type === 'success' ? 'white' : 'black'};
         padding: 1rem 1.5rem;
         border-radius: 8px;
         z-index: 10000;
@@ -453,4 +517,7 @@ function initPageTransitions() {
 window.addEventListener('load', () => {
     // Additional initialization after everything is loaded
     console.log('Ugarit website fully loaded with enhanced features');
+
+    // Remove loading states
+    document.body.style.opacity = '1';
 });
