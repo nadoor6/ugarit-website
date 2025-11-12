@@ -1577,3 +1577,229 @@ body {
         padding: 1.5rem;
     }
 }
+
+
+/* Enhanced CSS for auth components */
+
+
+/* Auth Buttons */
+
+.auth-buttons {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.auth-buttons .logged-out,
+.auth-buttons .logged-in {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.signin-wallet-btn {
+    padding: 0.75rem 1.5rem;
+    background: transparent;
+    border: 1px solid var(--primary-text);
+    border-radius: 25px;
+    color: var(--primary-text);
+    font-family: var(--font-primary);
+    font-weight: 500;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.signin-wallet-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-1px);
+}
+
+.wallet-dashboard-btn {
+    padding: 0.75rem 1.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--primary-text);
+    border-radius: 25px;
+    color: var(--primary-text);
+    text-decoration: none;
+    font-family: var(--font-primary);
+    font-weight: 500;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.logout-btn {
+    padding: 0.75rem 1.5rem;
+    background: transparent;
+    border: 1px solid #ff4444;
+    border-radius: 25px;
+    color: #ff4444;
+    font-family: var(--font-primary);
+    font-weight: 500;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.logout-btn:hover {
+    background: rgba(255, 68, 68, 0.1);
+}
+
+
+/* Modal Styles */
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    z-index: 10000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 2rem;
+    max-width: 400px;
+    width: 90%;
+    position: relative;
+    animation: modalSlideIn 0.3s ease;
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.close-modal {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--secondary-text);
+    transition: color 0.3s ease;
+}
+
+.close-modal:hover {
+    color: var(--primary-text);
+}
+
+.modal-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.modal-header h3 {
+    margin-bottom: 0.5rem;
+}
+
+.modal-header p {
+    color: var(--secondary-text);
+    font-size: 0.9rem;
+}
+
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1.5rem 0;
+    font-size: 0.8rem;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+}
+
+.forgot-password {
+    color: var(--secondary-text);
+    text-decoration: none;
+}
+
+.forgot-password:hover {
+    color: var(--primary-text);
+}
+
+.modal-footer {
+    text-align: center;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.modal-footer p {
+    color: var(--secondary-text);
+    font-size: 0.8rem;
+}
+
+.modal-footer a {
+    color: var(--primary-text);
+    text-decoration: none;
+}
+
+.modal-footer a:hover {
+    text-decoration: underline;
+}
+
+
+/* Error Message */
+
+.error-message {
+    background: rgba(255, 68, 68, 0.1);
+    border: 1px solid rgba(255, 68, 68, 0.3);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-top: 1rem;
+    color: #ff4444;
+    font-size: 0.8rem;
+}
+
+.error-shake {
+    animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-5px);
+    }
+    75% {
+        transform: translateX(5px);
+    }
+}
+
+
+/* Mobile Responsive */
+
+@media (max-width: 768px) {
+    .auth-buttons .logged-out,
+    .auth-buttons .logged-in {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    .modal-content {
+        padding: 1.5rem;
+    }
+}

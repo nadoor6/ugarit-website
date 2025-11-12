@@ -17,6 +17,33 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Force content visibility
     forceContentVisibility();
+
+    // Initialize authentication (if auth.js is loaded)
+    if (typeof authManager !== 'undefined') {
+        console.log('Authentication system initialized');
+    }
+});
+
+
+// Enhanced Ugarit Website JavaScript with Bilingual Support
+
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('Ugarit website initializing...');
+
+    // Initialize all enhanced features
+    initPageLoader();
+    initAdvancedCursor();
+    initScrollProgress();
+    initMonochromeAnimations();
+    initInteractiveElements();
+    initMobileMenu();
+    initPerformanceOptimizations();
+    initPageTransitions();
+    initScrollAnimations();
+    initParallax();
+
+    // Force content visibility
+    forceContentVisibility();
 });
 
 function forceContentVisibility() {

@@ -33,6 +33,7 @@
     <div class="scroll-progress"></div>
 
     <div class="page-container create-wallet-page">
+        <!-- Updated Header -->
         <header class="header">
             <a href="index.html" class="logo" data-i18n="home.title">ugarit</a>
             <nav class="tabs">
@@ -40,14 +41,28 @@
                 <a href="products.html" class="tab-link" data-i18n="nav.products">products</a>
                 <a href="services.html" class="tab-link" data-i18n="nav.services">services</a>
             </nav>
-            <a href="create-wallet.html" class="create-wallet-btn" data-i18n="nav.create_wallet">Create Wallet</a>
+
+            <!-- Dynamic Auth Buttons -->
+            <div class="auth-buttons" id="authButtons">
+                <!-- When user is NOT logged in -->
+                <div class="logged-out">
+                    <a href="create-wallet.html" class="create-wallet-btn" data-i18n="nav.create_wallet">Create Wallet</a>
+                    <button class="signin-wallet-btn" onclick="showSignInModal()">Sign In Wallet</button>
+                </div>
+
+                <!-- When user IS logged in -->
+                <div class="logged-in" style="display: none;">
+                    <a href="user-dashboard.html" class="wallet-dashboard-btn">My Wallet</a>
+                    <button class="logout-btn" onclick="logoutUser()">Log Out</button>
+                </div>
+            </div>
 
             <!-- Mobile Menu Button -->
             <button class="mobile-menu-btn">
-                <span class="menu-line"></span>
-                <span class="menu-line"></span>
-                <span class="menu-line"></span>
-            </button>
+        <span class="menu-line"></span>
+        <span class="menu-line"></span>
+        <span class="menu-line"></span>
+    </button>
         </header>
 
         <!-- Mobile Menu -->
@@ -142,6 +157,50 @@
 
         <script src="js/main.js"></script>
         <script src="js/language-switcher.js"></script>
+        <!-- Sign In Modal -->
+        <div id="signInModal" class="modal">
+            <div class="modal-content glass-card">
+                <span class="close-modal" onclick="closeSignInModal()">&times;</span>
+
+                <div class="modal-header">
+                    <h3>Sign In to Your Wallet</h3>
+                    <p>Access your Ugarit wallet dashboard</p>
+                </div>
+
+                <form id="signInForm">
+                    <div class="form-group">
+                        <input type="text" id="walletId" required>
+                        <label for="walletId">Wallet ID</label>
+                        <div class="focus-line"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="password" id="walletPassword" required>
+                        <label for="walletPassword">Password</label>
+                        <div class="focus-line"></div>
+                    </div>
+
+                    <div class="form-options">
+                        <label class="remember-me">
+                    <input type="checkbox" id="rememberMe">
+                    <span>Remember me</span>
+                </label>
+                        <a href="#" class="forgot-password">Forgot Password?</a>
+                    </div>
+
+                    <button type="submit" class="monochrome-cta full-width">
+                <span class="btn-text">Sign In</span>
+                <span class="btn-loading" style="display: none;">Signing In...</span>
+            </button>
+                </form>
+
+                <div class="modal-footer">
+                    <p>Don't have a wallet? <a href="create-wallet.html">Create one now</a></p>
+                </div>
+
+                <div id="signInError" class="error-message" style="display: none;"></div>
+            </div>
+        </div>
 </body>
 
 </html>
