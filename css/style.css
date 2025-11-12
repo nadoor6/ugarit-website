@@ -1458,3 +1458,55 @@ body {
         width: 120px;
     }
 }
+
+
+/* Remove white lines from all pages */
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+}
+
+.page-container {
+    border: none;
+    outline: none;
+}
+
+
+/* Remove any potential border from main content */
+
+.main-content {
+    border: none !important;
+    outline: none !important;
+}
+
+
+/* Remove borders from background elements */
+
+.background-elements {
+    border: none;
+    outline: none;
+}
+
+
+/* Check for scrollbar issues */
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #000000;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #333333;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555555;
+}
