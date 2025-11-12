@@ -1460,7 +1460,10 @@ body {
 }
 
 
-/* Remove white lines from all pages */
+/* ===== COMPREHENSIVE WHITE LINE FIX ===== */
+
+
+/* Reset all potential line sources */
 
 body,
 html {
@@ -1468,31 +1471,75 @@ html {
     padding: 0;
     border: none;
     outline: none;
-}
-
-.page-container {
-    border: none;
-    outline: none;
+    box-shadow: none;
+    background: var(--primary-bg);
 }
 
 
-/* Remove any potential border from main content */
+/* Remove borders from all containers */
 
-.main-content {
+.page-container,
+.main-content,
+.background-elements,
+.monochrome-glow {
     border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+
+/* Fix for specific elements that might have borders */
+
+.hero-section,
+.content-section,
+.about-content,
+.products-content,
+.services-content,
+.wallet-creation-content {
+    border: none !important;
+}
+
+
+/* Ensure no overflow issues */
+
+body {
+    overflow-x: hidden;
+    position: relative;
+}
+
+
+/* Remove any pseudo-elements that might create lines */
+
+body::before,
+body::after,
+html::before,
+html::after,
+.page-container::before,
+.page-container::after {
+    content: none !important;
+    display: none !important;
+}
+
+
+/* Fix for background elements */
+
+.background-elements {
+    pointer-events: none;
+}
+
+.monochrome-glow {
+    border-radius: 50% !important;
+}
+
+
+/* Remove focus outlines */
+
+*:focus {
     outline: none !important;
 }
 
 
-/* Remove borders from background elements */
-
-.background-elements {
-    border: none;
-    outline: none;
-}
-
-
-/* Check for scrollbar issues */
+/* Scrollbar styling to ensure it's dark */
 
 ::-webkit-scrollbar {
     width: 8px;
