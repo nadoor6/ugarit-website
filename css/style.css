@@ -357,7 +357,7 @@ body {
 
 .monochrome-title {
     font-family: var(--font-primary);
-    font-weight: 700;
+    font-weight: 800;
     margin-bottom: 3rem;
     position: relative;
     z-index: 20;
@@ -365,10 +365,10 @@ body {
 
 .title-main {
     display: block;
-    font-size: clamp(3rem, 8vw, 8rem);
-    letter-spacing: 3px;
+    font-size: clamp(10rem, 25vw, 8rem);
+    letter-spacing: -4.5px;
     margin-bottom: 0.5rem;
-    line-height: 0.9;
+    line-height: 1.1;
 }
 
 .title-sub {
