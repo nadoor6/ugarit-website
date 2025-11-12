@@ -6,35 +6,78 @@
 }
 
 
-/* Header RTL Fixes */
+/* Header RTL Fixes - Grid Layout */
 
 .rtl .header {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    padding: 1.5rem 5%;
     text-align: right;
-    flex-direction: row-reverse;
+    position: relative;
 }
 
 .rtl .logo {
-    margin-left: 2rem;
-    margin-right: 0;
+    grid-column: 1;
+    justify-self: start;
+    margin: 0;
 }
 
 .rtl .tabs {
-    margin-left: 0;
-    margin-right: auto;
-    gap: 2.5rem;
+    grid-column: 2;
+    justify-self: center;
+    margin: 0;
     display: flex;
-    justify-content: center;
-    flex: 1;
-}
-
-.rtl .language-switcher {
-    margin-left: 0;
-    margin-right: 2rem;
+    gap: 2.5rem;
 }
 
 .rtl .create-wallet-btn {
-    margin-left: 0;
-    margin-right: auto;
+    grid-column: 3;
+    justify-self: end;
+    margin: 0;
+}
+
+.rtl .language-switcher {
+    display: none;
+    /* We're using footer switcher only */
+}
+
+
+/* Mobile RTL adjustments */
+
+@media (max-width: 1024px) {
+    .rtl .tabs {
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .rtl .header {
+        grid-template-columns: 1fr auto 1fr;
+        justify-content: space-between;
+    }
+    .rtl .logo {
+        grid-column: 2;
+        justify-self: center;
+    }
+    .rtl .tabs {
+        display: none;
+    }
+    .rtl .create-wallet-btn {
+        display: none;
+    }
+    .rtl .mobile-menu-btn {
+        grid-column: 3;
+        justify-self: end;
+        position: static;
+        transform: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .rtl .header {
+        padding: 1rem 5%;
+    }
 }
 
 
