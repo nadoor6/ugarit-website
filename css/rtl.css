@@ -1,0 +1,130 @@
+/* RTL Layout for Arabic */
+
+.rtl {
+    direction: rtl;
+    text-align: right;
+}
+
+.rtl .header {
+    text-align: right;
+}
+
+.rtl .tabs {
+    margin-left: 0;
+    margin-right: auto;
+    gap: 2.5rem;
+}
+
+.rtl .language-switcher {
+    margin-left: 0;
+    margin-right: 2rem;
+}
+
+.rtl .monochrome-text,
+.rtl .monochrome-quote,
+.rtl .page-subtitle,
+.rtl .monochrome-content {
+    text-align: right;
+}
+
+.rtl .form-group label {
+    right: 0;
+    left: auto;
+}
+
+.rtl .form-group .focus-line {
+    right: 0;
+    left: auto;
+}
+
+.rtl .footer-links {
+    text-align: right;
+}
+
+.rtl .product-features li,
+.rtl .benefits-list li {
+    padding-left: 0;
+    padding-right: 1.5rem;
+    text-align: right;
+}
+
+.rtl .product-features li:before,
+.rtl .benefits-list li:before {
+    left: auto;
+    right: 0;
+}
+
+.rtl .card-details {
+    text-align: right;
+}
+
+.rtl .services-cta,
+.rtl .contact-info,
+.rtl .wallet-benefits {
+    text-align: right;
+}
+
+.rtl .telegram-info {
+    justify-content: flex-end;
+}
+
+.rtl .footer-grid {
+    text-align: right;
+}
+
+.rtl .footer-bottom {
+    text-align: center;
+}
+
+
+/* Mobile RTL adjustments */
+
+@media (max-width: 768px) {
+    .rtl .mobile-menu-btn {
+        left: 5%;
+        right: auto;
+    }
+    .rtl .mobile-nav {
+        text-align: right;
+    }
+    .rtl .language-switcher {
+        margin-right: 1rem;
+    }
+}
+
+
+/* Hero section RTL adjustments */
+
+.rtl .hero-content {
+    text-align: right;
+}
+
+.rtl .title-sub {
+    text-align: right;
+}
+
+
+/* Products and services grid RTL */
+
+.rtl .products-grid,
+.rtl .services-grid,
+.rtl .pillars-grid {
+    text-align: right;
+}
+
+.rtl .product-card,
+.rtl .service-card,
+.rtl .pillar-card {
+    text-align: right;
+}
+
+
+/* Form RTL adjustments */
+
+.rtl .form-row {
+    text-align: right;
+}
+
+.rtl .wallet-creation-content {
+    text-align: right;
+}

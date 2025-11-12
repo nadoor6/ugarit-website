@@ -1295,3 +1295,69 @@ body {
     margin-top: 2rem;
     /* Adjust this value as needed */
 }
+
+
+/* Language Switcher */
+
+.language-switcher {
+    display: flex;
+    gap: 0.5rem;
+    margin-left: 2rem;
+}
+
+.lang-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: transparent;
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    color: var(--secondary-text);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.lang-btn:hover,
+.lang-btn.active {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--primary-text);
+    transform: translateY(-1px);
+}
+
+
+/* RTL Base Styles */
+
+[dir="rtl"] {
+    text-align: right;
+}
+
+
+/* Ensure smooth transitions for language switching */
+
+body {
+    transition: all 0.3s ease;
+}
+
+
+/* Fix About Page Button Movement */
+
+.about-page .cta-section .monochrome-cta {
+    transform: none !important;
+    transition: all 0.3s ease !important;
+}
+
+.about-page .cta-section .monochrome-cta:hover {
+    transform: none !important;
+    background: rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1) !important;
+}
+
+
+/* Move About Page Button Down */
+
+.about-page .cta-section .monochrome-cta {
+    margin-top: 2rem;
+}
