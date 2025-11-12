@@ -5,14 +5,26 @@
     text-align: right;
 }
 
+
+/* Header RTL Fixes */
+
 .rtl .header {
     text-align: right;
+    flex-direction: row-reverse;
+}
+
+.rtl .logo {
+    margin-left: 2rem;
+    margin-right: 0;
 }
 
 .rtl .tabs {
     margin-left: 0;
     margin-right: auto;
     gap: 2.5rem;
+    display: flex;
+    justify-content: center;
+    flex: 1;
 }
 
 .rtl .language-switcher {
@@ -20,12 +32,35 @@
     margin-right: 2rem;
 }
 
+.rtl .create-wallet-btn {
+    margin-left: 0;
+    margin-right: auto;
+}
+
+
+/* Main Content RTL */
+
 .rtl .monochrome-text,
 .rtl .monochrome-quote,
 .rtl .page-subtitle,
 .rtl .monochrome-content {
     text-align: right;
 }
+
+.rtl .hero-content {
+    text-align: right;
+}
+
+.rtl .title-sub {
+    text-align: right;
+}
+
+.rtl .elegant-heading {
+    text-align: right;
+}
+
+
+/* Form RTL */
 
 .rtl .form-group label {
     right: 0;
@@ -37,9 +72,24 @@
     left: auto;
 }
 
+
+/* Footer RTL */
+
 .rtl .footer-links {
     text-align: right;
 }
+
+.rtl .footer-grid {
+    text-align: right;
+}
+
+.rtl .footer-language-switcher {
+    text-align: center;
+    direction: rtl;
+}
+
+
+/* Lists RTL */
 
 .rtl .product-features li,
 .rtl .benefits-list li {
@@ -54,9 +104,20 @@
     right: 0;
 }
 
+
+/* Card Details RTL */
+
 .rtl .card-details {
     text-align: right;
 }
+
+.rtl .name-section,
+.rtl .exp-section {
+    text-align: right;
+}
+
+
+/* Services & Contact RTL */
 
 .rtl .services-cta,
 .rtl .contact-info,
@@ -68,43 +129,12 @@
     justify-content: flex-end;
 }
 
-.rtl .footer-grid {
-    text-align: right;
-}
-
 .rtl .footer-bottom {
     text-align: center;
 }
 
 
-/* Mobile RTL adjustments */
-
-@media (max-width: 768px) {
-    .rtl .mobile-menu-btn {
-        left: 5%;
-        right: auto;
-    }
-    .rtl .mobile-nav {
-        text-align: right;
-    }
-    .rtl .language-switcher {
-        margin-right: 1rem;
-    }
-}
-
-
-/* Hero section RTL adjustments */
-
-.rtl .hero-content {
-    text-align: right;
-}
-
-.rtl .title-sub {
-    text-align: right;
-}
-
-
-/* Products and services grid RTL */
+/* Products & Services Grid RTL */
 
 .rtl .products-grid,
 .rtl .services-grid,
@@ -119,12 +149,183 @@
 }
 
 
-/* Form RTL adjustments */
+/* About Page RTL */
+
+.rtl .about-content {
+    text-align: right;
+}
+
+.rtl .section-heading {
+    text-align: right;
+}
+
+.rtl .cta-section {
+    text-align: right;
+}
+
+
+/* Form RTL */
 
 .rtl .form-row {
     text-align: right;
 }
 
 .rtl .wallet-creation-content {
+    text-align: right;
+}
+
+
+/* Mobile RTL adjustments */
+
+@media (max-width: 1024px) {
+    .rtl .header {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .rtl .tabs {
+        margin-right: 0;
+        justify-content: flex-end;
+    }
+}
+
+@media (max-width: 768px) {
+    .rtl .mobile-menu-btn {
+        left: 5%;
+        right: auto;
+    }
+    .rtl .mobile-nav {
+        text-align: right;
+    }
+    .rtl .language-switcher {
+        margin-right: 1rem;
+    }
+    .rtl .header {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .rtl .tabs {
+        display: none;
+    }
+    .rtl .create-wallet-btn {
+        display: none;
+    }
+}
+
+
+/* Small Mobile RTL */
+
+@media (max-width: 480px) {
+    .rtl .mobile-nav a {
+        text-align: right;
+        font-size: 1.5rem;
+    }
+    .rtl .footer-language-switcher {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+    }
+}
+
+
+/* Fix for header tabs centering in Arabic */
+
+.rtl .header {
+    padding: 1.5rem 5%;
+}
+
+.rtl .tabs {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.rtl .logo {
+    margin-right: auto;
+}
+
+.rtl .create-wallet-btn {
+    margin-left: auto;
+}
+
+
+/* Ensure proper spacing in RTL */
+
+.rtl .monochrome-card {
+    text-align: right;
+}
+
+.rtl .card-header {
+    text-align: right;
+}
+
+.rtl .card-number {
+    text-align: right;
+    letter-spacing: 1px;
+}
+
+
+/* Fix quote alignment */
+
+.rtl .quote-section {
+    text-align: right;
+}
+
+.rtl .monochrome-quote {
+    text-align: right;
+}
+
+.rtl .quote-author {
+    text-align: right;
+}
+
+
+/* Products page RTL fixes */
+
+.rtl .product-badge {
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+}
+
+.rtl .product-features {
+    text-align: right;
+}
+
+.rtl .product-price {
+    text-align: center;
+}
+
+
+/* Services page RTL fixes */
+
+.rtl .service-icon {
+    text-align: center;
+}
+
+.rtl .service-name {
+    text-align: center;
+}
+
+.rtl .service-description {
+    text-align: right;
+}
+
+
+/* Wallet creation page RTL fixes */
+
+.rtl .contact-title {
+    text-align: center;
+}
+
+.rtl .telegram-info {
+    text-align: center;
+    justify-content: center;
+}
+
+.rtl .benefits-title {
+    text-align: right;
+}
+
+.rtl .benefits-list {
     text-align: right;
 }
