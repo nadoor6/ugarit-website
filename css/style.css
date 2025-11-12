@@ -1399,3 +1399,62 @@ body {
 .rtl .footer-language-switcher {
     text-align: center;
 }
+
+
+/* Footer Language Switcher */
+
+.footer-language-switcher {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-lang-btn {
+    padding: 0.5rem 1.5rem;
+    background: transparent;
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    color: var(--secondary-text);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.8rem;
+    font-weight: 500;
+    font-family: var(--font-primary);
+}
+
+.footer-lang-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--primary-text);
+    transform: translateY(-1px);
+}
+
+.footer-lang-btn.active {
+    background: rgba(255, 255, 255, 0.2);
+    color: var(--primary-text);
+    border-color: var(--primary-text);
+}
+
+
+/* RTL adjustments for footer language switcher */
+
+.rtl .footer-language-switcher {
+    text-align: center;
+    direction: rtl;
+}
+
+
+/* Mobile adjustments */
+
+@media (max-width: 768px) {
+    .footer-language-switcher {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    .footer-lang-btn {
+        width: 120px;
+    }
+}
