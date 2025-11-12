@@ -372,3 +372,108 @@
 .rtl .benefits-list {
     text-align: right;
 }
+
+
+/* Arabic Font Setup */
+
+.rtl {
+    font-family: 'Almarai', 'Dubai', 'Segoe UI', 'Arabic UI', sans-serif;
+    font-weight: 700;
+    /* Bold weight */
+}
+
+
+/* Specific font weights for different elements */
+
+.rtl .logo {
+    font-family: 'Almarai', sans-serif;
+    font-weight: 800;
+    /* Extra bold for logo */
+}
+
+.rtl .monochrome-title .title-main {
+    font-family: 'Almarai', sans-serif;
+    font-weight: 800;
+}
+
+.rtl .elegant-heading {
+    font-family: 'Almarai', sans-serif;
+    font-weight: 700;
+}
+
+.rtl .page-title {
+    font-family: 'Almarai', sans-serif;
+    font-weight: 700;
+}
+
+.rtl .section-heading {
+    font-family: 'Almarai', sans-serif;
+    font-weight: 700;
+}
+
+.rtl .tab-link {
+    font-family: 'Almarai', sans-serif;
+    font-weight: 500;
+}
+
+.rtl .monochrome-text {
+    font-family: 'Almarai', sans-serif;
+    font-weight: 400;
+    line-height: 1.8;
+    /* Better readability for Arabic */
+}
+
+.rtl .product-name,
+.rtl .service-name,
+.rtl .pillar-title {
+    font-family: 'Almarai', sans-serif;
+    font-weight: 700;
+}
+
+.rtl .product-description,
+.rtl .service-description,
+.rtl .pillar-desc {
+    font-family: 'Almarai', sans-serif;
+    font-weight: 400;
+    line-height: 1.7;
+}
+
+.rtl .create-wallet-btn,
+.rtl .monochrome-cta,
+.rtl .product-cta {
+    font-family: 'Almarai', sans-serif;
+    font-weight: 600;
+}
+
+.rtl .footer-links h4 {
+    font-family: 'Almarai', sans-serif;
+    font-weight: 700;
+}
+
+.rtl .footer-links a {
+    font-family: 'Almarai', sans-serif;
+    font-weight: 400;
+}
+
+
+/* Improve Arabic text rendering */
+
+.rtl {
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+
+/* Adjust letter spacing for Arabic */
+
+.rtl .logo,
+.rtl .monochrome-title,
+.rtl .elegant-heading,
+.rtl .page-title {
+    letter-spacing: 0;
+}
+
+.rtl .tab-link {
+    letter-spacing: 0.5px;
+}
