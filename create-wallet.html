@@ -1,417 +1,134 @@
 <!DOCTYPE html>
-
 <html lang="en">
 
-
-
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Create Wallet - Ugarit</title>
-
     <link rel="stylesheet" href="css/style.css">
-
     <link rel="stylesheet" href="css/responsive.css">
-
 </head>
 
-
-
 <body>
-
     <!-- Page Loader -->
-
     <div class="page-loader">
-
         <div class="loading-animation">
-
             <div class="loading-dot"></div>
-
             <div class="loading-dot"></div>
-
             <div class="loading-dot"></div>
-
         </div>
-
     </div>
-
-
 
     <!-- Advanced Cursor -->
-
     <div class="advanced-cursor"></div>
-
     <div class="cursor-follower"></div>
 
-
-
     <!-- Scroll Progress -->
-
     <div class="scroll-progress"></div>
 
-
-
     <div class="page-container create-wallet-page">
-
         <header class="header">
-
             <div class="logo">ugarit</div>
-
             <nav class="tabs">
-
                 <a href="about.html" class="tab-link">about us</a>
-
                 <a href="products.html" class="tab-link">products</a>
-
                 <a href="services.html" class="tab-link">services</a>
-
             </nav>
-
             <a href="create-wallet.html" class="create-wallet-btn">Create Wallet</a>
 
-
-
             <!-- Mobile Menu Button -->
-
             <button class="mobile-menu-btn">
-
                 <span class="menu-line"></span>
-
                 <span class="menu-line"></span>
-
                 <span class="menu-line"></span>
-
             </button>
-
         </header>
 
-
-
         <!-- Mobile Menu -->
-
         <div class="mobile-menu">
-
             <nav class="mobile-nav">
-
                 <a href="about.html">about us</a>
-
                 <a href="products.html">products</a>
-
                 <a href="services.html">services</a>
-
                 <a href="create-wallet.html" class="monochrome-cta">Create Wallet</a>
-
             </nav>
-
         </div>
 
-
-
         <main class="main-content">
-
             <div class="background-elements">
-
                 <div class="monochrome-glow glow-1 parallax" data-speed="0.3" style="left: 25%; top: 15%;"></div>
-
                 <div class="monochrome-glow glow-2 parallax" data-speed="0.5" style="right: 20%; top: 50%;"></div>
-
             </div>
 
-
-
-            <div class="wallet-creation-content">
-
-                <div class="wallet-preview-section">
-
-                    <div class="monochrome-card glass-card preview-card floating">
-
-                        <div class="card-header">
-
-                            <div class="card-u">U</div>
-
-                            <div class="card-chip"></div>
-
-                        </div>
-
-                        <div class="card-number">4583 •••• •••• 5623</div>
-
-                        <div class="card-details">
-
-                            <div class="name-section">
-
-                                <div class="label">cardholder name</div>
-
-                                <div class="value">NADER UGARIT</div>
-
-                            </div>
-
-                            <div class="exp-section">
-
-                                <div class="label">expires</div>
-
-                                <div class="value">11/26</div>
-
-                            </div>
-
-                            <div class="cvv-section">
-
-                                <div class="cvv-box">•••</div>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-
+            <div class="wallet-creation-content" style="grid-template-columns: 1fr; max-width: 600px;">
                 <div class="wallet-form-section">
-
                     <div class="form-header">
-
                         <h1 class="page-title reveal-text">Create Your Ugarit Wallet</h1>
-
-                        <p class="page-subtitle reveal-text">Begin your journey with financial security reimagined</p>
-
+                        <p class="page-subtitle reveal-text">Contact our admin directly on Telegram to get started</p>
                         <div class="title-divider"></div>
-
                     </div>
 
-
-
-                    <div class="contact-info glass-card reveal-text">
-
-                        <h3 class="contact-title">Contact Admin on Telegram to Complete Setup</h3>
-
-                        <div class="telegram-info">
-
+                    <div class="contact-info glass-card reveal-text" style="text-align: center; padding: 3rem;">
+                        <h3 class="contact-title" style="font-size: 1.5rem; margin-bottom: 2rem;">Contact Admin on Telegram to Complete Setup</h3>
+                        <div class="telegram-info" style="justify-content: center; margin-bottom: 2rem;">
                             <div class="telegram-icon">@</div>
-
                             <div class="telegram-details">
-
-                                <p class="telegram-handle">@UgaritSupport</p>
-
+                                <p class="telegram-handle" style="font-size: 1.2rem;">@UgaritSupport</p>
                                 <p class="response-time">Response within 24 hours</p>
-
                             </div>
-
                         </div>
-
+                        <p style="color: var(--secondary-text); margin-top: 2rem; font-size: 0.9rem;">
+                            Simply message us on Telegram with your name and we'll guide you through the wallet creation process.
+                        </p>
                     </div>
 
-
-
-                    <form class="wallet-form">
-
-                        <div class="form-row">
-
-                            <div class="form-group reveal-text">
-
-                                <input type="text" id="fullName" name="fullName" required>
-
-                                <label for="fullName">Full Name</label>
-
-                                <div class="focus-line"></div>
-
-                            </div>
-
-                        </div>
-
-
-
-                        <div class="form-row">
-
-                            <div class="form-group reveal-text">
-
-                                <input type="tel" id="phone" name="phone" required placeholder="+963 XXX XXX XXX">
-
-                                <label for="phone">Phone Number</label>
-
-                                <div class="focus-line"></div>
-
-                            </div>
-
-                        </div>
-
-
-
-                        <div class="form-row">
-
-                            <div class="form-group reveal-text">
-
-                                <input type="email" id="email" name="email" required placeholder="your@email.com">
-
-                                <label for="email">Email Address</label>
-
-                                <div class="focus-line"></div>
-
-                            </div>
-
-                        </div>
-
-
-
-                        <div class="form-row">
-
-                            <div class="form-group reveal-text">
-
-                                <select id="city" name="city" required>
-
-                                    <option value=""></option>
-
-                                    <option value="damascus">Damascus</option>
-
-                                    <option value="aleppo">Aleppo</option>
-
-                                    <option value="latakia">Latakia</option>
-
-                                    <option value="homs">Homs</option>
-
-                                    <option value="hama">Hama</option>
-
-                                    <option value="other">Other</option>
-
-                                </select>
-
-                                <label for="city">City</label>
-
-                                <div class="focus-line"></div>
-
-                            </div>
-
-
-
-                            <div class="form-group reveal-text">
-
-                                <select id="plan" name="plan" required>
-
-                                    <option value=""></option>
-
-                                    <option value="basic">Basic (Free)</option>
-
-                                    <option value="pro">Pro ($9.99/month)</option>
-
-                                    <option value="business">Business ($29.99/month)</option>
-
-                                </select>
-
-                                <label for="plan">Plan</label>
-
-                                <div class="focus-line"></div>
-
-                            </div>
-
-                        </div>
-
-
-
-                        <button type="submit" class="monochrome-cta full-width reveal-text">Create Wallet</button>
-
-                    </form>
-
-
-
-                    <div class="wallet-benefits glass-card reveal-text">
-
+                    <div class="wallet-benefits glass-card reveal-text" style="margin-top: 2rem;">
                         <h3 class="benefits-title">Ugarit Wallet Benefits</h3>
-
                         <ul class="benefits-list">
-
                             <li>Military-grade security encryption</li>
-
                             <li>Instant transfers across Syria</li>
-
                             <li>Multi-currency support</li>
-
                             <li>AI-powered financial insights</li>
-
                             <li>24/7 premium support</li>
-
                         </ul>
-
                     </div>
-
                 </div>
-
             </div>
-
         </main>
 
-
-
         <!-- Enhanced Footer -->
-
         <footer class="premium-footer">
-
             <div class="footer-grid">
-
                 <div class="footer-brand">
-
                     <div class="logo">ugarit</div>
-
                     <p class="monochrome-text">Rebuilding finance from its first home. Modern security meets ancient trust.</p>
-
                 </div>
-
                 <div class="footer-links">
-
                     <h4>Products</h4>
-
                     <a href="products.html">Basic Wallet</a>
-
                     <a href="products.html">Pro Wallet</a>
-
                     <a href="products.html">Business Wallet</a>
-
                 </div>
-
                 <div class="footer-links">
-
                     <h4>Company</h4>
-
                     <a href="about.html">About Us</a>
-
                     <a href="services.html">Services</a>
-
                     <a href="create-wallet.html">Contact</a>
-
                 </div>
-
                 <div class="footer-links">
-
                     <h4>Legal</h4>
-
                     <a href="#">Privacy Policy</a>
-
                     <a href="#">Terms of Service</a>
-
                     <a href="#">Security</a>
-
                 </div>
-
             </div>
-
             <div class="footer-bottom">
-
                 <p>&copy; 2024 Ugarit. All rights reserved. Rebuilding finance from the cradle of economics.</p>
-
             </div>
-
         </footer>
-
     </div>
 
-
-
     <script src="js/main.js"></script>
-
 </body>
-
-
 
 </html>
