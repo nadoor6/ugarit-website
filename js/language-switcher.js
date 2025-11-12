@@ -7,7 +7,7 @@ class LanguageSwitcher {
 
     async init() {
         await this.loadLanguage();
-        this.createSwitcher();
+        this.initFooterSwitcher();
         this.updatePageDirection();
         this.applyTranslations();
     }
@@ -21,32 +21,17 @@ class LanguageSwitcher {
         }
     }
 
-    createSwitcher() {
-        const switcherHTML = `
-            <div class="language-switcher">
-                <button class="lang-btn ${this.currentLang === 'en' ? 'active' : ''}" data-lang="en">
-                    EN
-                </button>
-                <button class="lang-btn ${this.currentLang === 'ar' ? 'active' : ''}" data-lang="ar">
-                    AR
-                </button>
-            </div>
-        `;
-
-        const header = document.querySelector('.header');
-        const createWalletBtn = header.querySelector('.create-wallet-btn');
-
-        if (createWalletBtn) {
-            createWalletBtn.insertAdjacentHTML('afterend', switcherHTML);
-        } else {
-            header.insertAdjacentHTML('beforeend', switcherHTML);
-        }
-
-        document.querySelectorAll('.lang-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                this.switchLanguage(e.target.dataset.lang);
+    initFooterSwitcher() {
+        const footerSwitcher = document.querySelector('.footer-language-switcher');
+        if (footerSwitcher) {
+            const buttons = footerSwitcher.querySelectorAll('.footer-lang-btn');
+            buttons.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    this.switchLanguage(e.target.dataset.lang);
+                });
             });
-        });
+            this.updateFooterSwitcher();
+        }
     }
 
     async switchLanguage(lang) {
@@ -55,7 +40,7 @@ class LanguageSwitcher {
             localStorage.setItem('ugarit-lang', lang);
             await this.loadLanguage();
             this.updatePageDirection();
-            this.updateActiveSwitcher();
+            this.updateFooterSwitcher();
             this.applyTranslations();
         }
     }
@@ -71,8 +56,9 @@ class LanguageSwitcher {
         }
     }
 
-    updateActiveSwitcher() {
-        document.querySelectorAll('.lang-btn').forEach(btn => {
+    updateFooterSwitcher() {
+        const footerButtons = document.querySelectorAll('.footer-lang-btn');
+        footerButtons.forEach(btn => {
             btn.classList.toggle('active', btn.dataset.lang === this.currentLang);
         });
     }

@@ -246,3 +246,17 @@
         display: none;
     }
 }
+
+
+/* Mobile adjustments for footer language switcher */
+
+@media (max-width: 768px) {
+    .footer-language-switcher {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    .footer-lang-btn {
+        width: 120px;
+    }
+}
