@@ -102,7 +102,7 @@ class LanguageSwitcher {
         });
 
         // Update page title
-        if (this.translations.site ? .title) {
+        if (this.translations.site && this.translations.site.title) {
             document.title = this.translations.site.title;
         }
 
