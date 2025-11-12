@@ -1287,3 +1287,11 @@ body {
     background: rgba(255, 255, 255, 0.1) !important;
     box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1) !important;
 }
+
+
+/* Move About Page Button Down */
+
+.about-page .cta-section .monochrome-cta {
+    margin-top: 2rem;
+    /* Adjust this value as needed */
+}
