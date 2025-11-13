@@ -356,3 +356,52 @@ window.addEventListener('load', () => {
         }
     });
 });
+
+// Sign In Modal Functions - Available on all pages
+function showSignInModal() {
+    const modal = document.getElementById('signInModal');
+    if (modal) {
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden'; // Prevent scrolling
+    }
+}
+
+function closeSignInModal() {
+    const modal = document.getElementById('signInModal');
+    if (modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = ''; // Restore scrolling
+    }
+}
+
+// Close modal when clicking outside
+document.addEventListener('DOMContentLoaded', function() {
+    // Close modal when clicking outside the content
+    const modal = document.getElementById('signInModal');
+    if (modal) {
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                closeSignInModal();
+            }
+        });
+    }
+
+    // Handle sign in form submission
+    const signInForm = document.getElementById('signInForm');
+    if (signInForm) {
+        signInForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Add your sign in logic here
+            console.log('Sign in form submitted');
+            // For now, just close the modal
+            closeSignInModal();
+        });
+    }
+
+    // Handle escape key to close modal
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closeSignInModal();
+        }
+    });
+});
