@@ -491,3 +491,12 @@
 .rtl .auth-buttons .logged-out {
     gap: 1rem;
 }
+
+
+/* RTL Footer Language Switcher Fix */
+
+.rtl .footer-language-switcher::before {
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+}
