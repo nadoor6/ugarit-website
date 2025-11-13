@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <!-- Google Fonts for Arabic -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="site.title">Our Currency - Ugarit</title>
+    <meta name="description" content="" data-i18n="site.description">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/rtl.css">
+    <link rel="stylesheet" href="css/currency.css">
+</head>
+
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader">
+        <div class="loading-animation">
+            <div class="loading-dot"></div>
+            <div class="loading-dot"></div>
+            <div class="loading-dot"></div>
+        </div>
+    </div>
+
+    <!-- Advanced Cursor -->
+    <div class="advanced-cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <!-- Scroll Progress -->
+    <div class="scroll-progress"></div>
+
+    <div class="page-container currency-page">
+        <!-- Updated Header -->
+        <header class="header">
+            <a href="index.html" class="logo" data-i18n="home.title">ugarit</a>
+            <nav class="tabs">
+                <a href="about.html" class="tab-link" data-i18n="nav.about">about us</a>
+                <a href="products.html" class="tab-link" data-i18n="nav.products">products</a>
+                <a href="services.html" class="tab-link" data-i18n="nav.services">services</a>
+                <a href="our-currency.html" class="tab-link active" data-i18n="nav.currency">our currency</a>
+            </nav>
+
+            <!-- Dynamic Auth Buttons -->
+            <div class="auth-buttons" id="authButtons">
+                <!-- When user is NOT logged in -->
+                <div class="logged-out">
+                    <a href="create-wallet.html" class="create-wallet-btn" data-i18n="nav.create_wallet">Create Wallet</a>
+                    <button class="signin-wallet-btn" onclick="showSignInModal()" data-i18n="nav.sign_in_wallet">Sign In Wallet</button>
+                </div>
+
+                <!-- When user IS logged in -->
+                <div class="logged-in" style="display: none;">
+                    <a href="user-dashboard.html" class="wallet-dashboard-btn">My Wallet</a>
+                    <button class="logout-btn" onclick="logoutUser()">Log Out</button>
+                </div>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button class="mobile-menu-btn">
+                <span class="menu-line"></span>
+                <span class="menu-line"></span>
+                <span class="menu-line"></span>
+            </button>
+        </header>
+
+        <!-- Mobile Menu -->
+        <div class="mobile-menu">
+            <nav class="mobile-nav">
+                <a href="about.html" data-i18n="nav.about">about us</a>
+                <a href="products.html" data-i18n="nav.products">products</a>
+                <a href="services.html" data-i18n="nav.services">services</a>
+                <a href="our-currency.html" data-i18n="nav.currency">our currency</a>
+                <a href="create-wallet.html" class="monochrome-cta" data-i18n="nav.create_wallet">Create Wallet</a>
+            </nav>
+        </div>
+
+        <main class="main-content">
+            <div class="minimal-dark-bg"></div>
+
+            <div class="currency-content">
+                <!-- Hero Section -->
+                <section class="currency-hero">
+                    <div class="page-header">
+                        <h1 class="page-title reveal-text" data-i18n="currency.title">The Ugar Currency (UGR)</h1>
+                        <p class="page-subtitle reveal-text" data-i18n="currency.subtitle">Money That Never Loses Its Value</p>
+                        <div class="title-divider"></div>
+                    </div>
+
+                    <div class="ugr-value-display glass-card reveal-text">
+                        <div class="value-card">
+                            <span class="value">1 UGR</span>
+                            <span class="equals">=</span>
+                            <span class="goods" data-i18n="currency.value_description">1 Basic Need Unit</span>
+                        </div>
+                        <p class="value-subtitle" data-i18n="currency.value_subtitle">Always maintains purchasing power for essential goods</p>
+                    </div>
+                </section>
+
+                <!-- How It Works Section -->
+                <section class="how-it-works">
+                    <div class="section-header">
+                        <h2 class="section-heading reveal-text" data-i18n="currency.how_it_works">How UGR Maintains Constant Value</h2>
+                        <div class="title-divider"></div>
+                    </div>
+
+                    <div class="workflow">
+                        <div class="step glass-card card-hover-lift reveal-text">
+                            <div class="step-number">1</div>
+                            <h3 data-i18n="currency.step1_title">Basket Definition</h3>
+                            <p data-i18n="currency.step1_desc">UGR is backed by a basket of essential goods that people need daily</p>
+                        </div>
+                        <div class="step glass-card card-hover-lift reveal-text">
+                            <div class="step-number">2</div>
+                            <h3 data-i18n="currency.step2_title">Price Monitoring</h3>
+                            <p data-i18n="currency.step2_desc">Real-time tracking of market prices for all basket components</p>
+                        </div>
+                        <div class="step glass-card card-hover-lift reveal-text">
+                            <div class="step-number">3</div>
+                            <h3 data-i18n="currency.step3_title">Value Adjustment</h3>
+                            <p data-i18n="currency.step3_desc">Automatic recalibration to maintain purchasing power</p>
+                        </div>
+                        <div class="step glass-card card-hover-lift reveal-text">
+                            <div class="step-number">4</div>
+                            <h3 data-i18n="currency.step4_title">Transparent Reporting</h3>
+                            <p data-i18n="currency.step4_desc">Daily published reports on UGR value composition</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Basket Composition -->
+                <section class="basket-composition">
+                    <div class="section-header">
+                        <h2 class="section-heading reveal-text" data-i18n="currency.basket_title">The UGR Basket Composition</h2>
+                        <p class="section-subtitle reveal-text" data-i18n="currency.basket_subtitle">Carefully selected essential goods that maintain real-world value</p>
+                        <div class="title-divider"></div>
+                    </div>
+
+                    <div class="basket-grid">
+                        <div class="basket-item glass-card card-hover-lift reveal-text">
+                            <div class="basket-item-icon">🍚</div>
+                            <h4 data-i18n="currency.rice">Rice</h4>
+                            <p class="quantity" data-i18n="currency.1kg">1 kg</p>
+                            <p class="weight">Weight: 25%</p>
+                        </div>
+                        <div class="basket-item glass-card card-hover-lift reveal-text">
+                            <div class="basket-item-icon">🌾</div>
+                            <h4 data-i18n="currency.wheat">Wheat Flour</h4>
+                            <p class="quantity" data-i18n="currency.1kg">1 kg</p>
+                            <p class="weight">Weight: 20%</p>
+                        </div>
+                        <div class="basket-item glass-card card-hover-lift reveal-text">
+                            <div class="basket-item-icon">💧</div>
+                            <h4 data-i18n="currency.water">Drinking Water</h4>
+                            <p class="quantity" data-i18n="currency.1l">1 liter</p>
+                            <p class="weight">Weight: 15%</p>
+                        </div>
+                        <div class="basket-item glass-card card-hover-lift reveal-text">
+                            <div class="basket-item-icon">⚡</div>
+                            <h4 data-i18n="currency.electricity">Electricity</h4>
+                            <p class="quantity" data-i18n="currency.1kwh">1 kWh</p>
+                            <p class="weight">Weight: 10%</p>
+                        </div>
+                        <div class="basket-item glass-card card-hover-lift reveal-text">
+                            <div class="basket-item-icon">⛽</div>
+                            <h4 data-i18n="currency.fuel">Fuel</h4>
+                            <p class="quantity" data-i18n="currency.1l">1 liter</p>
+                            <p class="weight">Weight: 20%</p>
+                        </div>
+                        <div class="basket-item glass-card card-hover-lift reveal-text">
+                            <div class="basket-item-icon">💊</div>
+                            <h4 data-i18n="currency.medical">Medical Pack</h4>
+                            <p class="quantity" data-i18n="currency.basic_package">Basic package</p>
+                            <p class="weight">Weight: 10%</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Benefits Section -->
+                <section class="currency-benefits">
+                    <div class="section-header">
+                        <h2 class="section-heading reveal-text" data-i18n="currency.benefits_title">Why UGR is Revolutionary</h2>
+                        <div class="title-divider"></div>
+                    </div>
+
+                    <div class="benefits-grid">
+                        <div class="benefit-card glass-card card-hover-lift reveal-text">
+                            <h3>🛡️ <span data-i18n="currency.benefit1_title">Inflation Protection</span></h3>
+                            <p data-i18n="currency.benefit1_desc">UGR maintains purchasing power regardless of economic conditions</p>
+                        </div>
+                        <div class="benefit-card glass-card card-hover-lift reveal-text">
+                            <h3>🌍 <span data-i18n="currency.benefit2_title">Universal Value</span></h3>
+                            <p data-i18n="currency.benefit2_desc">Based on human needs, not government policies or market speculation</p>
+                        </div>
+                        <div class="benefit-card glass-card card-hover-lift reveal-text">
+                            <h3>📈 <span data-i18n="currency.benefit3_title">Stable Growth</span></h3>
+                            <p data-i18n="currency.benefit3_desc">Value increases as essential goods become more efficient to produce</p>
+                        </div>
+                        <div class="benefit-card glass-card card-hover-lift reveal-text">
+                            <h3>🔒 <span data-i18n="currency.benefit4_title">Transparency</span></h3>
+                            <p data-i18n="currency.benefit4_desc">Every UGR's value composition is publicly verifiable</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Converter Section -->
+                <section class="ugr-converter">
+                    <div class="section-header">
+                        <h2 class="section-heading reveal-text" data-i18n="currency.converter_title">UGR Value Converter</h2>
+                        <p class="section-subtitle reveal-text" data-i18n="currency.converter_subtitle">See what your UGR can buy in real-world goods</p>
+                        <div class="title-divider"></div>
+                    </div>
+
+                    <div class="converter-tool glass-card reveal-text">
+                        <div class="input-group">
+                            <input type="number" id="ugrAmount" placeholder="1" min="0" step="0.01" value="1">
+                            <span>UGR</span>
+                        </div>
+                        <div class="conversion-arrow">⇄</div>
+                        <div class="output-group">
+                            <input type="text" id="goodsValue" readonly>
+                            <span data-i18n="currency.essential_goods">Essential Goods</span>
+                        </div>
+                    </div>
+
+                    <div class="conversion-examples">
+                        <div class="example-card glass-card reveal-text">
+                            <strong>1 UGR</strong> <span data-i18n="currency.example1">≈ Basic daily nutrition package</span>
+                        </div>
+                        <div class="example-card glass-card reveal-text">
+                            <strong>5 UGR</strong> <span data-i18n="currency.example2">≈ Weekly essentials for one person</span>
+                        </div>
+                        <div class="example-card glass-card reveal-text">
+                            <strong>20 UGR</strong> <span data-i18n="currency.example3">≈ Monthly basic needs package</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- CTA Section -->
+                <section class="get-started">
+                    <div class="section-header">
+                        <h2 class="section-heading reveal-text" data-i18n="currency.cta_title">Start Using UGR Today</h2>
+                        <p class="section-subtitle reveal-text" data-i18n="currency.cta_subtitle">Join the financial revolution with money that works for you, not against you</p>
+                        <div class="title-divider"></div>
+                    </div>
+
+                    <div class="cta-buttons">
+                        <a href="create-wallet.html" class="monochrome-cta reveal-text" data-i18n="currency.create_wallet">Create UGR Wallet</a>
+                        <a href="products.html" class="monochrome-cta secondary reveal-text" data-i18n="currency.learn_more">Learn More</a>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <!-- Enhanced Footer -->
+        <footer class="premium-footer">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo" data-i18n="home.title">ugarit</div>
+                    <p class="monochrome-text" data-i18n="footer.tagline">Rebuilding finance from its first home. Modern security meets ancient trust.</p>
+                </div>
+                <div class="footer-links">
+                    <h4 data-i18n="footer.products">Products</h4>
+                    <a href="products.html" data-i18n="footer.basic_wallet">Basic Wallet</a>
+                    <a href="products.html" data-i18n="footer.pro_wallet">Pro Wallet</a>
+                    <a href="products.html" data-i18n="footer.business_wallet">Business Wallet</a>
+                </div>
+                <div class="footer-links">
+                    <h4 data-i18n="footer.company">Company</h4>
+                    <a href="about.html" data-i18n="nav.about">About Us</a>
+                    <a href="services.html" data-i18n="nav.services">Services</a>
+                    <a href="our-currency.html" data-i18n="nav.currency">Our Currency</a>
+                </div>
+                <div class="footer-links">
+                    <h4 data-i18n="footer.legal">Legal</h4>
+                    <a href="privacy-policy.html" data-i18n="footer.privacy_policy">Privacy Policy</a>
+                    <a href="terms-of-service.html" data-i18n="footer.terms_service">Terms of Service</a>
+                    <a href="security.html" data-i18n="footer.security">Security</a>
+                </div>
+            </div>
+
+            <!-- Language Switcher in Footer -->
+            <div class="footer-language-switcher">
+                <button class="footer-lang-btn" data-lang="en">English</button>
+                <button class="footer-lang-btn" data-lang="ar">العربية</button>
+            </div>
+
+            <div class="footer-bottom">
+                <p data-i18n="footer.copyright">&copy; 2024 Ugarit. All rights reserved. Rebuilding finance from the cradle of economics.</p>
+            </div>
+        </footer>
+
+        <!-- Sign In Modal -->
+        <div id="signInModal" class="modal">
+            <div class="modal-content glass-card">
+                <span class="close-modal" onclick="closeSignInModal()">&times;</span>
+
+                <div class="modal-header">
+                    <h3 data-i18n="wallet.sign_in_title">Sign In to Your Wallet</h3>
+                    <p data-i18n="wallet.sign_in_subtitle">Access your Ugarit wallet dashboard</p>
+                </div>
+
+                <form id="signInForm">
+                    <div class="form-group">
+                        <input type="text" id="walletId" required>
+                        <label for="walletId" data-i18n="wallet.wallet_id">Wallet ID</label>
+                        <div class="focus-line"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="password" id="walletPassword" required>
+                        <label for="walletPassword" data-i18n="wallet.password">Password</label>
+                        <div class="focus-line"></div>
+                    </div>
+
+                    <div class="form-options">
+                        <label class="remember-me">
+                            <input type="checkbox" id="rememberMe">
+                            <span data-i18n="wallet.remember_me">Remember me</span>
+                        </label>
+                        <a href="#" class="forgot-password" data-i18n="wallet.forgot_password">Forgot Password?</a>
+                    </div>
+
+                    <button type="submit" class="monochrome-cta full-width">
+                        <span class="btn-text" data-i18n="wallet.sign_in">Sign In</span>
+                        <span class="btn-loading" style="display: none;" data-i18n="wallet.signing_in">Signing In...</span>
+                    </button>
+                </form>
+
+                <div class="modal-footer">
+                    <p>
+                        <span data-i18n="wallet.no_wallet">Don't have a wallet?</span>
+                        <a href="create-wallet.html" data-i18n="wallet.create_one">Create one now</a>
+                    </p>
+                </div>
+
+                <div id="signInError" class="error-message" style="display: none;"></div>
+            </div>
+        </div>
+
+        <script src="js/main.js"></script>
+        <script src="js/language-switcher.js"></script>
+        <script src="js/currency.js"></script>
+    </div>
+</body>
+
+</html>
