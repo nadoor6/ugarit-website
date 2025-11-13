@@ -6,40 +6,96 @@
 }
 
 
-/* Header RTL Fixes - Grid Layout */
+/* Header RTL Fixes - BUTTONS LEFT, LOGO RIGHT */
 
 .rtl .header {
-    display: grid;
-    grid-template-columns: auto 1fr auto;
+    display: flex;
+    justify-content: space-between;
     align-items: center;
     padding: 1.5rem 5%;
     text-align: right;
-    position: relative;
+    direction: rtl;
 }
 
 .rtl .logo {
-    grid-column: 1;
-    justify-self: start;
+    order: 3;
+    /* Logo on the RIGHT */
     margin: 0;
 }
 
 .rtl .tabs {
-    grid-column: 2;
-    justify-self: center;
+    order: 2;
+    /* Tabs in the center */
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
     margin: 0;
+}
+
+.rtl .auth-buttons {
+    order: 1;
+    /* Buttons on the LEFT */
+    margin: 0;
+}
+
+.rtl .auth-buttons .logged-out {
     display: flex;
-    gap: 2.5rem;
+    gap: 1rem;
+    flex-direction: row;
 }
 
-.rtl .create-wallet-btn {
-    grid-column: 3;
-    justify-self: end;
-    margin: 0;
+
+/* Fix tab hover effect for RTL */
+
+.rtl .tab-link::after {
+    right: 0;
+    left: auto;
 }
 
-.rtl .language-switcher {
-    display: none;
-    /* We're using footer switcher only */
+.rtl .tab-link:hover::after,
+.rtl .tab-link.active::after {
+    width: 100%;
+}
+
+
+/* Mobile RTL adjustments */
+
+@media (max-width: 768px) {
+    .rtl .header {
+        justify-content: space-between;
+    }
+    .rtl .logo {
+        order: 2;
+        /* Center logo on mobile */
+    }
+    .rtl .tabs {
+        display: none;
+    }
+    .rtl .auth-buttons {
+        display: none;
+    }
+    .rtl .mobile-menu-btn {
+        order: 1;
+        /* Menu button on the LEFT */
+        margin-left: 0;
+    }
+}
+
+
+/* Fix mobile menu RTL */
+
+.rtl .mobile-menu {
+    text-align: right;
+    direction: rtl;
+}
+
+.rtl .mobile-nav {
+    text-align: right;
+}
+
+.rtl .mobile-nav a {
+    text-align: right;
+    font-size: 1.5rem;
 }
 
 
