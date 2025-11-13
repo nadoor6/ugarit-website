@@ -477,3 +477,17 @@
 .rtl .tab-link {
     letter-spacing: 0.5px;
 }
+
+
+/* RTL Auth Button Styles */
+
+.rtl .create-wallet-btn,
+.rtl .signin-wallet-btn {
+    font-family: 'Almarai', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.rtl .auth-buttons .logged-out {
+    gap: 1rem;
+}

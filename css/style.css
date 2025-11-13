@@ -2130,3 +2130,49 @@ body {
         gap: 1rem;
     }
 }
+
+
+/* Consistent Auth Button Styles */
+
+.create-wallet-btn,
+.signin-wallet-btn {
+    padding: 0.75rem 1.5rem;
+    border: 1px solid var(--primary-text);
+    border-radius: 25px;
+    background: transparent;
+    color: var(--primary-text);
+    font-family: var(--font-primary);
+    font-weight: 500;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-block;
+    text-align: center;
+    min-width: 140px;
+    cursor: pointer;
+}
+
+.create-wallet-btn:hover,
+.signin-wallet-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-1px);
+}
+
+
+/* Ensure both buttons have the same box model */
+
+.auth-buttons .logged-out {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+
+/* Make sure both buttons are the same height */
+
+.auth-buttons .create-wallet-btn,
+.auth-buttons .signin-wallet-btn {
+    height: auto;
+    line-height: 1.4;
+}

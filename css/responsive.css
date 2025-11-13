@@ -260,3 +260,37 @@
         width: 120px;
     }
 }
+
+
+/* Tablet Styles - Update both buttons */
+
+@media (max-width: 1024px) {
+    .create-wallet-btn,
+    .signin-wallet-btn {
+        padding: 0.7rem 1.3rem;
+        font-size: 0.75rem;
+        min-width: 130px;
+    }
+}
+
+
+/* Mobile Styles - Hide both buttons */
+
+@media (max-width: 768px) {
+    .create-wallet-btn,
+    .signin-wallet-btn {
+        display: none;
+    }
+}
+
+
+/* Small Mobile Styles */
+
+@media (max-width: 480px) {
+    .create-wallet-btn,
+    .signin-wallet-btn {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.7rem;
+        min-width: 120px;
+    }
+}
