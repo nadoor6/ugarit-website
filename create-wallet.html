@@ -292,20 +292,23 @@
 
                     <div class="form-options">
                         <label class="remember-me">
-                            <input type="checkbox" id="rememberMe">
-                            <span data-i18n="wallet.remember_me">Remember me</span>
-                        </label>
+                    <input type="checkbox" id="rememberMe">
+                    <span data-i18n="wallet.remember_me">Remember me</span>
+                </label>
                         <a href="#" class="forgot-password" data-i18n="wallet.forgot_password">Forgot Password?</a>
                     </div>
 
                     <button type="submit" class="monochrome-cta full-width">
-                        <span class="btn-text" data-i18n="wallet.sign_in">Sign In</span>
-                        <span class="btn-loading" style="display: none;" data-i18n="wallet.signing_in">Signing In...</span>
-                    </button>
+                <span class="btn-text" data-i18n="wallet.sign_in">Sign In</span>
+                <span class="btn-loading" style="display: none;" data-i18n="wallet.signing_in">Signing In...</span>
+            </button>
                 </form>
 
                 <div class="modal-footer">
-                    <p data-i18n="wallet.no_wallet">Don't have a wallet? <a href="create-wallet.html" data-i18n="wallet.create_one">Create one now</a></p>
+                    <p>
+                        <span data-i18n="wallet.no_wallet">Don't have a wallet?</span>
+                        <a href="create-wallet.html" data-i18n="wallet.create_one">Create one now</a>
+                    </p>
                 </div>
 
                 <div id="signInError" class="error-message" style="display: none;"></div>

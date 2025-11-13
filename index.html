@@ -171,83 +171,42 @@
                 <span class="close-modal" onclick="closeSignInModal()">&times;</span>
 
                 <div class="modal-header">
-                    <h3>Sign In to Your Wallet</h3>
-                    <p>Access your Ugarit wallet dashboard</p>
+                    <h3 data-i18n="wallet.sign_in_title">Sign In to Your Wallet</h3>
+                    <p data-i18n="wallet.sign_in_subtitle">Access your Ugarit wallet dashboard</p>
                 </div>
 
                 <form id="signInForm">
                     <div class="form-group">
                         <input type="text" id="walletId" required>
-                        <label for="walletId">Wallet ID</label>
+                        <label for="walletId" data-i18n="wallet.wallet_id">Wallet ID</label>
                         <div class="focus-line"></div>
                     </div>
 
                     <div class="form-group">
                         <input type="password" id="walletPassword" required>
-                        <label for="walletPassword">Password</label>
+                        <label for="walletPassword" data-i18n="wallet.password">Password</label>
                         <div class="focus-line"></div>
                     </div>
 
                     <div class="form-options">
                         <label class="remember-me">
                     <input type="checkbox" id="rememberMe">
-                    <span>Remember me</span>
+                    <span data-i18n="wallet.remember_me">Remember me</span>
                 </label>
-                        <a href="#" class="forgot-password">Forgot Password?</a>
+                        <a href="#" class="forgot-password" data-i18n="wallet.forgot_password">Forgot Password?</a>
                     </div>
 
                     <button type="submit" class="monochrome-cta full-width">
-                <span class="btn-text">Sign In</span>
-                <span class="btn-loading" style="display: none;">Signing In...</span>
+                <span class="btn-text" data-i18n="wallet.sign_in">Sign In</span>
+                <span class="btn-loading" style="display: none;" data-i18n="wallet.signing_in">Signing In...</span>
             </button>
                 </form>
 
                 <div class="modal-footer">
-                    <p>Don't have a wallet? <a href="create-wallet.html">Create one now</a></p>
-                </div>
-
-                <div id="signInError" class="error-message" style="display: none;"></div>
-            </div>
-        </div>
-        <!-- Sign In Modal -->
-        <div id="signInModal" class="modal">
-            <div class="modal-content glass-card">
-                <span class="close-modal" onclick="closeSignInModal()">&times;</span>
-
-                <div class="modal-header">
-                    <h3>Sign In to Your Wallet</h3>
-                    <p>Access your Ugarit wallet dashboard</p>
-                </div>
-
-                <form id="signInForm">
-                    <div class="form-group">
-                        <input type="text" id="walletId" required>
-                        <label for="walletId">Wallet ID</label>
-                        <div class="focus-line"></div>
-                    </div>
-
-                    <div class="form-group">
-                        <input type="password" id="walletPassword" required>
-                        <label for="walletPassword">Password</label>
-                        <div class="focus-line"></div>
-                    </div>
-
-                    <div class="form-options">
-                        <label class="remember-me">
-                    <input type="checkbox" id="rememberMe">
-                    <span>Remember me</span>
-                </label>
-                        <a href="#" class="forgot-password">Forgot Password?</a>
-                    </div>
-
-                    <button type="submit" class="monochrome-cta full-width">
-                <span class="btn-text">Sign In</span>
-                <span class="btn-loading" style="display: none;">Signing In...</span>
-            </button>
-                </form>
-
-                <div class="modal-footer">
-                    <p>Don't have a wallet? <a href="create-wallet.html">Create one now</a></p>
+                    <p>
+                        <span data-i18n="wallet.no_wallet">Don't have a wallet?</span>
+                        <a href="create-wallet.html" data-i18n="wallet.create_one">Create one now</a>
+                    </p>
                 </div>
 
                 <div id="signInError" class="error-message" style="display: none;"></div>
