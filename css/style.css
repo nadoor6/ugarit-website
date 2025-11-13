@@ -2176,3 +2176,34 @@ body {
     height: auto;
     line-height: 1.4;
 }
+
+
+/* Fix Footer Layout */
+
+.premium-footer {
+    position: relative;
+}
+
+.footer-grid {
+    margin-bottom: 2rem;
+}
+
+
+/* Ensure footer language switcher has proper spacing */
+
+.footer-language-switcher {
+    margin: 2rem auto 0;
+    max-width: 1200px;
+    padding: 0 5%;
+}
+
+
+/* Ensure footer bottom has proper spacing */
+
+.footer-bottom {
+    margin-top: 2rem;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 5%;
+}
