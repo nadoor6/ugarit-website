@@ -10,10 +10,12 @@
     <style>
          :root {
             --luxury-gold: #FFD700;
+            --luxury-gold-light: #FFF9C4;
             --luxury-dark: #0f172a;
             --luxury-dark-secondary: #1e293b;
             --luxury-border: rgba(255, 255, 255, 0.1);
             --luxury-glow: rgba(255, 215, 0, 0.3);
+            --card-gradient: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
         }
         
         .dashboard-container {
@@ -39,127 +41,175 @@
             color: var(--secondary-text);
             opacity: 0.7;
         }
+        /* Luxury Bank Card Balance Section */
         
         .balance-section {
             margin-bottom: 3rem;
-            position: relative;
+            perspective: 1000px;
         }
         
-        .balance-card {
-            background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.95) 50%, rgba(15, 23, 42, 0.95) 100%);
+        .bank-card {
+            background: var(--card-gradient);
             color: white;
             border-radius: 24px;
-            padding: 3rem 2.5rem;
-            text-align: center;
+            padding: 2.5rem;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 0 0 1px rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 215, 0, 0.2);
             backdrop-filter: blur(20px);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-style: preserve-3d;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            min-height: 280px;
         }
         
-        .balance-card::before {
+        .bank-card:hover {
+            transform: translateY(-10px) rotateX(5deg);
+            box-shadow: 0 35px 70px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 0 0 1px rgba(255, 215, 0, 0.3);
+        }
+        
+        .bank-card::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(255, 215, 0, 0.2) 0%, transparent 50%), radial-gradient(circle at 40% 40%, rgba(120, 119, 198, 0.15) 0%, transparent 50%);
+            background: radial-gradient(circle at 20% 80%, rgba(255, 215, 0, 0.1) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(120, 119, 198, 0.1) 0%, transparent 50%);
             opacity: 0.6;
         }
         
-        .balance-card::after {
+        .bank-card::after {
+            content: 'UGARIT';
+            position: absolute;
+            bottom: 30px;
+            right: 30px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.8);
+            letter-spacing: 0.1em;
+        }
+        
+        .card-chip {
+            width: 50px;
+            height: 40px;
+            background: linear-gradient(135deg, #FFD700 0%, #D4AF37 100%);
+            border-radius: 8px;
+            position: relative;
+            margin-bottom: 2rem;
+        }
+        
+        .card-chip::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient( 90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-            transition: left 0.6s ease;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 30px;
+            height: 25px;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            border-radius: 4px;
         }
         
-        .balance-card:hover::after {
-            left: 100%;
+        .card-number {
+            font-family: 'Courier New', monospace;
+            font-size: 1.4rem;
+            letter-spacing: 0.2em;
+            margin-bottom: 1.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
         }
         
-        .balance-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 35px 60px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 0 0 1px rgba(255, 255, 255, 0.1);
+        .balance-display {
+            margin: 2rem 0;
         }
         
         .balance-label {
             font-size: 0.9rem;
             opacity: 0.8;
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
             letter-spacing: 0.1em;
             text-transform: uppercase;
             font-weight: 500;
-            position: relative;
-            z-index: 2;
             color: rgba(255, 255, 255, 0.9);
         }
         
         .balance-amount {
-            font-size: 4rem;
+            font-size: 3.5rem;
             font-weight: 300;
             margin-bottom: 0.5rem;
-            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-            position: relative;
-            z-index: 2;
-            background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%);
+            background: linear-gradient(135deg, #FFD700 0%, #FFF9C4 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             letter-spacing: -0.02em;
+            text-shadow: 0 4px 20px rgba(255, 215, 0, 0.3);
         }
         
         .balance-currency {
             font-size: 1.1rem;
             opacity: 0.7;
             font-weight: 500;
-            position: relative;
-            z-index: 2;
             color: rgba(255, 255, 255, 0.8);
         }
-        /* Luxury decorative elements */
         
-        .balance-card .luxury-decoration {
-            position: absolute;
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(255, 215, 0, 0.1) 0%, transparent 70%);
-            top: -30px;
-            right: -30px;
-            z-index: 1;
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
         
-        .balance-card .luxury-decoration:nth-child(2) {
-            width: 80px;
-            height: 80px;
-            background: radial-gradient(circle, rgba(120, 119, 198, 0.1) 0%, transparent 70%);
-            top: auto;
-            bottom: -20px;
-            left: -20px;
-            right: auto;
+        .card-holder {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
         }
+        
+        .card-expiry {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        /* Luxury Quick Actions */
         
         .quick-actions {
             margin-bottom: 3rem;
         }
         
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary-text);
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--luxury-gold), transparent);
+        }
+        
         .actions-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 1.5rem;
             margin-top: 1.5rem;
         }
         
         .action-card {
-            background: linear-gradient(135deg, rgba(30, 41, 59, 0.8) 0%, rgba(15, 23, 42, 0.8) 100%);
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.9) 0%, rgba(15, 23, 42, 0.9) 100%);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 20px;
             padding: 2.5rem 1.5rem;
@@ -178,7 +228,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1) 0%, transparent 50%);
             opacity: 0;
             transition: opacity 0.3s ease;
         }
@@ -190,133 +240,43 @@
         .action-card:hover {
             transform: translateY(-8px) scale(1.02);
             border-color: rgba(255, 215, 0, 0.3);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 215, 0, 0.1);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 215, 0, 0.1);
         }
         
         .action-icon {
-            font-size: 3rem;
+            font-size: 3.5rem;
             margin-bottom: 1.5rem;
             position: relative;
             z-index: 2;
-            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+            filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.4));
+            transition: transform 0.3s ease;
+        }
+        
+        .action-card:hover .action-icon {
+            transform: scale(1.1);
         }
         
         .action-title {
             font-weight: 600;
             margin-bottom: 0.75rem;
             color: var(--primary-text);
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             position: relative;
             z-index: 2;
         }
         
         .action-description {
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             color: var(--secondary-text);
             line-height: 1.5;
             position: relative;
             z-index: 2;
             opacity: 0.8;
         }
-        
-        .transactions-section {
-            margin-bottom: 3rem;
-        }
-        
-        .section-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1.5rem;
-        }
-        
-        .transactions-list {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            overflow: hidden;
-        }
-        
-        .transaction-item {
-            display: grid;
-            grid-template-columns: auto 1fr auto;
-            gap: 1rem;
-            padding: 1.5rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            align-items: center;
-            transition: background 0.3s ease;
-        }
-        
-        .transaction-item:last-child {
-            border-bottom: none;
-        }
-        
-        .transaction-item:hover {
-            background: rgba(255, 255, 255, 0.05);
-        }
-        
-        .transaction-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-        }
-        
-        .transaction-icon.deposit {
-            background: rgba(76, 175, 80, 0.2);
-            color: #4CAF50;
-        }
-        
-        .transaction-icon.withdrawal {
-            background: rgba(244, 67, 54, 0.2);
-            color: #F44336;
-        }
-        
-        .transaction-icon.transfer {
-            background: rgba(33, 150, 243, 0.2);
-            color: #2196F3;
-        }
-        
-        .transaction-details {
-            flex: 1;
-        }
-        
-        .transaction-title {
-            font-weight: 600;
-            margin-bottom: 0.25rem;
-            color: var(--primary-text);
-        }
-        
-        .transaction-description {
-            font-size: 0.8rem;
-            color: var(--secondary-text);
-        }
-        
-        .transaction-amount {
-            text-align: right;
-        }
-        
-        .amount-positive {
-            color: #4CAF50;
-            font-weight: 600;
-        }
-        
-        .amount-negative {
-            color: #F44336;
-            font-weight: 600;
-        }
-        
-        .transaction-date {
-            font-size: 0.8rem;
-            color: var(--secondary-text);
-            margin-top: 0.25rem;
-        }
+        /* Luxury Account Status */
         
         .account-status {
-            background: linear-gradient(135deg, rgba(30, 41, 59, 0.8) 0%, rgba(15, 23, 42, 0.8) 100%);
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.9) 0%, rgba(15, 23, 42, 0.9) 100%);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 20px;
             padding: 2rem;
@@ -357,6 +317,102 @@
             font-weight: bold;
             font-size: 1rem;
         }
+        /* Transactions Section */
+        
+        .transactions-section {
+            margin-bottom: 3rem;
+        }
+        
+        .transactions-list {
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.8) 0%, rgba(15, 23, 42, 0.8) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+        
+        .transaction-item {
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            gap: 1rem;
+            padding: 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        
+        .transaction-item:last-child {
+            border-bottom: none;
+        }
+        
+        .transaction-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateX(5px);
+        }
+        
+        .transaction-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+        
+        .transaction-icon.deposit {
+            background: rgba(34, 197, 94, 0.2);
+            color: #22c55e;
+        }
+        
+        .transaction-icon.withdrawal {
+            background: rgba(239, 68, 68, 0.2);
+            color: #ef4444;
+        }
+        
+        .transaction-icon.transfer {
+            background: rgba(59, 130, 246, 0.2);
+            color: #3b82f6;
+        }
+        
+        .transaction-details {
+            flex: 1;
+        }
+        
+        .transaction-title {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+            color: var(--primary-text);
+        }
+        
+        .transaction-description {
+            font-size: 0.8rem;
+            color: var(--secondary-text);
+        }
+        
+        .transaction-amount {
+            text-align: right;
+        }
+        
+        .amount-positive {
+            color: #22c55e;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        .amount-negative {
+            color: #ef4444;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        .transaction-date {
+            font-size: 0.8rem;
+            color: var(--secondary-text);
+            margin-top: 0.25rem;
+        }
         
         .empty-state {
             text-align: center;
@@ -383,9 +439,48 @@
         
         .view-all-btn:hover {
             background: rgba(255, 255, 255, 0.1);
-            border-color: var(--primary-text);
+            border-color: var(--luxury-gold);
+        }
+        /* Pending Requests */
+        
+        .status-pending {
+            background: rgba(255, 193, 7, 0.2);
+            color: #ffc107;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            border: 1px solid rgba(255, 193, 7, 0.3);
+        }
+        
+        .status-pending::before {
+            content: "⏳";
+        }
+        /* Luxury animations */
+        
+        @keyframes shimmer {
+            0% {
+                transform: translateX(-100%);
+            }
+            100% {
+                transform: translateX(100%);
+            }
+        }
+        
+        .bank-card .shimmer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient( 90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            animation: shimmer 3s infinite;
         }
     </style>
+
 </head>
 
 <body>
@@ -483,21 +578,28 @@
 
                 <!-- Balance Section -->
                 <div class="balance-section">
-                    <div class="balance-card">
-                        <!-- Luxury decorative elements -->
-                        <div class="luxury-decoration"></div>
-                        <div class="luxury-decoration"></div>
+                    <div class="bank-card">
+                        <div class="shimmer"></div>
+                        <div class="card-chip"></div>
+                        <div class="card-number" id="cardNumber">•••• •••• •••• 1234</div>
 
-                        <div class="balance-label" data-i18n="dashboard.current_balance">Current Balance</div>
-                        <div class="balance-amount" id="balanceAmount">0.00</div>
-                        <div class="balance-currency">SYP</div>
+                        <div class="balance-display">
+                            <div class="balance-label" data-i18n="dashboard.current_balance">Current Balance</div>
+                            <div class="balance-amount" id="balanceAmount">0.00</div>
+                            <div class="balance-currency">SYP</div>
+                        </div>
+
+                        <div class="card-footer">
+                            <div class="card-holder" id="cardHolder">USER NAME</div>
+                            <div class="card-expiry">12/28</div>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Quick Actions -->
                 <div class="quick-actions">
                     <div class="section-header">
-                        <h2 data-i18n="dashboard.quick_actions">Quick Actions</h2>
+                        <h2 class="section-title" data-i18n="dashboard.quick_actions">Quick Actions</h2>
                     </div>
                     <div class="actions-grid">
                         <div class="action-card" onclick="showDepositModal()">
@@ -529,7 +631,7 @@
                 <!-- Recent Transactions -->
                 <div class="transactions-section">
                     <div class="section-header">
-                        <h2 data-i18n="dashboard.recent_transactions">Recent Transactions</h2>
+                        <h2 class="section-title" data-i18n="dashboard.recent_transactions">Recent Transactions</h2>
                         <a href="transactions.html" class="view-all-btn" data-i18n="dashboard.view_all">View All</a>
                     </div>
 

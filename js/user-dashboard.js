@@ -402,3 +402,29 @@ setInterval(() => {
     userDashboard.loadUserData();
     userDashboard.updatePendingRequestsStatus();
 }, 10000);
+
+// Update card details with user data
+function updateCardDetails() {
+    const sessionData = localStorage.getItem('ugarit_session');
+    if (sessionData) {
+        const session = JSON.parse(sessionData);
+
+        // Update card holder name
+        const userName = session.fullName || 'User';
+        document.getElementById('cardHolder').textContent = userName.toUpperCase();
+
+        // Update card number with wallet ID
+        const walletId = session.walletId || '1234';
+        const lastFour = walletId.slice(-4);
+        document.getElementById('cardNumber').textContent = `•••• •••• •••• ${lastFour}`;
+
+        // Update displayed user name
+        document.getElementById('userName').textContent = userName;
+        document.getElementById('userWalletId').textContent = walletId;
+    }
+}
+
+// Call this when the dashboard loads
+document.addEventListener('DOMContentLoaded', function() {
+    updateCardDetails();
+});
