@@ -35,8 +35,10 @@ class AuthenticationManager {
                 // Update UI
                 this.updateAuthUI();
 
-                // ⭐⭐⭐ REDIRECT TO USER DASHBOARD ⭐⭐⭐
-                window.location.href = 'user-dashboard.html';
+                // ✅ FIXED: Redirect to user dashboard instead of staying on index.html
+                setTimeout(() => {
+                    window.location.href = 'user-dashboard.html';
+                }, 500);
 
                 return { success: true, user: user };
             } else {
