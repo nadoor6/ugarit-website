@@ -10,6 +10,7 @@ class LanguageSwitcher {
         this.initFooterSwitcher();
         this.updatePageDirection();
         this.applyTranslations();
+        this.initLanguageChangeListeners();
     }
 
     async loadLanguage() {
@@ -43,6 +44,13 @@ class LanguageSwitcher {
         this.updateFooterSwitcher();
     }
 
+    initLanguageChangeListeners() {
+        // Re-apply translations when modal opens (if needed)
+        document.addEventListener('modalOpened', () => {
+            this.applyTranslations();
+        });
+    }
+
     async switchLanguage(lang) {
         console.log('Switching to language:', lang);
         if (lang !== this.currentLang) {
@@ -52,6 +60,9 @@ class LanguageSwitcher {
             this.updatePageDirection();
             this.updateFooterSwitcher();
             this.applyTranslations();
+
+            // Show language change confirmation
+            this.showLanguageChangeToast();
         }
     }
 
@@ -60,9 +71,12 @@ class LanguageSwitcher {
         html.dir = this.currentLang === 'ar' ? 'rtl' : 'ltr';
         html.lang = this.currentLang;
 
+        // Add/remove RTL class for CSS
         if (this.currentLang === 'ar') {
             document.body.classList.add('rtl');
+            document.body.classList.remove('ltr');
         } else {
+            document.body.classList.add('ltr');
             document.body.classList.remove('rtl');
         }
         console.log('Page direction updated:', html.dir);
@@ -98,12 +112,21 @@ class LanguageSwitcher {
                 } else {
                     element.textContent = value;
                 }
+            } else {
+                console.warn('Translation key not found:', key);
             }
         });
 
-        // Update page title
-        if (this.translations.site && this.translations.site.title) {
-            document.title = this.translations.site.title;
+        // Update page title and meta description
+        if (this.translations.site) {
+            if (this.translations.site.title) {
+                document.title = this.translations.site.title;
+            }
+            // Update meta description if exists
+            const metaDescription = document.querySelector('meta[name="description"]');
+            if (metaDescription && this.translations.site.description) {
+                metaDescription.setAttribute('content', this.translations.site.description);
+            }
         }
 
         console.log('Translations applied successfully');
@@ -113,6 +136,30 @@ class LanguageSwitcher {
         return path.split('.').reduce((current, key) => {
             return current && current[key] !== undefined ? current[key] : undefined;
         }, obj);
+    }
+
+    showLanguageChangeToast() {
+        // Create a simple toast notification
+        const toast = document.createElement('div');
+        toast.className = 'language-toast';
+        toast.textContent = this.currentLang === 'ar' ? 'تم تغيير اللغة إلى العربية' : 'Language changed to English';
+        toast.style.cssText = `
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            z-index: 10000;
+            font-family: inherit;
+        `;
+
+        document.body.appendChild(toast);
+
+        setTimeout(() => {
+            toast.remove();
+        }, 3000);
     }
 }
 
