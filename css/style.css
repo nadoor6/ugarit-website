@@ -2436,3 +2436,48 @@ body {
         padding: 1.5rem;
     }
 }
+
+
+/* Admin Security Styles */
+
+.error-shake {
+    animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-5px);
+    }
+    75% {
+        transform: translateX(5px);
+    }
+}
+
+
+/* Secure input styles */
+
+.admin-input {
+    letter-spacing: 0.1em;
+    font-family: 'Courier New', monospace;
+}
+
+
+/* Security warnings */
+
+.security-warning {
+    background: rgba(255, 193, 7, 0.1);
+    border: 1px solid rgba(255, 193, 7, 0.3);
+    border-radius: 8px;
+    padding: 1rem;
+    margin: 1rem 0;
+}
+
+.security-warning p {
+    margin: 0;
+    font-size: 0.8rem;
+    color: var(--secondary-text);
+}

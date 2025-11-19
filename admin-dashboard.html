@@ -103,6 +103,34 @@
 </head>
 
 <body>
+
+    <!-- Add this right after the opening body tag in admin-dashboard.html -->
+    <script>
+        // Admin security check - must be at the top of the page
+        (function() {
+            const sessionData = localStorage.getItem('ugarit_admin_session');
+
+            if (!sessionData) {
+                window.location.href = 'admin-login.html';
+                return;
+            }
+
+            const session = JSON.parse(sessionData);
+
+            // Check if session is expired
+            if (Date.now() > session.expiry) {
+                localStorage.removeItem('ugarit_admin_session');
+                window.location.href = 'admin-login.html';
+                return;
+            }
+
+            if (!session.data.admin) {
+                window.location.href = 'admin-login.html';
+                return;
+            }
+        })();
+    </script>
+
     <!-- Page Loader -->
     <div class="page-loader">
         <div class="loading-animation">
@@ -117,10 +145,12 @@
             <a href="index.html" class="logo">ugarit</a>
             <nav class="tabs">
                 <a href="admin-dashboard.html" class="tab-link active">Admin Dashboard</a>
-                <a href="index.html" class="tab-link">Back to Site</a>
+                <a href="index.html" class="tab-link">Main Site</a>
             </nav>
             <div class="auth-buttons">
-                <button class="logout-btn" onclick="logoutAdmin()">Logout Admin</button>
+                <button class="logout-btn" onclick="adminLogout()">
+            🔓 Logout Admin
+        </button>
             </div>
         </header>
 

@@ -8,34 +8,65 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
     <style>
-        .admin-login-page {
-            background: var(--primary-bg);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 2rem;
-        }
-        
         .admin-login-container {
-            width: 100%;
-            max-width: 400px;
+            max-width: 500px;
+            margin: 8rem auto;
+            padding: 0 1rem;
         }
         
         .admin-login-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
             padding: 3rem 2rem;
             text-align: center;
         }
         
-        .admin-logo h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
+        .admin-logo {
+            font-size: 3rem;
+            margin-bottom: 1rem;
         }
         
-        .admin-logo p {
+        .admin-title {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-text);
+        }
+        
+        .admin-subtitle {
             color: var(--secondary-text);
-            font-size: 0.9rem;
             margin-bottom: 2rem;
+        }
+        
+        .admin-form {
+            text-align: left;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--primary-text);
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 0.75rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--primary-text);
+            font-size: 0.9rem;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary-text);
         }
         
         .admin-login-btn {
@@ -45,64 +76,112 @@
             color: var(--primary-bg);
             border: none;
             border-radius: 8px;
+            font-size: 1rem;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
-            margin-top: 1rem;
         }
         
         .admin-login-btn:hover {
+            background: rgba(255, 255, 255, 0.9);
             transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(255, 255, 255, 0.1);
         }
         
-        .admin-security-notice {
-            margin-top: 2rem;
+        .admin-login-btn:disabled {
+            background: var(--secondary-text);
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .security-notice {
+            background: rgba(255, 193, 7, 0.1);
+            border: 1px solid rgba(255, 193, 7, 0.3);
+            border-radius: 8px;
             padding: 1rem;
+            margin-top: 2rem;
+            text-align: center;
+        }
+        
+        .security-notice p {
+            margin: 0;
+            font-size: 0.8rem;
+            color: var(--secondary-text);
+        }
+        
+        .error-message {
             background: rgba(255, 68, 68, 0.1);
             border: 1px solid rgba(255, 68, 68, 0.3);
             border-radius: 8px;
-            font-size: 0.8rem;
+            padding: 1rem;
+            margin-bottom: 1rem;
             color: #ff4444;
+            text-align: center;
+            display: none;
         }
     </style>
 </head>
 
-<body class="admin-login-page">
-    <div class="admin-login-container">
-        <div class="admin-login-card glass-card">
-            <div class="admin-logo">
-                <h1>ugarit</h1>
-                <p>Admin Portal</p>
-            </div>
-
-            <form id="adminLoginForm">
-                <div class="form-group">
-                    <input type="text" id="adminUsername" required>
-                    <label for="adminUsername">Admin ID</label>
-                    <div class="focus-line"></div>
-                </div>
-
-                <div class="form-group">
-                    <input type="password" id="adminPassword" required>
-                    <label for="adminPassword">Password</label>
-                    <div class="focus-line"></div>
-                </div>
-
-                <button type="submit" class="admin-login-btn">
-                    Access Admin Dashboard
-                </button>
-            </form>
-
-            <div id="adminLoginError" class="error-message" style="display: none;"></div>
-
-            <div class="admin-security-notice">
-                <p>⚠️ Restricted Access - Authorized Personnel Only</p>
-            </div>
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader">
+        <div class="loading-animation">
+            <div class="loading-dot"></div>
+            <div class="loading-dot"></div>
+            <div class="loading-dot"></div>
         </div>
     </div>
 
+    <div class="page-container">
+        <header class="header">
+            <a href="index.html" class="logo">ugarit</a>
+            <nav class="tabs">
+                <a href="index.html" class="tab-link">Back to Main Site</a>
+            </nav>
+        </header>
+
+        <main class="main-content">
+            <div class="minimal-dark-bg"></div>
+
+            <div class="admin-login-container">
+                <div class="admin-login-card">
+                    <div class="admin-logo">🔐</div>
+                    <h1 class="admin-title">Ugarit Admin Portal</h1>
+                    <p class="admin-subtitle">Secure access to administration panel</p>
+
+                    <div id="loginError" class="error-message"></div>
+
+                    <form id="adminLoginForm" class="admin-form">
+                        <div class="form-group">
+                            <label for="adminUsername">Admin Username</label>
+                            <input type="text" id="adminUsername" required autocomplete="off">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="adminPassword">Admin Password</label>
+                            <input type="password" id="adminPassword" required autocomplete="off">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="vaultPin">Vault Security Pin</label>
+                            <input type="password" id="vaultPin" required autocomplete="off">
+                        </div>
+
+                        <button type="submit" class="admin-login-btn" id="loginBtn">
+                            <span class="btn-text">Access Admin Panel</span>
+                            <span class="btn-loading" style="display: none;">Authenticating...</span>
+                        </button>
+                    </form>
+
+                    <div class="security-notice">
+                        <p>⚠️ This area is restricted to authorized personnel only. All access attempts are logged.</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
     <script src="js/admin-auth.js"></script>
+    <script src="js/main.js"></script>
 </body>
 
 </html>
