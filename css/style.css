@@ -2598,18 +2598,10 @@ body {
 
 /* Ensure lines are visible */
 
-
-/* EXTREME HAMBURGER FIX */
-
 .mobile-menu-btn .menu-line {
-    background: #ff0000 !important;
-    /* Red for testing */
     opacity: 1 !important;
     visibility: visible !important;
     display: block !important;
-    width: 100% !important;
-    height: 2px !important;
-    margin: 3px 0 !important;
 }
 
 
@@ -2625,4 +2617,46 @@ body {
 
 .mobile-menu-btn.active .menu-line:nth-child(3) {
     transform: rotate(-45deg) translate(6px, -6px);
+}
+
+
+/* COMPLETE MOBILE MENU BUTTON FIX */
+
+.mobile-menu-btn {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    position: relative;
+}
+
+.menu-line {
+    width: 100%;
+    height: 2px;
+    background: var(--primary-text);
+    margin: 3px 0;
+    transition: all 0.3s ease;
+    transform-origin: center;
+    display: block;
+    opacity: 1;
+    visibility: visible;
+}
+
+
+/* Mobile view */
+
+@media (max-width: 768px) {
+    .mobile-menu-btn {
+        display: flex !important;
+        position: static !important;
+    }
+    .menu-line {
+        background: #ffffff !important;
+    }
 }
