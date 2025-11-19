@@ -8,7 +8,9 @@
         "about": "About Us",
         "products": "Products",
         "services": "Services",
-        "create_wallet": "Create Wallet"
+        "create_wallet": "Create Wallet",
+        "profile": "Profile",
+        "logout": "Log out"
     },
     "home": {
         "title": "Ugarit",
@@ -401,5 +403,76 @@
         "terms_service": "Terms of Service",
         "security": "Security",
         "copyright": "© 2025 Ugarit. All rights reserved. Rebuilding finance from the cradle of economics."
+    },
+
+    "dashboard": {
+        "welcome": "Welcome back,",
+        "wallet_id": "Wallet ID:",
+        "account_verified": "Account Verified",
+        "account_active": "Your Ugarit wallet is active and ready for transactions",
+        "current_balance": "Current Balance",
+        "quick_actions": "Quick Actions",
+        "deposit": "Deposit",
+        "deposit_desc": "Add funds to your wallet",
+        "withdraw": "Withdraw",
+        "withdraw_desc": "Transfer to your bank",
+        "transfer": "Transfer",
+        "transfer_desc": "Send to other Ugarit users",
+        "history": "History",
+        "history_desc": "View all transactions",
+        "recent_transactions": "Recent Transactions",
+        "view_all": "View All",
+        "no_transactions": "No transactions yet",
+        "no_transactions_desc": "Your transaction history will appear here",
+        "pending_requests": "Pending Requests",
+        "deposit_funds": "Deposit Funds",
+        "deposit_subtitle": "Add money to your Ugarit wallet",
+        "amount_syp": "Amount (SYP)",
+        "select_payment_method": "Select payment method",
+        "bank_transfer": "Bank Transfer",
+        "credit_card": "Credit Card",
+        "cryptocurrency": "Cryptocurrency",
+        "request_deposit": "Request Deposit",
+        "contact_admin_deposit": "Contact admin for deposit instructions",
+        "withdraw_funds": "Withdraw Funds",
+        "withdraw_subtitle": "Transfer money to your bank account",
+        "bank_account_number": "Bank Account Number",
+        "request_withdrawal": "Request Withdrawal",
+        "withdraw_processing": "Withdrawals are processed manually within 24 hours",
+        "transfer_funds": "Transfer Funds",
+        "transfer_subtitle": "Send money to another Ugarit user",
+        "recipient_wallet_id": "Recipient Wallet ID",
+        "note_optional": "Note (Optional)",
+        "send_transfer": "Send Transfer"
+    },
+
+    "admin": {
+        "pending_approvals": "Pending Approvals",
+        "pending_transactions": "Pending Transactions",
+        "wallet_requests": "Wallet Requests",
+        "transaction_requests": "Transaction Requests",
+        "approve": "Approve",
+        "reject": "Reject",
+        "process": "Process",
+        "completed": "Completed",
+        "rejected": "Rejected"
+    },
+
+    "transactions": {
+        "deposit": "Deposit",
+        "withdrawal": "Withdrawal",
+        "transfer": "Transfer",
+        "pending": "Pending",
+        "completed": "Completed",
+        "failed": "Failed"
+    },
+
+    "modals": {
+        "close": "Close",
+        "submit": "Submit",
+        "cancel": "Cancel",
+        "processing": "Processing...",
+        "success": "Success",
+        "error": "Error"
     }
 }

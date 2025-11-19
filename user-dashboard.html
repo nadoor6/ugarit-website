@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Wallet - Ugarit</title>
+    <title data-i18n="dashboard.welcome">My Wallet - Ugarit</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
     <style>
@@ -300,15 +300,15 @@
         <header class="header">
             <a href="index.html" class="logo">ugarit</a>
             <nav class="tabs">
-                <a href="user-dashboard.html" class="tab-link active">Dashboard</a>
-                <a href="transactions.html" class="tab-link">Transactions</a>
-                <a href="transfer.html" class="tab-link">Transfer</a>
-                <a href="profile.html" class="tab-link">Profile</a>
+                <a href="user-dashboard.html" class="tab-link active" data-i18n="dashboard.welcome">Dashboard</a>
+                <a href="transactions.html" class="tab-link" data-i18n="dashboard.history">Transactions</a>
+                <a href="transfer.html" class="tab-link" data-i18n="dashboard.transfer">Transfer</a>
+                <a href="profile.html" class="tab-link" data-i18n="nav.profile">Profile</a>
             </nav>
             <div class="auth-buttons">
                 <div class="logged-in">
-                    <a href="user-dashboard.html" class="wallet-dashboard-btn" id="walletDashboardBtn">My Wallet</a>
-                    <button class="logout-btn" onclick="logoutUser()">Log Out</button>
+                    <a href="user-dashboard.html" class="wallet-dashboard-btn" id="walletDashboardBtn" data-i18n="nav.sign_in_wallet">My Wallet</a>
+                    <button class="logout-btn" onclick="logoutUser()" data-i18n="nav.logout">Log Out</button>
                 </div>
             </div>
         </header>
@@ -319,21 +319,27 @@
             <div class="dashboard-container">
                 <!-- Welcome Section -->
                 <div class="welcome-section">
-                    <h1 class="welcome-message">Welcome back, <span id="userName">User</span>! 👋</h1>
-                    <div class="wallet-id">Wallet ID: <span id="userWalletId">---</span></div>
+                    <h1 class="welcome-message">
+                        <span data-i18n="dashboard.welcome">Welcome back,</span>
+                        <span id="userName">User</span>! 👋
+                    </h1>
+                    <div class="wallet-id">
+                        <span data-i18n="dashboard.wallet_id">Wallet ID:</span>
+                        <span id="userWalletId">---</span>
+                    </div>
                 </div>
 
                 <!-- Account Status -->
                 <div class="account-status">
-                    <div class="status-badge status-verified">Account Verified</div>
-                    <p style="margin: 1rem 0 0 0; color: var(--secondary-text); font-size: 0.9rem;">
+                    <div class="status-badge status-verified" data-i18n="dashboard.account_verified">Account Verified</div>
+                    <p style="margin: 1rem 0 0 0; color: var(--secondary-text); font-size: 0.9rem;" data-i18n="dashboard.account_active">
                         Your Ugarit wallet is active and ready for transactions
                     </p>
                 </div>
 
                 <!-- Pending Requests Status -->
                 <div class="pending-requests-status" id="pendingRequestsStatus" style="display: none; margin-bottom: 2rem;">
-                    <div class="status-badge status-pending">Pending Requests</div>
+                    <div class="status-badge status-pending" data-i18n="dashboard.pending_requests">Pending Requests</div>
                     <div id="pendingRequestsList" style="margin-top: 1rem;"></div>
                 </div>
 
@@ -355,11 +361,10 @@
                     }
                 </style>
 
-
                 <!-- Balance Section -->
                 <div class="balance-section">
                     <div class="balance-card">
-                        <div class="balance-label">Current Balance</div>
+                        <div class="balance-label" data-i18n="dashboard.current_balance">Current Balance</div>
                         <div class="balance-amount" id="balanceAmount">0.00</div>
                         <div class="balance-currency">SYP</div>
                     </div>
@@ -368,31 +373,31 @@
                 <!-- Quick Actions -->
                 <div class="quick-actions">
                     <div class="section-header">
-                        <h2>Quick Actions</h2>
+                        <h2 data-i18n="dashboard.quick_actions">Quick Actions</h2>
                     </div>
                     <div class="actions-grid">
                         <div class="action-card" onclick="showDepositModal()">
                             <div class="action-icon">💳</div>
-                            <div class="action-title">Deposit</div>
-                            <div class="action-description">Add funds to your wallet</div>
+                            <div class="action-title" data-i18n="dashboard.deposit">Deposit</div>
+                            <div class="action-description" data-i18n="dashboard.deposit_desc">Add funds to your wallet</div>
                         </div>
 
                         <div class="action-card" onclick="showWithdrawModal()">
                             <div class="action-icon">🏦</div>
-                            <div class="action-title">Withdraw</div>
-                            <div class="action-description">Transfer to your bank</div>
+                            <div class="action-title" data-i18n="dashboard.withdraw">Withdraw</div>
+                            <div class="action-description" data-i18n="dashboard.withdraw_desc">Transfer to your bank</div>
                         </div>
 
                         <div class="action-card" onclick="showTransferModal()">
                             <div class="action-icon">🔄</div>
-                            <div class="action-title">Transfer</div>
-                            <div class="action-description">Send to other Ugarit users</div>
+                            <div class="action-title" data-i18n="dashboard.transfer">Transfer</div>
+                            <div class="action-description" data-i18n="dashboard.transfer_desc">Send to other Ugarit users</div>
                         </div>
 
                         <div class="action-card" onclick="viewTransactionHistory()">
                             <div class="action-icon">📊</div>
-                            <div class="action-title">History</div>
-                            <div class="action-description">View all transactions</div>
+                            <div class="action-title" data-i18n="dashboard.history">History</div>
+                            <div class="action-description" data-i18n="dashboard.history_desc">View all transactions</div>
                         </div>
                     </div>
                 </div>
@@ -400,16 +405,16 @@
                 <!-- Recent Transactions -->
                 <div class="transactions-section">
                     <div class="section-header">
-                        <h2>Recent Transactions</h2>
-                        <a href="transactions.html" class="view-all-btn">View All</a>
+                        <h2 data-i18n="dashboard.recent_transactions">Recent Transactions</h2>
+                        <a href="transactions.html" class="view-all-btn" data-i18n="dashboard.view_all">View All</a>
                     </div>
 
                     <div class="transactions-list" id="transactionsList">
                         <!-- Transactions will be loaded here -->
                         <div class="empty-state">
                             <div class="empty-icon">📝</div>
-                            <h3>No transactions yet</h3>
-                            <p>Your transaction history will appear here</p>
+                            <h3 data-i18n="dashboard.no_transactions">No transactions yet</h3>
+                            <p data-i18n="dashboard.no_transactions_desc">Your transaction history will appear here</p>
                         </div>
                     </div>
                 </div>
@@ -421,31 +426,31 @@
             <div class="modal-content glass-card">
                 <span class="close-modal" onclick="closeDepositModal()">&times;</span>
                 <div class="modal-header">
-                    <h3>Deposit Funds</h3>
-                    <p>Add money to your Ugarit wallet</p>
+                    <h3 data-i18n="dashboard.deposit_funds">Deposit Funds</h3>
+                    <p data-i18n="dashboard.deposit_subtitle">Add money to your Ugarit wallet</p>
                 </div>
                 <form id="depositForm">
                     <div class="form-group">
                         <input type="number" id="depositAmount" step="0.01" min="1" required>
-                        <label for="depositAmount">Amount (SYP)</label>
+                        <label for="depositAmount" data-i18n="dashboard.amount_syp">Amount (SYP)</label>
                         <div class="focus-line"></div>
                     </div>
                     <div class="form-group">
                         <select id="depositMethod" required>
-                            <option value="">Select payment method</option>
-                            <option value="bank_transfer">Bank Transfer</option>
-                            <option value="credit_card">Credit Card</option>
-                            <option value="crypto">Cryptocurrency</option>
+                            <option value="" data-i18n="dashboard.select_payment_method">Select payment method</option>
+                            <option value="bank_transfer" data-i18n="dashboard.bank_transfer">Bank Transfer</option>
+                            <option value="credit_card" data-i18n="dashboard.credit_card">Credit Card</option>
+                            <option value="crypto" data-i18n="dashboard.cryptocurrency">Cryptocurrency</option>
                         </select>
                         <div class="focus-line"></div>
                     </div>
                     <button type="submit" class="monochrome-cta full-width">
-                        <span class="btn-text">Request Deposit</span>
-                        <span class="btn-loading" style="display: none;">Processing...</span>
+                        <span class="btn-text" data-i18n="dashboard.request_deposit">Request Deposit</span>
+                        <span class="btn-loading" style="display: none;" data-i18n="modals.processing">Processing...</span>
                     </button>
                 </form>
                 <div class="modal-footer">
-                    <p>Contact admin for deposit instructions</p>
+                    <p data-i18n="dashboard.contact_admin_deposit">Contact admin for deposit instructions</p>
                 </div>
             </div>
         </div>
@@ -455,27 +460,27 @@
             <div class="modal-content glass-card">
                 <span class="close-modal" onclick="closeWithdrawModal()">&times;</span>
                 <div class="modal-header">
-                    <h3>Withdraw Funds</h3>
-                    <p>Transfer money to your bank account</p>
+                    <h3 data-i18n="dashboard.withdraw_funds">Withdraw Funds</h3>
+                    <p data-i18n="dashboard.withdraw_subtitle">Transfer money to your bank account</p>
                 </div>
                 <form id="withdrawForm">
                     <div class="form-group">
                         <input type="number" id="withdrawAmount" step="0.01" min="1" required>
-                        <label for="withdrawAmount">Amount (SYP)</label>
+                        <label for="withdrawAmount" data-i18n="dashboard.amount_syp">Amount (SYP)</label>
                         <div class="focus-line"></div>
                     </div>
                     <div class="form-group">
                         <input type="text" id="bankAccount" required>
-                        <label for="bankAccount">Bank Account Number</label>
+                        <label for="bankAccount" data-i18n="dashboard.bank_account_number">Bank Account Number</label>
                         <div class="focus-line"></div>
                     </div>
                     <button type="submit" class="monochrome-cta full-width">
-                        <span class="btn-text">Request Withdrawal</span>
-                        <span class="btn-loading" style="display: none;">Processing...</span>
+                        <span class="btn-text" data-i18n="dashboard.request_withdrawal">Request Withdrawal</span>
+                        <span class="btn-loading" style="display: none;" data-i18n="modals.processing">Processing...</span>
                     </button>
                 </form>
                 <div class="modal-footer">
-                    <p>Withdrawals are processed manually within 24 hours</p>
+                    <p data-i18n="dashboard.withdraw_processing">Withdrawals are processed manually within 24 hours</p>
                 </div>
             </div>
         </div>
@@ -485,32 +490,33 @@
             <div class="modal-content glass-card">
                 <span class="close-modal" onclick="closeTransferModal()">&times;</span>
                 <div class="modal-header">
-                    <h3>Transfer Funds</h3>
-                    <p>Send money to another Ugarit user</p>
+                    <h3 data-i18n="dashboard.transfer_funds">Transfer Funds</h3>
+                    <p data-i18n="dashboard.transfer_subtitle">Send money to another Ugarit user</p>
                 </div>
                 <form id="transferForm">
                     <div class="form-group">
                         <input type="text" id="recipientWalletId" required>
-                        <label for="recipientWalletId">Recipient Wallet ID</label>
+                        <label for="recipientWalletId" data-i18n="dashboard.recipient_wallet_id">Recipient Wallet ID</label>
                         <div class="focus-line"></div>
                     </div>
                     <div class="form-group">
                         <input type="number" id="transferAmount" step="0.01" min="1" required>
-                        <label for="transferAmount">Amount (SYP)</label>
+                        <label for="transferAmount" data-i18n="dashboard.amount_syp">Amount (SYP)</label>
                         <div class="focus-line"></div>
                     </div>
                     <div class="form-group">
                         <input type="text" id="transferNote">
-                        <label for="transferNote">Note (Optional)</label>
+                        <label for="transferNote" data-i18n="dashboard.note_optional">Note (Optional)</label>
                         <div class="focus-line"></div>
                     </div>
                     <button type="submit" class="monochrome-cta full-width">
-                        <span class="btn-text">Send Transfer</span>
-                        <span class="btn-loading" style="display: none;">Processing...</span>
+                        <span class="btn-text" data-i18n="dashboard.send_transfer">Send Transfer</span>
+                        <span class="btn-loading" style="display: none;" data-i18n="modals.processing">Processing...</span>
                     </button>
                 </form>
             </div>
         </div>
+
         <!-- Enhanced Footer -->
         <footer class="premium-footer">
             <div class="footer-grid">
@@ -548,7 +554,6 @@
                 <p data-i18n="footer.copyright">&copy; 2025 Ugarit. All rights reserved. Rebuilding finance from the cradle of economics.</p>
             </div>
         </footer>
-
     </div>
 
     <script src="js/user-dashboard.js"></script>

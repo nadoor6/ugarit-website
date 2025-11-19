@@ -8,7 +8,9 @@
         "about": "من نحن",
         "products": "المنتجات",
         "services": "الخدمات",
-        "create_wallet": "إنشاء محفظة"
+        "create_wallet": "إنشاء محفظة",
+        "profile": "الملف الشخصي",
+        "logout": "تسجيل الخروج"
     },
     "home": {
         "title": "أوغاريت",
@@ -397,5 +399,77 @@
         "terms_service": "شروط الخدمة",
         "security": "الأمان",
         "copyright": "© 2025 أوغاريت. جميع الحقوق محفوظة. إعادة بناء التمويل من مهد الاقتصاد."
+    },
+
+    "dashboard": {
+        "welcome": "مرحباً بعودتك،",
+        "wallet_id": "معرف المحفظة:",
+        "account_verified": "الحساب موثق",
+        "account_active": "محفظة أوغاريت نشطة وجاهزة للمعاملات",
+        "current_balance": "الرصيد الحالي",
+        "quick_actions": "إجراءات سريعة",
+        "deposit": "إيداع",
+        "deposit_desc": "إضافة أموال إلى محفظتك",
+        "withdraw": "سحب",
+        "withdraw_desc": "تحويل إلى حسابك البنكي",
+        "transfer": "تحويل",
+        "transfer_desc": "إرسال إلى مستخدمي أوغاريت الآخرين",
+        "history": "السجل",
+        "history_desc": "عرض جميع المعاملات",
+        "recent_transactions": "المعاملات الحديثة",
+        "view_all": "عرض الكل",
+        "no_transactions": "لا توجد معاملات بعد",
+        "no_transactions_desc": "سجل المعاملات الخاص بك سيظهر هنا",
+        "pending_requests": "طلبات معلقة",
+        "deposit_funds": "إيداع الأموال",
+        "deposit_subtitle": "إضافة أموال إلى محفظة أوغاريت",
+        "amount_syp": "المبلغ (ل.س)",
+        "select_payment_method": "اختر طريقة الدفع",
+        "bank_transfer": "تحويل بنكي",
+        "credit_card": "بطاقة ائتمان",
+        "cryptocurrency": "عملة رقمية",
+        "request_deposit": "طلب إيداع",
+        "contact_admin_deposit": "اتصل بالمسؤول لتعليمات الإيداع",
+        "withdraw_funds": "سحب الأموال",
+        "withdraw_subtitle": "تحويل الأموال إلى حسابك البنكي",
+        "bank_account_number": "رقم الحساب البنكي",
+        "request_withdrawal": "طلب سحب",
+        "withdraw_processing": "يتم معالجة عمليات السحب يدوياً خلال 24 ساعة",
+        "transfer_funds": "تحويل الأموال",
+        "transfer_subtitle": "إرسال الأموال إلى مستخدم أوغاريت آخر",
+        "recipient_wallet_id": "معرف محفظة المستلم",
+        "note_optional": "ملاحظة (اختياري)",
+        "send_transfer": "إرسال التحويل"
+    },
+
+    "admin": {
+        "pending_approvals": "الموافقات المعلقة",
+        "pending_transactions": "المعاملات المعلقة",
+        "wallet_requests": "طلبات المحفظة",
+        "transaction_requests": "طلبات المعاملات",
+        "approve": "موافقة",
+        "reject": "رفض",
+        "process": "معالجة",
+        "completed": "مكتمل",
+        "rejected": "مرفوض"
+    },
+
+    "transactions": {
+        "deposit": "إيداع",
+        "withdrawal": "سحب",
+        "transfer": "تحويل",
+        "pending": "قيد الانتظار",
+        "completed": "مكتمل",
+        "failed": "فاشل"
+    },
+
+    "modals": {
+        "close": "إغلاق",
+        "submit": "إرسال",
+        "cancel": "إلغاء",
+        "processing": "جاري المعالجة...",
+        "success": "نجح",
+        "error": "خطأ"
     }
+
 }
