@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Guide - Ugarit</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .admin-guide {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        
+        .code-block {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            font-family: monospace;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            overflow-x: auto;
+        }
+        
+        .admin-section {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page-container">
+        <header class="header">
+            <a href="index.html" class="logo">ugarit</a>
+            <nav class="tabs">
+                <a href="about.html" class="tab-link">about us</a>
+                <a href="products.html" class="tab-link">products</a>
+                <a href="services.html" class="tab-link">services</a>
+            </nav>
+        </header>
+
+        <main class="main-content">
+            <div class="minimal-dark-bg"></div>
+
+            <div class="admin-guide">
+                <div class="form-header">
+                    <h1 class="page-title">Ugarit Admin Guide</h1>
+                    <p class="page-subtitle">Manual user creation and management system</p>
+                    <div class="title-divider"></div>
+                </div>
+
+                <div class="admin-section">
+                    <h3>How to Create a New User</h3>
+                    <p>Open browser console (F12) on any page and run:</p>
+                    <div class="code-block">
+                        ugaritAdmin.createUser({ walletId: "john_doe123", password: "securepassword123", fullName: "John Doe", phone: "+963123456789", email: "john@email.com", username: "john_doe" });
+                    </div>
+                </div>
+
+                <div class="admin-section">
+                    <h3>Available Admin Commands</h3>
+
+                    <h4>List All Users</h4>
+                    <div class="code-block">ugaritAdmin.listUsers()</div>
+
+                    <h4>Update User Balance</h4>
+                    <div class="code-block">ugaritAdmin.updateBalance("john_doe123", 1000)</div>
+
+                    <h4>Add Transaction</h4>
+                    <div class="code-block">
+                        ugaritAdmin.addTransaction("john_doe123", { type: "deposit", amount: 500, status: "completed", description: "Bank transfer deposit" });
+                    </div>
+
+                    <h4>Get User Info</h4>
+                    <div class="code-block">ugaritAdmin.getUser("john_doe123")</div>
+
+                    <h4>Delete User</h4>
+                    <div class="code-block">ugaritAdmin.deleteUser("john_doe123")</div>
+                </div>
+
+                <div class="admin-section">
+                    <h3>User Data Structure</h3>
+                    <div class="code-block">
+                        { walletId: "unique_wallet_id", password: "user_password", userData: { fullName: "User Full Name", phone: "Phone Number", email: "user@email.com", username: "preferred_username" }, balance: 0, currency: "SYP", status: "active", createdAt: "2024-01-01T00:00:00.000Z",
+                        lastLogin: null, transactions: [] }
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>
