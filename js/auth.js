@@ -1,8 +1,6 @@
-// Fixed Authentication System for Ugarit Wallet
+// Simple Authentication System for Ugarit Wallet
 class AuthenticationManager {
     constructor() {
-        this.currentUser = null;
-        this.users = JSON.parse(localStorage.getItem('ugarit_users')) || [];
         this.init();
     }
 
@@ -25,6 +23,8 @@ class AuthenticationManager {
         const walletId = document.getElementById('walletId').value;
         const password = document.getElementById('walletPassword').value;
 
+        console.log('Attempting sign in with:', walletId); // Debug log
+
         if (!walletId || !password) {
             this.showSignInError('Please enter both Wallet ID and Password');
             return;
@@ -34,35 +34,38 @@ class AuthenticationManager {
         const user = this.validateCredentials(walletId, password);
 
         if (user) {
+            console.log('Login successful, redirecting...'); // Debug log
             // Create session
             this.createSession(user);
 
-            // Close modal immediately
+            // Close modal and redirect
             this.closeSignInModal();
-
-            // Redirect to dashboard
-            setTimeout(() => {
-                window.location.href = 'user-dashboard.html';
-            }, 100);
+            window.location.href = 'user-dashboard.html';
         } else {
+            console.log('Login failed'); // Debug log
             this.showSignInError('Invalid Wallet ID or Password');
         }
     }
 
     validateCredentials(walletId, password) {
-        const users = JSON.parse(localStorage.getItem('ugarit_users') || '[]');
-        const user = users.find(u =>
-            u.walletId === walletId &&
-            u.password === password
-        );
+        try {
+            const users = JSON.parse(localStorage.getItem('ugarit_users') || '[]');
+            console.log('Available users:', users); // Debug log
 
-        if (user) {
-            // Update last login
-            user.lastLogin = new Date().toISOString();
-            localStorage.setItem('ugarit_users', JSON.stringify(users));
-            return user;
+            const user = users.find(u =>
+                u.walletId === walletId &&
+                u.password === password
+            );
+
+            if (user) {
+                // Update last login
+                user.lastLogin = new Date().toISOString();
+                localStorage.setItem('ugarit_users', JSON.stringify(users));
+                return user;
+            }
+        } catch (error) {
+            console.error('Error validating credentials:', error);
         }
-
         return null;
     }
 
@@ -74,9 +77,7 @@ class AuthenticationManager {
         };
 
         localStorage.setItem('ugarit_session', JSON.stringify(sessionData));
-        this.currentUser = user;
-
-        console.log('Session created for:', user.walletId);
+        console.log('Session created:', sessionData); // Debug log
     }
 
     closeSignInModal() {
@@ -95,27 +96,28 @@ class AuthenticationManager {
     }
 
     updateAuthUI() {
-        const sessionData = localStorage.getItem('ugarit_session');
-        if (sessionData) {
-            const session = JSON.parse(sessionData);
-            const users = JSON.parse(localStorage.getItem('ugarit_users') || '[]');
-            const user = users.find(u => u.walletId === session.walletId);
+        try {
+            const sessionData = localStorage.getItem('ugarit_session');
+            if (sessionData) {
+                const session = JSON.parse(sessionData);
+                const users = JSON.parse(localStorage.getItem('ugarit_users') || '[]');
+                const user = users.find(u => u.walletId === session.walletId);
 
-            if (user) {
-                this.currentUser = user;
-                this.showLoggedInState(user);
-            } else {
-                this.showLoggedOutState();
+                if (user) {
+                    this.showLoggedInState(user);
+                    return;
+                }
             }
-        } else {
-            this.showLoggedOutState();
+        } catch (error) {
+            console.error('Error updating auth UI:', error);
         }
+        this.showLoggedOutState();
     }
 
     showLoggedInState(user) {
         const loggedOut = document.querySelector('.logged-out');
         const loggedIn = document.querySelector('.logged-in');
-        const walletBtn = document.getElementById('walletDashboardBtn');
+        const walletBtn = document.querySelector('.wallet-dashboard-btn');
 
         if (loggedOut) loggedOut.style.display = 'none';
         if (loggedIn) loggedIn.style.display = 'flex';
@@ -150,7 +152,6 @@ class AuthenticationManager {
 
     logout() {
         localStorage.removeItem('ugarit_session');
-        this.currentUser = null;
         this.updateAuthUI();
         window.location.href = 'index.html';
     }
@@ -194,7 +195,7 @@ function logoutUser() {
     }
 }
 
-// Add Enter key support for sign in
+// Add Enter key support
 document.addEventListener('keydown', function(event) {
     if (event.key === 'Escape') {
         closeSignInModal();
