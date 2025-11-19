@@ -80,147 +80,52 @@
                 <div class="wallet-form-section">
                     <div class="form-header">
                         <h1 class="page-title reveal-text" data-i18n="wallet.title">Create Your Ugarit Wallet</h1>
-                        <p class="page-subtitle reveal-text" data-i18n="wallet.subtitle">Complete verification to get your secure wallet</p>
+                        <p class="page-subtitle reveal-text" data-i18n="wallet.subtitle">Contact our admin to get your secure wallet credentials</p>
                         <div class="title-divider"></div>
                     </div>
 
-                    <!-- Registration Steps -->
-                    <div class="registration-steps">
-                        <div class="step active" data-step="1">
-                            <span class="step-number">1</span>
-                            <span class="step-text" data-i18n="wallet.step1">Personal Info</span>
+                    <!-- Contact Admin Section -->
+                    <div class="contact-admin-section">
+                        <div class="contact-info-card glass-card">
+                            <div class="telegram-icon-large">📱</div>
+                            <h3 data-i18n="wallet.contact_admin">Contact Admin on Telegram</h3>
+                            <p class="instruction-text" data-i18n="wallet.contact_instructions">
+                                To create your wallet, please contact our admin directly on Telegram. We'll create your account manually and provide you with login credentials.
+                            </p>
+
+                            <a href="https://t.me/UgaritSupport" class="telegram-cta-btn" target="_blank">
+                                <span class="tg-icon">✈️</span>
+                                <span data-i18n="wallet.contact_button">Contact @UgaritSupport on Telegram</span>
+                            </a>
                         </div>
-                        <div class="step" data-step="2">
-                            <span class="step-number">2</span>
-                            <span class="step-text" data-i18n="wallet.step2">Document Upload</span>
-                        </div>
-                        <div class="step" data-step="3">
-                            <span class="step-number">3</span>
-                            <span class="step-text" data-i18n="wallet.step3">Review & Submit</span>
-                        </div>
-                    </div>
 
-                    <form id="walletRegistrationForm" class="wallet-form">
-                        <!-- Step 1: Personal Information -->
-                        <div class="form-step active" data-step="1">
-                            <div class="form-group">
-                                <input type="text" id="fullName" required>
-                                <label for="fullName" data-i18n="wallet.full_name">Full Legal Name</label>
-                                <div class="focus-line"></div>
+                        <div class="info-sections">
+                            <div class="info-card">
+                                <h4 data-i18n="wallet.what_to_send">What to Send to Admin</h4>
+                                <ul class="info-list">
+                                    <li data-i18n="wallet.send_full_name">Full Name</li>
+                                    <li data-i18n="wallet.send_phone">Phone Number</li>
+                                    <li data-i18n="wallet.send_email">Email Address</li>
+                                    <li data-i18n="wallet.send_username">Preferred Username</li>
+                                </ul>
                             </div>
 
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <input type="email" id="email" required>
-                                    <label for="email" data-i18n="wallet.email">Email Address</label>
-                                    <div class="focus-line"></div>
-                                </div>
-                                <div class="form-group">
-                                    <input type="tel" id="phone" required>
-                                    <label for="phone" data-i18n="wallet.phone">Phone Number</label>
-                                    <div class="focus-line"></div>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <input type="text" id="address" required>
-                                <label for="address" data-i18n="wallet.address">Residential Address</label>
-                                <div class="focus-line"></div>
-                            </div>
-
-                            <div class="form-group">
-                                <select id="idType" required>
-                                    <option value="">Select ID Type</option>
-                                    <option value="national_id" data-i18n="wallet.national_id">National ID</option>
-                                    <option value="passport" data-i18n="wallet.passport">Passport</option>
-                                    <option value="drivers_license" data-i18n="wallet.drivers_license">Driver's License</option>
-                                </select>
-                                <div class="focus-line"></div>
-                            </div>
-
-                            <div class="form-group">
-                                <input type="text" id="idNumber" required>
-                                <label for="idNumber" data-i18n="wallet.id_number">ID Number</label>
-                                <div class="focus-line"></div>
-                            </div>
-
-                            <div class="form-actions">
-                                <button type="button" class="next-step monochrome-cta" data-i18n="wallet.continue">Continue</button>
+                            <div class="info-card">
+                                <h4 data-i18n="wallet.next_steps">What Happens Next</h4>
+                                <ol class="steps-list">
+                                    <li data-i18n="wallet.step_contact">Contact admin via Telegram with your information</li>
+                                    <li data-i18n="wallet.step_admin_create">Admin creates your account manually</li>
+                                    <li data-i18n="wallet.step_receive_credentials">Receive login credentials via Telegram</li>
+                                    <li data-i18n="wallet.step_sign_in">Sign in to your wallet dashboard</li>
+                                </ol>
                             </div>
                         </div>
 
-                        <!-- Step 2: Document Upload -->
-                        <div class="form-step" data-step="2">
-                            <div class="document-upload">
-                                <h4 data-i18n="wallet.identity_verification">Identity Verification</h4>
-
-                                <div class="upload-group">
-                                    <label data-i18n="wallet.id_front">National ID Front</label>
-                                    <div class="upload-area" id="idFrontUpload">
-                                        <input type="file" accept="image/*" id="idFront" required style="display: none;">
-                                        <div class="upload-placeholder">
-                                            <span class="upload-icon">📄</span>
-                                            <span class="upload-text" data-i18n="wallet.upload_id_front">Click to upload ID front</span>
-                                        </div>
-                                        <div class="upload-preview" style="display: none;"></div>
-                                    </div>
-                                </div>
-
-                                <div class="upload-group">
-                                    <label data-i18n="wallet.id_back">National ID Back</label>
-                                    <div class="upload-area" id="idBackUpload">
-                                        <input type="file" accept="image/*" id="idBack" required style="display: none;">
-                                        <div class="upload-placeholder">
-                                            <span class="upload-icon">📄</span>
-                                            <span class="upload-text" data-i18n="wallet.upload_id_back">Click to upload ID back</span>
-                                        </div>
-                                        <div class="upload-preview" style="display: none;"></div>
-                                    </div>
-                                </div>
-
-                                <div class="upload-group">
-                                    <label data-i18n="wallet.selfie_with_id">Selfie with ID</label>
-                                    <div class="upload-area" id="selfieUpload">
-                                        <input type="file" accept="image/*" id="selfieWithId" required style="display: none;">
-                                        <div class="upload-placeholder">
-                                            <span class="upload-icon">📸</span>
-                                            <span class="upload-text" data-i18n="wallet.upload_selfie">Click to upload selfie with ID</span>
-                                        </div>
-                                        <div class="upload-preview" style="display: none;"></div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="form-actions">
-                                <button type="button" class="prev-step" data-i18n="wallet.back">Back</button>
-                                <button type="button" class="next-step monochrome-cta" data-i18n="wallet.continue">Continue</button>
-                            </div>
+                        <div class="support-note">
+                            <p data-i18n="wallet.support_note">
+                                <strong>Note:</strong> Account activation typically takes 1-2 hours during business days. You'll receive your Wallet ID and Password directly from the admin.
+                            </p>
                         </div>
-
-                        <!-- Step 3: Review & Submit -->
-                        <div class="form-step" data-step="3">
-                            <div class="review-summary">
-                                <h4 data-i18n="wallet.review_info">Review Your Information</h4>
-                                <div id="review-content" class="review-content"></div>
-                            </div>
-
-                            <div class="terms-agreement">
-                                <input type="checkbox" id="agreeTerms" required>
-                                <label for="agreeTerms" data-i18n="wallet.agree_terms">I agree to the Terms of Service and Privacy Policy</label>
-                            </div>
-
-                            <div class="form-actions">
-                                <button type="button" class="prev-step" data-i18n="wallet.back">Back</button>
-                                <button type="submit" class="submit-application monochrome-cta" data-i18n="wallet.submit_application">Submit Application</button>
-                            </div>
-                        </div>
-                    </form>
-
-                    <div id="applicationSuccess" class="success-message" style="display: none;">
-                        <div class="success-icon">✅</div>
-                        <h3 data-i18n="wallet.application_submitted">Application Submitted Successfully!</h3>
-                        <p data-i18n="wallet.application_pending">Your wallet application is under review. You will receive your credentials via email/Telegram once approved.</p>
-                        <button class="monochrome-cta" onclick="window.location.href='index.html'" data-i18n="wallet.return_home">Return to Home</button>
                     </div>
                 </div>
             </div>
@@ -289,16 +194,16 @@
 
                     <div class="form-options">
                         <label class="remember-me">
-                    <input type="checkbox" id="rememberMe">
-                    <span data-i18n="wallet.remember_me">Remember me</span>
-                </label>
+                            <input type="checkbox" id="rememberMe">
+                            <span data-i18n="wallet.remember_me">Remember me</span>
+                        </label>
                         <a href="#" class="forgot-password" data-i18n="wallet.forgot_password">Forgot Password?</a>
                     </div>
 
                     <button type="submit" class="monochrome-cta full-width">
-                <span class="btn-text" data-i18n="wallet.sign_in">Sign In</span>
-                <span class="btn-loading" style="display: none;" data-i18n="wallet.signing_in">Signing In...</span>
-            </button>
+                        <span class="btn-text" data-i18n="wallet.sign_in">Sign In</span>
+                        <span class="btn-loading" style="display: none;" data-i18n="wallet.signing_in">Signing In...</span>
+                    </button>
                 </form>
 
                 <div class="modal-footer">
@@ -315,7 +220,7 @@
         <script src="js/main.js"></script>
         <script src="js/auth.js"></script>
         <script src="js/language-switcher.js"></script>
-        <script src="js/wallet-creation.js"></script>
+        <!-- Removed wallet-creation.js since we don't need the form anymore -->
     </div>
 </body>
 
