@@ -2598,10 +2598,18 @@ body {
 
 /* Ensure lines are visible */
 
+
+/* EXTREME HAMBURGER FIX */
+
 .mobile-menu-btn .menu-line {
+    background: #ff0000 !important;
+    /* Red for testing */
     opacity: 1 !important;
     visibility: visible !important;
     display: block !important;
+    width: 100% !important;
+    height: 2px !important;
+    margin: 3px 0 !important;
 }
 
 
