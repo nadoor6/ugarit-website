@@ -11,6 +11,9 @@ class LanguageSwitcher {
         this.updatePageDirection();
         this.applyTranslations();
         this.initLanguageChangeListeners();
+
+        // Re-apply translations when modals open
+        this.initModalListeners();
     }
 
     async loadLanguage() {
@@ -47,7 +50,27 @@ class LanguageSwitcher {
     initLanguageChangeListeners() {
         // Re-apply translations when modal opens (if needed)
         document.addEventListener('modalOpened', () => {
-            this.applyTranslations();
+            setTimeout(() => this.applyTranslations(), 100);
+        });
+    }
+
+    initModalListeners() {
+        // Watch for modal openings and update translations
+        const observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                mutation.addedNodes.forEach((node) => {
+                    if (node.nodeType === 1) { // Element node
+                        if (node.classList && (node.classList.contains('modal') || node.querySelector('.modal'))) {
+                            setTimeout(() => this.applyTranslations(), 100);
+                        }
+                    }
+                });
+            });
+        });
+
+        observer.observe(document.body, {
+            childList: true,
+            subtree: true
         });
     }
 
@@ -79,6 +102,12 @@ class LanguageSwitcher {
             document.body.classList.add('ltr');
             document.body.classList.remove('rtl');
         }
+
+        // Force reflow to ensure RTL styles are applied
+        document.body.style.display = 'none';
+        document.body.offsetHeight; // Trigger reflow
+        document.body.style.display = '';
+
         console.log('Page direction updated:', html.dir);
     }
 
@@ -88,8 +117,10 @@ class LanguageSwitcher {
             const btnLang = btn.getAttribute('data-lang');
             if (btnLang === this.currentLang) {
                 btn.classList.add('active');
+                btn.style.fontWeight = 'bold';
             } else {
                 btn.classList.remove('active');
+                btn.style.fontWeight = 'normal';
             }
         });
     }
@@ -107,6 +138,9 @@ class LanguageSwitcher {
                     element.innerHTML = value;
                 } else if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
                     element.placeholder = value;
+                } else if (element.tagName === 'SELECT') {
+                    // For select options, we need to handle them specially
+                    this.translateSelectOptions(element);
                 } else if (element.tagName === 'META') {
                     element.setAttribute('content', value);
                 } else {
@@ -132,6 +166,18 @@ class LanguageSwitcher {
         console.log('Translations applied successfully');
     }
 
+    translateSelectOptions(selectElement) {
+        // Translate select options that have data-i18n attributes
+        const options = selectElement.querySelectorAll('option[data-i18n]');
+        options.forEach(option => {
+            const key = option.getAttribute('data-i18n');
+            const value = this.getNestedValue(this.translations, key);
+            if (value !== undefined) {
+                option.textContent = value;
+            }
+        });
+    }
+
     getNestedValue(obj, path) {
         return path.split('.').reduce((current, key) => {
             return current && current[key] !== undefined ? current[key] : undefined;
@@ -139,6 +185,12 @@ class LanguageSwitcher {
     }
 
     showLanguageChangeToast() {
+        // Remove existing toast if any
+        const existingToast = document.querySelector('.language-toast');
+        if (existingToast) {
+            existingToast.remove();
+        }
+
         // Create a simple toast notification
         const toast = document.createElement('div');
         toast.className = 'language-toast';
@@ -153,12 +205,23 @@ class LanguageSwitcher {
             border-radius: 5px;
             z-index: 10000;
             font-family: inherit;
+            transition: opacity 0.3s ease;
         `;
 
         document.body.appendChild(toast);
 
+        // Animate in
         setTimeout(() => {
-            toast.remove();
+            toast.style.opacity = '1';
+        }, 10);
+
+        setTimeout(() => {
+            toast.style.opacity = '0';
+            setTimeout(() => {
+                if (toast.parentNode) {
+                    toast.remove();
+                }
+            }, 300);
         }, 3000);
     }
 }
