@@ -58,13 +58,24 @@
                 </div>
             </div>
 
-            <!-- Mobile Menu Button -->
-            <button class="mobile-menu-btn">
+            <!-- Fixed Mobile Menu Button -->
+            <button class="mobile-menu-btn" aria-label="Toggle mobile menu">
         <span class="menu-line"></span>
         <span class="menu-line"></span>
         <span class="menu-line"></span>
     </button>
         </header>
+
+        <!-- Fixed Mobile Menu - Use this in ALL HTML files -->
+        <div class="mobile-menu">
+            <nav class="mobile-nav">
+                <a href="about.html" data-i18n="nav.about">about us</a>
+                <a href="products.html" data-i18n="nav.products">products</a>
+                <a href="services.html" data-i18n="nav.services">services</a>
+                <a href="create-wallet.html" data-i18n="nav.create_wallet">Create Wallet</a>
+                <button class="mobile-signin-btn" onclick="showSignInModal()" data-i18n="nav.sign_in_wallet">Sign In Wallet</button>
+            </nav>
+        </div>
 
         <!-- Mobile Menu -->
         <div class="mobile-menu">

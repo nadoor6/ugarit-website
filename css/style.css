@@ -2481,3 +2481,50 @@ body {
     font-size: 0.8rem;
     color: var(--secondary-text);
 }
+
+
+/* Mobile Sign-in Button */
+
+.mobile-signin-btn {
+    background: transparent;
+    border: 1px solid var(--primary-text);
+    border-radius: 25px;
+    color: var(--primary-text);
+    font-family: var(--font-primary);
+    font-weight: 500;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    padding: 1rem 2rem;
+    margin-top: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 200px;
+    text-align: center;
+}
+
+.mobile-signin-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+
+/* Ensure mobile menu has proper z-index */
+
+.mobile-menu {
+    z-index: 1002;
+    /* Higher than header */
+}
+
+.header {
+    z-index: 1001;
+}
+
+
+/* Fix mobile menu button positioning */
+
+@media (max-width: 768px) {
+    .mobile-menu-btn {
+        z-index: 1003;
+        /* Highest */
+    }
+}
