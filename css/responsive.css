@@ -507,9 +507,14 @@
     .mobile-menu-btn {
         display: flex !important;
         position: static !important;
-        /* Remove absolute positioning */
         transform: none !important;
         margin: 0 !important;
+        z-index: 1003;
+    }
+    .mobile-menu-btn .menu-line {
+        background: #ffffff !important;
+        opacity: 1 !important;
+        visibility: visible !important;
     }
     /* Ensure proper spacing */
     .header>* {

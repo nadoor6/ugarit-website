@@ -2567,3 +2567,54 @@ body {
     display: none;
     z-index: 1002;
 }
+
+
+/* Fix Hamburger Menu Lines */
+
+.mobile-menu-btn {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    gap: 4px;
+}
+
+.menu-line {
+    width: 100%;
+    height: 2px;
+    background: #ffffff !important;
+    /* Force white color */
+    transition: all 0.3s ease;
+    transform-origin: center;
+    border-radius: 2px;
+}
+
+
+/* Ensure lines are visible */
+
+.mobile-menu-btn .menu-line {
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: block !important;
+}
+
+
+/* Hamburger animation */
+
+.mobile-menu-btn.active .menu-line:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+}
+
+.mobile-menu-btn.active .menu-line:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-menu-btn.active .menu-line:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+}
