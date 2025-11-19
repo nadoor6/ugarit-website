@@ -331,6 +331,31 @@
                     </p>
                 </div>
 
+                <!-- Pending Requests Status -->
+                <div class="pending-requests-status" id="pendingRequestsStatus" style="display: none; margin-bottom: 2rem;">
+                    <div class="status-badge status-pending">Pending Requests</div>
+                    <div id="pendingRequestsList" style="margin-top: 1rem;"></div>
+                </div>
+
+                <style>
+                    .status-pending {
+                        background: rgba(255, 193, 7, 0.2);
+                        color: #ffc107;
+                        display: inline-flex;
+                        align-items: center;
+                        gap: 0.5rem;
+                        padding: 0.5rem 1rem;
+                        border-radius: 20px;
+                        font-size: 0.8rem;
+                        font-weight: 600;
+                    }
+                    
+                    .status-pending::before {
+                        content: "⏳";
+                    }
+                </style>
+
+
                 <!-- Balance Section -->
                 <div class="balance-section">
                     <div class="balance-card">

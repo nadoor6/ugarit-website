@@ -55,6 +55,33 @@ class UserDashboard {
     updateDashboard() {
         this.updateBalance();
         this.updateTransactions();
+        this.updatePendingRequestsStatus(); // NEW: Update pending requests status
+    }
+
+    // NEW: Update pending requests status
+    updatePendingRequestsStatus() {
+        const statusElement = document.getElementById('pendingRequestsStatus');
+        const listElement = document.getElementById('pendingRequestsList');
+
+        if (!statusElement || !listElement) return;
+
+        const requests = JSON.parse(localStorage.getItem('ugarit_pending_requests') || '[]');
+        const userRequests = requests.filter(req => req.walletId === this.currentUser.walletId);
+
+        if (userRequests.length === 0) {
+            statusElement.style.display = 'none';
+            return;
+        }
+
+        statusElement.style.display = 'block';
+        listElement.innerHTML = userRequests.map(req => `
+            <div class="pending-request-item" style="padding: 0.5rem; border-left: 3px solid #ffc107; margin-bottom: 0.5rem; background: rgba(255,255,255,0.05);">
+                <div style="font-weight: 600;">${req.type.toUpperCase()} - ${req.amount} SYP</div>
+                <div style="font-size: 0.8rem; color: var(--secondary-text);">
+                    ${this.formatDate(req.timestamp)} - Waiting for admin approval
+                </div>
+            </div>
+        `).join('');
     }
 
     updateBalance() {
@@ -212,6 +239,9 @@ class UserDashboard {
         alert(`Deposit request submitted for ${amount} SYP. Admin will process it shortly.`);
         closeDepositModal();
         depositForm.reset();
+
+        // Update dashboard to show pending request
+        this.updatePendingRequestsStatus();
     }
 
     requestWithdrawal() {
@@ -251,6 +281,9 @@ class UserDashboard {
         alert(`Withdrawal request submitted for ${amount} SYP. Admin will process it within 24 hours.`);
         closeWithdrawModal();
         withdrawForm.reset();
+
+        // Update dashboard to show pending request
+        this.updatePendingRequestsStatus();
     }
 
     requestTransfer() {
@@ -301,6 +334,9 @@ class UserDashboard {
         alert(`Transfer request submitted for ${amount} SYP to ${recipientWalletId}. Admin will process it shortly.`);
         closeTransferModal();
         transferForm.reset();
+
+        // Update dashboard to show pending request
+        this.updatePendingRequestsStatus();
     }
 
     saveTransactionRequest(request) {
@@ -361,7 +397,8 @@ function logoutUser() {
     }
 }
 
-// Refresh dashboard every 30 seconds to get updates
+// Refresh dashboard every 10 seconds to get updates (faster refresh)
 setInterval(() => {
     userDashboard.loadUserData();
-}, 30000);
+    userDashboard.updatePendingRequestsStatus();
+}, 10000);

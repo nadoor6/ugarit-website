@@ -257,6 +257,88 @@
                         <!-- Users will be listed here -->
                     </div>
                 </div>
+
+                <!-- Pending Requests Section -->
+                <div class="pending-requests-section" style="margin-top: 3rem;">
+                    <div class="section-header">
+                        <h3>Pending Requests</h3>
+                        <button class="btn-sm" onclick="adminDashboard.loadPendingRequests()">Refresh</button>
+                    </div>
+                    <div class="requests-list">
+                        <div id="pendingRequestsContainer">
+                            <!-- Pending requests will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+
+                <style>
+                    .pending-requests-section {
+                        background: var(--card-bg);
+                        border: 1px solid var(--border-color);
+                        border-radius: 12px;
+                        padding: 1.5rem;
+                    }
+                    
+                    .section-header {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        margin-bottom: 1.5rem;
+                    }
+                    
+                    .request-item {
+                        border: 1px solid var(--border-color);
+                        border-radius: 8px;
+                        padding: 1rem;
+                        margin-bottom: 1rem;
+                        background: rgba(255, 255, 255, 0.05);
+                    }
+                    
+                    .request-header {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        margin-bottom: 0.5rem;
+                    }
+                    
+                    .request-details {
+                        font-size: 0.9rem;
+                        color: var(--secondary-text);
+                        margin-bottom: 1rem;
+                    }
+                    
+                    .request-details div {
+                        margin-bottom: 0.25rem;
+                    }
+                    
+                    .request-actions {
+                        display: flex;
+                        gap: 0.5rem;
+                    }
+                    
+                    .btn-success {
+                        background: #4CAF50;
+                        color: white;
+                        border: none;
+                    }
+                    
+                    .btn-danger {
+                        background: #f44336;
+                        color: white;
+                        border: none;
+                    }
+                    
+                    .btn-sm {
+                        padding: 0.4rem 0.8rem;
+                        font-size: 0.8rem;
+                        border-radius: 4px;
+                        cursor: pointer;
+                        border: 1px solid var(--border-color);
+                        background: transparent;
+                        color: var(--primary-text);
+                    }
+                </style>
+
             </div>
         </main>
     </div>

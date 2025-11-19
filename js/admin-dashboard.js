@@ -9,11 +9,204 @@ class AdminDashboard {
         this.loadUsers();
         this.initForms();
         this.updateStats();
+        this.loadPendingRequests(); // NEW: Load pending requests
     }
 
     loadUsers() {
         this.updateUsersList();
         this.updateUserSelect();
+    }
+
+    // NEW: Load and display pending requests
+    loadPendingRequests() {
+        const requests = JSON.parse(localStorage.getItem('ugarit_pending_requests') || '[]');
+        this.updatePendingRequestsDisplay(requests);
+    }
+
+    // NEW: Update pending requests display
+    updatePendingRequestsDisplay(requests) {
+            const container = document.getElementById('pendingRequestsContainer');
+            if (!container) return;
+
+            if (requests.length === 0) {
+                container.innerHTML = '<p>No pending requests.</p>';
+                return;
+            }
+
+            container.innerHTML = requests.map(request => `
+            <div class="request-item" data-request-id="${request.id}">
+                <div class="request-header">
+                    <strong>${request.type.toUpperCase()} Request</strong>
+                    <span class="request-date">${this.formatDate(request.timestamp)}</span>
+                </div>
+                <div class="request-details">
+                    <div>Wallet: ${request.walletId}</div>
+                    <div>Amount: ${request.amount} SYP</div>
+                    ${request.method ? `<div>Method: ${request.method}</div>` : ''}
+                    ${request.bankAccount ? `<div>Bank: ${request.bankAccount}</div>` : ''}
+                    ${request.toWalletId ? `<div>To: ${request.toWalletId}</div>` : ''}
+                    ${request.note ? `<div>Note: ${request.note}</div>` : ''}
+                </div>
+                <div class="request-actions">
+                    <button class="btn-sm btn-success" onclick="adminDashboard.approveRequest('${request.id}')">Approve</button>
+                    <button class="btn-sm btn-danger" onclick="adminDashboard.rejectRequest('${request.id}')">Reject</button>
+                    <button class="btn-sm" onclick="adminDashboard.viewRequestDetails('${request.id}')">Details</button>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    // NEW: Approve a request
+    approveRequest(requestId) {
+        const requests = JSON.parse(localStorage.getItem('ugarit_pending_requests') || '[]');
+        const request = requests.find(req => req.id === requestId);
+        
+        if (!request) return;
+
+        // Find the user
+        const user = this.users.find(u => u.walletId === request.walletId);
+        if (!user) {
+            alert('User not found!');
+            return;
+        }
+
+        // Process based on request type
+        switch (request.type) {
+            case 'deposit':
+                this.processDeposit(request, user);
+                break;
+            case 'withdrawal':
+                this.processWithdrawal(request, user);
+                break;
+            case 'transfer':
+                this.processTransfer(request, user);
+                break;
+        }
+
+        // Remove from pending requests
+        const updatedRequests = requests.filter(req => req.id !== requestId);
+        localStorage.setItem('ugarit_pending_requests', JSON.stringify(updatedRequests));
+
+        this.loadPendingRequests();
+        this.loadUsers();
+        this.updateStats();
+        
+        this.showMessage('manageUserMessage', `✅ ${request.type} request approved!`, 'success');
+    }
+
+    // NEW: Process deposit
+    processDeposit(request, user) {
+        const transaction = {
+            id: 'tx_' + Date.now(),
+            type: 'deposit',
+            amount: request.amount,
+            status: 'completed',
+            description: `Deposit via ${request.method}`,
+            timestamp: new Date().toISOString(),
+            adminNotes: 'Approved by admin'
+        };
+
+        user.transactions.unshift(transaction);
+        user.balance += request.amount;
+        this.saveUsers();
+    }
+
+    // NEW: Process withdrawal
+    processWithdrawal(request, user) {
+        if (user.balance < request.amount) {
+            alert('User has insufficient balance!');
+            return;
+        }
+
+        const transaction = {
+            id: 'tx_' + Date.now(),
+            type: 'withdrawal',
+            amount: request.amount,
+            status: 'completed',
+            description: `Withdrawal to ${request.bankAccount}`,
+            timestamp: new Date().toISOString(),
+            adminNotes: 'Approved by admin'
+        };
+
+        user.transactions.unshift(transaction);
+        user.balance -= request.amount;
+        this.saveUsers();
+    }
+
+    // NEW: Process transfer
+    processTransfer(request, user) {
+        if (user.balance < request.amount) {
+            alert('User has insufficient balance!');
+            return;
+        }
+
+        const recipient = this.users.find(u => u.walletId === request.toWalletId);
+        if (!recipient) {
+            alert('Recipient not found!');
+            return;
+        }
+
+        // Deduct from sender
+        const senderTransaction = {
+            id: 'tx_' + Date.now() + '_send',
+            type: 'transfer',
+            amount: request.amount,
+            status: 'completed',
+            description: `Transfer to ${request.toWalletId}`,
+            timestamp: new Date().toISOString(),
+            adminNotes: 'Approved by admin'
+        };
+
+        user.transactions.unshift(senderTransaction);
+        user.balance -= request.amount;
+
+        // Add to recipient
+        const recipientTransaction = {
+            id: 'tx_' + Date.now() + '_receive',
+            type: 'transfer',
+            amount: request.amount,
+            status: 'completed',
+            description: `Transfer from ${request.walletId}`,
+            timestamp: new Date().toISOString(),
+            adminNotes: 'Approved by admin'
+        };
+
+        recipient.transactions.unshift(recipientTransaction);
+        recipient.balance += request.amount;
+
+        this.saveUsers();
+    }
+
+    // NEW: Reject a request
+    rejectRequest(requestId) {
+        const requests = JSON.parse(localStorage.getItem('ugarit_pending_requests') || '[]');
+        const updatedRequests = requests.filter(req => req.id !== requestId);
+        localStorage.setItem('ugarit_pending_requests', JSON.stringify(updatedRequests));
+        
+        this.loadPendingRequests();
+        this.showMessage('manageUserMessage', '❌ Request rejected!', 'error');
+    }
+
+    // NEW: View request details
+    viewRequestDetails(requestId) {
+        const requests = JSON.parse(localStorage.getItem('ugarit_pending_requests') || '[]');
+        const request = requests.find(req => req.id === requestId);
+        
+        if (request) {
+            const details = JSON.stringify(request, null, 2);
+            alert(`Request Details:\n${details}`);
+        }
+    }
+
+    // NEW: Format date for display
+    formatDate(timestamp) {
+        return new Date(timestamp).toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit'
+        });
     }
 
     updateStats() {
