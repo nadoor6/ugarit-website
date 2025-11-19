@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Wallet - Ugarit</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <style>
+        .dashboard-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        
+        .welcome-section {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem 0;
+        }
+        
+        .welcome-message {
+            font-size: 1.2rem;
+            color: var(--secondary-text);
+            margin-bottom: 0.5rem;
+        }
+        
+        .wallet-id {
+            font-size: 0.9rem;
+            color: var(--secondary-text);
+            opacity: 0.7;
+        }
+        
+        .balance-section {
+            margin-bottom: 3rem;
+        }
+        
+        .balance-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 20px;
+            padding: 3rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .balance-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 50%);
+        }
+        
+        .balance-label {
+            font-size: 1rem;
+            opacity: 0.9;
+            margin-bottom: 1rem;
+        }
+        
+        .balance-amount {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .balance-currency {
+            font-size: 1.2rem;
+            opacity: 0.8;
+        }
+        
+        .quick-actions {
+            margin-bottom: 3rem;
+        }
+        
+        .actions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .action-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .action-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-text);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .action-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .action-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--primary-text);
+        }
+        
+        .action-description {
+            font-size: 0.8rem;
+            color: var(--secondary-text);
+        }
+        
+        .transactions-section {
+            margin-bottom: 3rem;
+        }
+        
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .transactions-list {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            overflow: hidden;
+        }
+        
+        .transaction-item {
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            gap: 1rem;
+            padding: 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            align-items: center;
+            transition: background 0.3s ease;
+        }
+        
+        .transaction-item:last-child {
+            border-bottom: none;
+        }
+        
+        .transaction-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+        
+        .transaction-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+        
+        .transaction-icon.deposit {
+            background: rgba(76, 175, 80, 0.2);
+            color: #4CAF50;
+        }
+        
+        .transaction-icon.withdrawal {
+            background: rgba(244, 67, 54, 0.2);
+            color: #F44336;
+        }
+        
+        .transaction-icon.transfer {
+            background: rgba(33, 150, 243, 0.2);
+            color: #2196F3;
+        }
+        
+        .transaction-details {
+            flex: 1;
+        }
+        
+        .transaction-title {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+            color: var(--primary-text);
+        }
+        
+        .transaction-description {
+            font-size: 0.8rem;
+            color: var(--secondary-text);
+        }
+        
+        .transaction-amount {
+            text-align: right;
+        }
+        
+        .amount-positive {
+            color: #4CAF50;
+            font-weight: 600;
+        }
+        
+        .amount-negative {
+            color: #F44336;
+            font-weight: 600;
+        }
+        
+        .transaction-date {
+            font-size: 0.8rem;
+            color: var(--secondary-text);
+            margin-top: 0.25rem;
+        }
+        
+        .account-status {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(76, 175, 80, 0.2);
+            color: #4CAF50;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .status-verified::before {
+            content: "✓";
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 3rem 2rem;
+            color: var(--secondary-text);
+        }
+        
+        .empty-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+        
+        .view-all-btn {
+            padding: 0.75rem 1.5rem;
+            background: transparent;
+            border: 1px solid var(--border-color);
+            border-radius: 25px;
+            color: var(--primary-text);
+            text-decoration: none;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+        }
+        
+        .view-all-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--primary-text);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader">
+        <div class="loading-animation">
+            <div class="loading-dot"></div>
+            <div class="loading-dot"></div>
+            <div class="loading-dot"></div>
+        </div>
+    </div>
+
+    <!-- Security Check -->
+    <script>
+        // Check if user is logged in
+        (function() {
+            const sessionData = localStorage.getItem('ugarit_session');
+            if (!sessionData) {
+                window.location.href = 'index.html';
+                return;
+            }
+
+            const session = JSON.parse(sessionData);
+            if (!session.walletId) {
+                window.location.href = 'index.html';
+                return;
+            }
+        })();
+    </script>
+
+    <div class="page-container">
+        <header class="header">
+            <a href="index.html" class="logo">ugarit</a>
+            <nav class="tabs">
+                <a href="user-dashboard.html" class="tab-link active">Dashboard</a>
+                <a href="transactions.html" class="tab-link">Transactions</a>
+                <a href="transfer.html" class="tab-link">Transfer</a>
+                <a href="profile.html" class="tab-link">Profile</a>
+            </nav>
+            <div class="auth-buttons">
+                <div class="logged-in">
+                    <a href="user-dashboard.html" class="wallet-dashboard-btn" id="walletDashboardBtn">My Wallet</a>
+                    <button class="logout-btn" onclick="logoutUser()">Log Out</button>
+                </div>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="minimal-dark-bg"></div>
+
+            <div class="dashboard-container">
+                <!-- Welcome Section -->
+                <div class="welcome-section">
+                    <h1 class="welcome-message">Welcome back, <span id="userName">User</span>! 👋</h1>
+                    <div class="wallet-id">Wallet ID: <span id="userWalletId">---</span></div>
+                </div>
+
+                <!-- Account Status -->
+                <div class="account-status">
+                    <div class="status-badge status-verified">Account Verified</div>
+                    <p style="margin: 1rem 0 0 0; color: var(--secondary-text); font-size: 0.9rem;">
+                        Your Ugarit wallet is active and ready for transactions
+                    </p>
+                </div>
+
+                <!-- Balance Section -->
+                <div class="balance-section">
+                    <div class="balance-card">
+                        <div class="balance-label">Current Balance</div>
+                        <div class="balance-amount" id="balanceAmount">0.00</div>
+                        <div class="balance-currency">SYP</div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="quick-actions">
+                    <div class="section-header">
+                        <h2>Quick Actions</h2>
+                    </div>
+                    <div class="actions-grid">
+                        <div class="action-card" onclick="showDepositModal()">
+                            <div class="action-icon">💳</div>
+                            <div class="action-title">Deposit</div>
+                            <div class="action-description">Add funds to your wallet</div>
+                        </div>
+
+                        <div class="action-card" onclick="showWithdrawModal()">
+                            <div class="action-icon">🏦</div>
+                            <div class="action-title">Withdraw</div>
+                            <div class="action-description">Transfer to your bank</div>
+                        </div>
+
+                        <div class="action-card" onclick="showTransferModal()">
+                            <div class="action-icon">🔄</div>
+                            <div class="action-title">Transfer</div>
+                            <div class="action-description">Send to other Ugarit users</div>
+                        </div>
+
+                        <div class="action-card" onclick="viewTransactionHistory()">
+                            <div class="action-icon">📊</div>
+                            <div class="action-title">History</div>
+                            <div class="action-description">View all transactions</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Transactions -->
+                <div class="transactions-section">
+                    <div class="section-header">
+                        <h2>Recent Transactions</h2>
+                        <a href="transactions.html" class="view-all-btn">View All</a>
+                    </div>
+
+                    <div class="transactions-list" id="transactionsList">
+                        <!-- Transactions will be loaded here -->
+                        <div class="empty-state">
+                            <div class="empty-icon">📝</div>
+                            <h3>No transactions yet</h3>
+                            <p>Your transaction history will appear here</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Deposit Modal -->
+        <div id="depositModal" class="modal">
+            <div class="modal-content glass-card">
+                <span class="close-modal" onclick="closeDepositModal()">&times;</span>
+                <div class="modal-header">
+                    <h3>Deposit Funds</h3>
+                    <p>Add money to your Ugarit wallet</p>
+                </div>
+                <form id="depositForm">
+                    <div class="form-group">
+                        <input type="number" id="depositAmount" step="0.01" min="1" required>
+                        <label for="depositAmount">Amount (SYP)</label>
+                        <div class="focus-line"></div>
+                    </div>
+                    <div class="form-group">
+                        <select id="depositMethod" required>
+                            <option value="">Select payment method</option>
+                            <option value="bank_transfer">Bank Transfer</option>
+                            <option value="credit_card">Credit Card</option>
+                            <option value="crypto">Cryptocurrency</option>
+                        </select>
+                        <div class="focus-line"></div>
+                    </div>
+                    <button type="submit" class="monochrome-cta full-width">
+                        <span class="btn-text">Request Deposit</span>
+                        <span class="btn-loading" style="display: none;">Processing...</span>
+                    </button>
+                </form>
+                <div class="modal-footer">
+                    <p>Contact admin for deposit instructions</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Withdraw Modal -->
+        <div id="withdrawModal" class="modal">
+            <div class="modal-content glass-card">
+                <span class="close-modal" onclick="closeWithdrawModal()">&times;</span>
+                <div class="modal-header">
+                    <h3>Withdraw Funds</h3>
+                    <p>Transfer money to your bank account</p>
+                </div>
+                <form id="withdrawForm">
+                    <div class="form-group">
+                        <input type="number" id="withdrawAmount" step="0.01" min="1" required>
+                        <label for="withdrawAmount">Amount (SYP)</label>
+                        <div class="focus-line"></div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="bankAccount" required>
+                        <label for="bankAccount">Bank Account Number</label>
+                        <div class="focus-line"></div>
+                    </div>
+                    <button type="submit" class="monochrome-cta full-width">
+                        <span class="btn-text">Request Withdrawal</span>
+                        <span class="btn-loading" style="display: none;">Processing...</span>
+                    </button>
+                </form>
+                <div class="modal-footer">
+                    <p>Withdrawals are processed manually within 24 hours</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Transfer Modal -->
+        <div id="transferModal" class="modal">
+            <div class="modal-content glass-card">
+                <span class="close-modal" onclick="closeTransferModal()">&times;</span>
+                <div class="modal-header">
+                    <h3>Transfer Funds</h3>
+                    <p>Send money to another Ugarit user</p>
+                </div>
+                <form id="transferForm">
+                    <div class="form-group">
+                        <input type="text" id="recipientWalletId" required>
+                        <label for="recipientWalletId">Recipient Wallet ID</label>
+                        <div class="focus-line"></div>
+                    </div>
+                    <div class="form-group">
+                        <input type="number" id="transferAmount" step="0.01" min="1" required>
+                        <label for="transferAmount">Amount (SYP)</label>
+                        <div class="focus-line"></div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="transferNote">
+                        <label for="transferNote">Note (Optional)</label>
+                        <div class="focus-line"></div>
+                    </div>
+                    <button type="submit" class="monochrome-cta full-width">
+                        <span class="btn-text">Send Transfer</span>
+                        <span class="btn-loading" style="display: none;">Processing...</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/user-dashboard.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

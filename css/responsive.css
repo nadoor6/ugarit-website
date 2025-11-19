@@ -313,3 +313,65 @@
         width: 140px;
     }
 }
+
+
+/* User Dashboard Mobile Styles */
+
+@media (max-width: 768px) {
+    .dashboard-container {
+        margin: 1rem auto;
+        padding: 0 0.5rem;
+    }
+    .welcome-section {
+        margin-bottom: 2rem;
+        padding: 1rem 0;
+    }
+    .balance-card {
+        padding: 2rem 1rem;
+    }
+    .balance-amount {
+        font-size: 2.5rem;
+    }
+    .actions-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+    }
+    .action-card {
+        padding: 1.5rem 1rem;
+    }
+    .action-icon {
+        font-size: 2rem;
+    }
+    .transaction-item {
+        grid-template-columns: auto 1fr;
+        gap: 0.75rem;
+        padding: 1rem;
+    }
+    .transaction-amount {
+        grid-column: 1 / -1;
+        text-align: left;
+        margin-top: 0.5rem;
+        padding-top: 0.5rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .account-status {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .actions-grid {
+        grid-template-columns: 1fr;
+    }
+    .balance-amount {
+        font-size: 2rem;
+    }
+    .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+    .view-all-btn {
+        align-self: flex-start;
+    }
+}
