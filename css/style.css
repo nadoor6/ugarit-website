@@ -2660,3 +2660,16 @@ body {
         background: #ffffff !important;
     }
 }
+
+
+/* DEBUG HAMBURGER - ADD THIS TEMPORARILY */
+
+.mobile-menu-btn {
+    border: 2px solid red !important;
+    background: blue !important;
+}
+
+.menu-line {
+    background: limegreen !important;
+    border: 1px solid yellow !important;
+}
