@@ -478,3 +478,41 @@
         transform: rotate(-45deg) translate(6px, -6px);
     }
 }
+
+
+/* Fixed Mobile Header Styles */
+
+@media (max-width: 768px) {
+    .header {
+        flex-direction: row !important;
+        /* Keep horizontal layout */
+        justify-content: space-between !important;
+        align-items: center !important;
+        padding: 1rem 5% !important;
+        height: 70px;
+        /* Fixed height */
+    }
+    .header .logo {
+        font-size: 2rem !important;
+        /* Smaller logo on mobile */
+        position: static !important;
+        transform: none !important;
+    }
+    .tabs {
+        display: none;
+    }
+    .auth-buttons {
+        display: none;
+    }
+    .mobile-menu-btn {
+        display: flex !important;
+        position: static !important;
+        /* Remove absolute positioning */
+        transform: none !important;
+        margin: 0 !important;
+    }
+    /* Ensure proper spacing */
+    .header>* {
+        flex-shrink: 0;
+    }
+}
