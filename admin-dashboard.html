@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Ugarit</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <style>
+        .admin-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        
+        .admin-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .stat-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .admin-actions {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .action-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 0.75rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            color: var(--primary-text);
+            font-size: 0.9rem;
+        }
+        
+        .users-list {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+        }
+        
+        .user-item {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr auto;
+            gap: 1rem;
+            padding: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            align-items: center;
+        }
+        
+        .user-item:last-child {
+            border-bottom: none;
+        }
+        
+        .user-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .btn-sm {
+            padding: 0.4rem 0.8rem;
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader">
+        <div class="loading-animation">
+            <div class="loading-dot"></div>
+            <div class="loading-dot"></div>
+            <div class="loading-dot"></div>
+        </div>
+    </div>
+
+    <div class="page-container">
+        <header class="header">
+            <a href="index.html" class="logo">ugarit</a>
+            <nav class="tabs">
+                <a href="admin-dashboard.html" class="tab-link active">Admin Dashboard</a>
+                <a href="index.html" class="tab-link">Back to Site</a>
+            </nav>
+            <div class="auth-buttons">
+                <button class="logout-btn" onclick="logoutAdmin()">Logout Admin</button>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="minimal-dark-bg"></div>
+
+            <div class="admin-container">
+                <div class="form-header">
+                    <h1 class="page-title">Ugarit Admin Dashboard</h1>
+                    <p class="page-subtitle">Manage user accounts and transactions</p>
+                    <div class="title-divider"></div>
+                </div>
+
+                <!-- Statistics -->
+                <div class="admin-stats">
+                    <div class="stat-card">
+                        <div class="stat-number" id="totalUsers">0</div>
+                        <div>Total Users</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="totalBalance">0 SYP</div>
+                        <div>Total Balance</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="activeUsers">0</div>
+                        <div>Active Users</div>
+                    </div>
+                </div>
+
+                <!-- Admin Actions -->
+                <div class="admin-actions">
+                    <!-- Create User Form -->
+                    <div class="action-card">
+                        <h3>Create New User</h3>
+                        <form id="createUserForm">
+                            <div class="form-group">
+                                <label for="newWalletId">Wallet ID</label>
+                                <input type="text" id="newWalletId" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="newPassword">Password</label>
+                                <input type="text" id="newPassword" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="newFullName">Full Name</label>
+                                <input type="text" id="newFullName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="newPhone">Phone</label>
+                                <input type="text" id="newPhone" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="newEmail">Email</label>
+                                <input type="email" id="newEmail" required>
+                            </div>
+                            <button type="submit" class="monochrome-cta">Create User</button>
+                        </form>
+                        <div id="createUserMessage" style="margin-top: 1rem;"></div>
+                    </div>
+
+                    <!-- Manage User Form -->
+                    <div class="action-card">
+                        <h3>Manage User</h3>
+                        <form id="manageUserForm">
+                            <div class="form-group">
+                                <label for="userWalletId">Select User</label>
+                                <select id="userWalletId" required>
+                                    <option value="">Select a user...</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="actionType">Action</label>
+                                <select id="actionType" required>
+                                    <option value="updateBalance">Update Balance</option>
+                                    <option value="addTransaction">Add Transaction</option>
+                                    <option value="viewInfo">View Information</option>
+                                </select>
+                            </div>
+                            <div class="form-group" id="amountGroup">
+                                <label for="transactionAmount">Amount (SYP)</label>
+                                <input type="number" id="transactionAmount" step="0.01">
+                            </div>
+                            <div class="form-group" id="transactionTypeGroup">
+                                <label for="transactionType">Transaction Type</label>
+                                <select id="transactionType">
+                                    <option value="deposit">Deposit</option>
+                                    <option value="withdrawal">Withdrawal</option>
+                                </select>
+                            </div>
+                            <div class="form-group" id="descriptionGroup">
+                                <label for="transactionDescription">Description</label>
+                                <input type="text" id="transactionDescription">
+                            </div>
+                            <button type="submit" class="monochrome-cta">Execute Action</button>
+                        </form>
+                        <div id="manageUserMessage" style="margin-top: 1rem;"></div>
+                    </div>
+                </div>
+
+                <!-- Users List -->
+                <div class="users-list">
+                    <h3>All Users</h3>
+                    <div id="usersListContainer">
+                        <!-- Users will be listed here -->
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/admin-dashboard.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

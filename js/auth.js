@@ -1,9 +1,12 @@
 // Enhanced Authentication System for Ugarit Wallet
 class AuthenticationManager {
-    constructor() {
-        this.currentUser = null;
-        this.users = JSON.parse(localStorage.getItem('ugarit_users')) || [];
-        this.init();
+    saveUsers() {
+        localStorage.setItem('ugarit_users', JSON.stringify(this.users));
+        // Notify admin dashboard if it's open
+        if (window.adminDashboard) {
+            window.adminDashboard.loadUsers();
+            window.adminDashboard.updateStats();
+        }
     }
 
     init() {
