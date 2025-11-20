@@ -574,3 +574,32 @@
     right: auto;
     left: 5%;
 }
+
+
+/* RTL Mobile Menu Support */
+
+[dir="rtl"] .mobile-menu {
+    left: auto;
+    right: 0;
+    transform: translateX(100%);
+    border-left: none;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+[dir="rtl"] .mobile-menu.active {
+    transform: translateX(0);
+}
+
+[dir="rtl"] .mobile-close-btn {
+    right: auto;
+    left: 2rem;
+}
+
+[dir="rtl"] .mobile-nav a:hover {
+    transform: translateX(-10px);
+}
+
+[dir="rtl"] .mobile-nav a::before {
+    left: auto;
+    right: 0;
+}

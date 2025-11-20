@@ -365,6 +365,71 @@ function initPerformanceOptimizations() {
     });
 }
 
+function toggleMenu() {
+    const menu = document.querySelector('.mobile-menu');
+    const btn = document.querySelector('.mobile-menu-btn');
+    const body = document.body;
+
+    if (menu && btn) {
+        const isOpening = !menu.classList.contains('active');
+
+        menu.classList.toggle('active');
+        btn.classList.toggle('active');
+
+        if (isOpening) {
+            body.style.overflow = 'hidden';
+            // Add a subtle background scale effect to the body
+            body.style.transform = 'scale(0.98)';
+            body.style.transition = 'transform 0.6s cubic-bezier(0.77, 0, 0.175, 1)';
+        } else {
+            body.style.overflow = '';
+            body.style.transform = 'scale(1)';
+
+            // Reset body transform after animation
+            setTimeout(() => {
+                body.style.transform = '';
+                body.style.transition = '';
+            }, 600);
+        }
+
+        console.log('Menu toggled:', menu.classList.contains('active'));
+    }
+}
+
+// Enhanced menu initialization
+function initMobileMenu() {
+    const menuBtn = document.querySelector('.mobile-menu-btn');
+    const closeBtn = document.querySelector('.mobile-close-btn');
+    const menu = document.querySelector('.mobile-menu');
+
+    if (menuBtn && menu) {
+        // Click outside to close
+        document.addEventListener('click', function(e) {
+            if (menu.classList.contains('active') &&
+                !menuBtn.contains(e.target) &&
+                !menu.contains(e.target) &&
+                !closeBtn.contains(e.target)) {
+                toggleMenu();
+            }
+        });
+
+        // Escape key to close
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && menu.classList.contains('active')) {
+                toggleMenu();
+            }
+        });
+
+        console.log('Premium mobile menu initialized');
+    }
+}
+
+// Call this in your DOMContentLoaded
+document.addEventListener('DOMContentLoaded', function() {
+    // ... your existing code ...
+    initMobileMenu();
+});
+
 function initPageTransitions() {
     const links = document.querySelectorAll('a[href^="/"], a[href^="."]');
 
