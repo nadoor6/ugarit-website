@@ -62,15 +62,23 @@
             </button>
         </header>
 
-        <!-- Mobile Menu -->
+        <!-- Enhanced Mobile Menu -->
         <div class="mobile-menu">
+            <!-- Close Button - Now Visible -->
+            <button class="mobile-close-btn" onclick="toggleMenu()" aria-label="Close menu" title="Close menu"></button>
+
+            <!-- Improved Navigation -->
             <nav class="mobile-nav">
-                <a href="about.html" data-i18n="nav.about">about us</a>
-                <a href="products.html" data-i18n="nav.products">products</a>
-                <a href="services.html" data-i18n="nav.services">services</a>
-                <a href="create-wallet.html" class="monochrome-cta" data-i18n="nav.create_wallet">Create Wallet</a>
-                <button class="signin-wallet-btn mobile" onclick="showSignInModal()">Sign In Wallet</button>
+                <a href="about.html" onclick="toggleMenu()" data-i18n="nav.about">About Us</a>
+                <a href="products.html" onclick="toggleMenu()" data-i18n="nav.products">Products</a>
+                <a href="services.html" onclick="toggleMenu()" data-i18n="nav.services">Services</a>
+                <a href="create-wallet.html" onclick="toggleMenu()" data-i18n="nav.create_wallet">Create Wallet</a>
             </nav>
+
+            <!-- Sign-in Button -->
+            <button class="mobile-signin-btn" onclick="showSignInModal(); toggleMenu();" data-i18n="nav.sign_in_wallet">
+        Sign In Wallet
+    </button>
         </div>
 
         <main class="main-content">
