@@ -96,8 +96,9 @@
     "wallet": {
         "next_steps": "What Happens Next",
         "step_contact": "Contact admin via Telegram with your information",
+        "step_admin_create": "Admin creates your account manually",
         "step_receive_credentials": "Receive login credentials via Telegram",
-        "step_sign_in2": "Sign in to your wallet dashboard",
+        "step_step_sign_in": "Sign in to your wallet dashboard",
         "send_full_name": "Full Name",
         "send_phone": "Phone Number",
         "send_email": "Email Address",
