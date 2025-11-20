@@ -2673,3 +2673,37 @@ body {
     background: limegreen !important;
     border: 1px solid yellow !important;
 }
+
+
+/* NUCLEAR HAMBURGER LINES FIX */
+
+.header .mobile-menu-btn .menu-line {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    background: #ffffff !important;
+    width: 100% !important;
+    height: 2px !important;
+    margin: 3px 0 !important;
+    transform: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    position: static !important;
+}
+
+
+/* Remove any potential hiding */
+
+.mobile-menu-btn .menu-line {
+    display: block !important;
+}
+
+
+/* Force mobile display */
+
+@media (max-width: 768px) {
+    .header .mobile-menu-btn .menu-line {
+        background: #ffffff !important;
+        display: block !important;
+    }
+}

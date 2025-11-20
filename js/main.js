@@ -3,6 +3,37 @@
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Ugarit website initializing...');
 
+    // HAMBURGER DEBUG - ADD THIS
+    setTimeout(() => {
+        const menuBtn = document.querySelector('.mobile-menu-btn');
+        const lines = document.querySelectorAll('.menu-line');
+
+        console.log('Menu button found:', menuBtn);
+        console.log('Menu lines found:', lines.length);
+
+        if (lines.length > 0) {
+            lines.forEach((line, index) => {
+                console.log(`Line ${index + 1} styles:`, {
+                    display: window.getComputedStyle(line).display,
+                    opacity: window.getComputedStyle(line).opacity,
+                    visibility: window.getComputedStyle(line).visibility,
+                    background: window.getComputedStyle(line).background,
+                    width: window.getComputedStyle(line).width,
+                    height: window.getComputedStyle(line).height
+                });
+
+                // Force styles
+                line.style.display = 'block';
+                line.style.visibility = 'visible';
+                line.style.opacity = '1';
+                line.style.background = '#ff0000'; // Force red to test
+                line.style.width = '100%';
+                line.style.height = '2px';
+                line.style.margin = '3px 0';
+            });
+        }
+    }, 1000);
+
     // Initialize all enhanced features
     initPageLoader();
     initAdvancedCursor();
