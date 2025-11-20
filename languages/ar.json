@@ -394,9 +394,9 @@
 
         "security_concerns": "مخاوف أمنية؟",
         "security_contact_desc": "اتصل بفريق الأمان لدينا فوراً:",
-        "security_email": "البريد الإلكتروني: security@ugarit.finance",
-        "security_telegram": "Telegram: @UgaritSecurity",
-        "emergency_contact": "الطوارئ: +963-XXX-XXXX"
+        "security_email": "البريد الإلكتروني: ",
+        "security_telegram": "Telegram: @UgaritSupport",
+        "emergency_contact": "الطوارئ: +963-9422-70318"
 
     },
     "footer": {

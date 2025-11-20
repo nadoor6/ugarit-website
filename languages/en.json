@@ -399,9 +399,9 @@
 
         "security_concerns": "Security Concerns?",
         "security_contact_desc": "Contact our security team immediately:",
-        "security_email": "Email: security@ugarit.finance",
-        "security_telegram": "Telegram: @UgaritSecurity",
-        "emergency_contact": "Emergency: +963-XXX-XXXX"
+        "security_email": "Email: ",
+        "security_telegram": "Telegram: @UgaritSupport",
+        "emergency_contact": "Emergency: +963-9422-70318"
     },
     "footer": {
         "tagline": "Rebuilding finance from its first home. Modern security meets ancient trust.",
