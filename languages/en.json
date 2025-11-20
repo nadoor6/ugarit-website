@@ -94,6 +94,7 @@
     },
 
     "wallet": {
+        "support_note": "Account activation typically takes 1-2 hours during business days. You'll receive your Wallet ID and Password directly from the admin.",
         "next_steps": "What Happens Next",
         "step_contact": "Contact admin via Telegram with your information",
         "step_admin_create": "Admin creates your account manually",
