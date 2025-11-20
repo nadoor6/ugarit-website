@@ -265,18 +265,29 @@ function initMobileMenu() {
     const menuBtn = document.querySelector('.mobile-menu-btn');
     const mobileMenu = document.querySelector('.mobile-menu');
 
+    console.log('Mobile menu elements:', { menuBtn, mobileMenu });
+
     if (menuBtn && mobileMenu) {
-        menuBtn.addEventListener('click', function(e) {
+        // Remove any existing event listeners first
+        menuBtn.replaceWith(menuBtn.cloneNode(true));
+        const newMenuBtn = document.querySelector('.mobile-menu-btn');
+
+        newMenuBtn.addEventListener('click', function(e) {
+            e.preventDefault();
             e.stopPropagation();
+            console.log('Menu button clicked!');
+
             this.classList.toggle('active');
             mobileMenu.classList.toggle('active');
             document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+
+            console.log('Menu active:', mobileMenu.classList.contains('active'));
         });
 
         // Close when clicking links
         document.querySelectorAll('.mobile-nav a').forEach(link => {
             link.addEventListener('click', () => {
-                menuBtn.classList.remove('active');
+                newMenuBtn.classList.remove('active');
                 mobileMenu.classList.remove('active');
                 document.body.style.overflow = '';
             });
@@ -284,12 +295,18 @@ function initMobileMenu() {
 
         // Close when clicking outside
         document.addEventListener('click', function(e) {
-            if (!menuBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
-                menuBtn.classList.remove('active');
+            if (mobileMenu.classList.contains('active') &&
+                !newMenuBtn.contains(e.target) &&
+                !mobileMenu.contains(e.target)) {
+                newMenuBtn.classList.remove('active');
                 mobileMenu.classList.remove('active');
                 document.body.style.overflow = '';
             }
         });
+
+        console.log('Mobile menu initialized successfully');
+    } else {
+        console.error('Mobile menu elements not found!');
     }
 }
 
