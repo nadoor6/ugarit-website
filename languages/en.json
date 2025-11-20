@@ -94,7 +94,7 @@
     },
 
     "wallet": {
-
+        "what_to_send": "What to Send to Admin",
         "contact_button": "Contact @UgaritSupport on Telegram",
         "contact_instructions": "To create your wallet, please contact our admin directly on Telegram. We'll create your account manually and provide you with login credentials",
         "title": "Create Your Ugarit Wallet",
