@@ -264,19 +264,17 @@ function initMonochromeAnimations() {
 function initMobileMenu() {
     const menuBtn = document.querySelector('.mobile-menu-btn');
     const mobileMenu = document.querySelector('.mobile-menu');
-    const mobileLinks = document.querySelectorAll('.mobile-nav a, .mobile-signin-btn');
 
     if (menuBtn && mobileMenu) {
-        // Toggle menu on button click
-        menuBtn.addEventListener('click', (e) => {
+        menuBtn.addEventListener('click', function(e) {
             e.stopPropagation();
-            menuBtn.classList.toggle('active');
+            this.classList.toggle('active');
             mobileMenu.classList.toggle('active');
             document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
         });
 
-        // Close menu when clicking links
-        mobileLinks.forEach(link => {
+        // Close when clicking links
+        document.querySelectorAll('.mobile-nav a').forEach(link => {
             link.addEventListener('click', () => {
                 menuBtn.classList.remove('active');
                 mobileMenu.classList.remove('active');
@@ -284,27 +282,14 @@ function initMobileMenu() {
             });
         });
 
-        // Close menu when clicking outside
-        document.addEventListener('click', (e) => {
-            if (mobileMenu.classList.contains('active') &&
-                !menuBtn.contains(e.target) &&
-                !mobileMenu.contains(e.target)) {
+        // Close when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!menuBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
                 menuBtn.classList.remove('active');
                 mobileMenu.classList.remove('active');
                 document.body.style.overflow = '';
             }
         });
-
-        // Close menu on escape key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
-                menuBtn.classList.remove('active');
-                mobileMenu.classList.remove('active');
-                document.body.style.overflow = '';
-            }
-        });
-    } else {
-        console.log('Mobile menu elements not found');
     }
 }
 
