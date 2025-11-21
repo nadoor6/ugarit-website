@@ -9,81 +9,63 @@
     <link rel="stylesheet" href="css/responsive.css">
     <style>
          :root {
-            --luxury-black: #000000;
-            --luxury-dark: #0a0a0a;
-            --luxury-darker: #050505;
-            --luxury-card: #111111;
-            --luxury-border: rgba(255, 255, 255, 0.06);
-            --luxury-glow: rgba(255, 255, 255, 0.1);
-            --luxury-text: #ffffff;
-            --luxury-text-secondary: rgba(255, 255, 255, 0.7);
-            --luxury-text-tertiary: rgba(255, 255, 255, 0.5);
-            --luxury-accent: #ffffff;
+            --luxury-gold: #FFD700;
+            --luxury-gold-light: #FFF9C4;
+            --luxury-dark: #0f172a;
+            --luxury-dark-secondary: #1e293b;
+            --luxury-border: rgba(255, 255, 255, 0.1);
+            --luxury-glow: rgba(255, 215, 0, 0.3);
+            --card-gradient: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
         }
         
         .dashboard-container {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 2rem auto;
-            padding: 0 1.5rem;
+            padding: 0 1rem;
         }
-        /* Ultra Minimal Welcome Section */
         
         .welcome-section {
             text-align: center;
-            margin-bottom: 4rem;
+            margin-bottom: 3rem;
             padding: 2rem 0;
-            position: relative;
-        }
-        
-        .welcome-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 120px;
-            height: 1px;
-            background: var(--luxury-border);
         }
         
         .welcome-message {
             font-size: 1.2rem;
-            color: var(--luxury-text-secondary);
+            color: var(--secondary-text);
             margin-bottom: 0.5rem;
-            font-weight: 300;
-            letter-spacing: 2px;
-            text-transform: uppercase;
         }
         
         .wallet-id {
-            font-size: 0.85rem;
-            color: var(--luxury-text-tertiary);
-            font-family: 'Courier New', monospace;
-            letter-spacing: 1px;
+            font-size: 0.9rem;
+            color: var(--secondary-text);
+            opacity: 0.7;
         }
-        /* Ultra Luxury Bank Card */
+        /* Luxury Bank Card Balance Section */
         
         .balance-section {
-            margin-bottom: 4rem;
-            perspective: 1200px;
+            margin-bottom: 3rem;
+            perspective: 1000px;
         }
         
         .bank-card {
-            background: var(--luxury-card);
-            color: var(--luxury-text);
+            background: var(--card-gradient);
+            color: white;
             border-radius: 24px;
-            padding: 3rem;
+            padding: 2.5rem;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 0 0 1px var(--luxury-border), 0 8px 32px rgba(0, 0, 0, 0.4);
-            border: 1px solid var(--luxury-border);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 0 0 1px rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 215, 0, 0.2);
             backdrop-filter: blur(20px);
             transform-style: preserve-3d;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            min-height: 300px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            min-height: 280px;
+        }
+        
+        .bank-card:hover {
+            transform: translateY(-10px) rotateX(5deg);
+            box-shadow: 0 35px 70px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 0 0 1px rgba(255, 215, 0, 0.3);
         }
         
         .bank-card::before {
@@ -93,8 +75,8 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.02) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.01) 0%, transparent 50%);
-            opacity: 0.5;
+            background: radial-gradient(circle at 20% 80%, rgba(255, 215, 0, 0.1) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(120, 119, 198, 0.1) 0%, transparent 50%);
+            opacity: 0.6;
         }
         
         .bank-card::after {
@@ -102,34 +84,19 @@
             position: absolute;
             bottom: 30px;
             right: 30px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: var(--luxury-text);
-            letter-spacing: 3px;
-            opacity: 0.8;
-        }
-        
-        .bank-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1), 0 20px 60px rgba(0, 0, 0, 0.6);
-        }
-        
-        .card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 2.5rem;
-            position: relative;
-            z-index: 2;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.8);
+            letter-spacing: 0.1em;
         }
         
         .card-chip {
-            width: 48px;
-            height: 36px;
-            background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
-            border-radius: 6px;
+            width: 50px;
+            height: 40px;
+            background: linear-gradient(135deg, #FFD700 0%, #D4AF37 100%);
+            border-radius: 8px;
             position: relative;
-            border: 1px solid var(--luxury-border);
+            margin-bottom: 2rem;
         }
         
         .card-chip::before {
@@ -139,135 +106,119 @@
             left: 50%;
             transform: translate(-50%, -50%);
             width: 30px;
-            height: 22px;
-            background: #000000;
-            border-radius: 3px;
-            border: 1px solid var(--luxury-border);
-        }
-        
-        .card-type {
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: var(--luxury-text);
-            letter-spacing: 2px;
-            opacity: 0.8;
+            height: 25px;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            border-radius: 4px;
         }
         
         .card-number {
             font-family: 'Courier New', monospace;
-            font-size: 1.3rem;
-            letter-spacing: 4px;
-            margin-bottom: 2.5rem;
-            color: var(--luxury-text);
-            position: relative;
-            z-index: 2;
-            font-weight: 300;
+            font-size: 1.4rem;
+            letter-spacing: 0.2em;
+            margin-bottom: 1.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
         }
         
         .balance-display {
             margin: 2rem 0;
-            position: relative;
-            z-index: 2;
         }
         
         .balance-label {
-            font-size: 0.8rem;
-            opacity: 0.7;
+            font-size: 0.9rem;
+            opacity: 0.8;
             margin-bottom: 0.5rem;
-            letter-spacing: 2px;
+            letter-spacing: 0.1em;
             text-transform: uppercase;
             font-weight: 500;
-            color: var(--luxury-text-secondary);
+            color: rgba(255, 255, 255, 0.9);
         }
         
         .balance-amount {
             font-size: 3.5rem;
             font-weight: 300;
-            margin-bottom: 0.25rem;
-            color: var(--luxury-text);
-            letter-spacing: -1px;
-            line-height: 1;
-            font-feature-settings: "tnum";
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #FFD700 0%, #FFF9C4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.02em;
+            text-shadow: 0 4px 20px rgba(255, 215, 0, 0.3);
         }
         
         .balance-currency {
-            font-size: 1rem;
+            font-size: 1.1rem;
             opacity: 0.7;
-            font-weight: 400;
-            color: var(--luxury-text-secondary);
-            letter-spacing: 1px;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.8);
         }
         
         .card-footer {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-top: auto;
-            padding-top: 2rem;
-            border-top: 1px solid var(--luxury-border);
-            position: relative;
-            z-index: 2;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
         
         .card-holder {
             font-size: 0.9rem;
-            color: var(--luxury-text);
-            font-weight: 400;
-            letter-spacing: 1px;
+            color: rgba(255, 255, 255, 0.8);
         }
         
         .card-expiry {
             font-size: 0.9rem;
-            color: var(--luxury-text);
-            font-weight: 400;
-            letter-spacing: 1px;
+            color: rgba(255, 255, 255, 0.8);
         }
-        /* Ultra Minimal Quick Actions */
+        /* Luxury Quick Actions */
         
         .quick-actions {
-            margin-bottom: 4rem;
+            margin-bottom: 3rem;
         }
         
         .section-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 2rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid var(--luxury-border);
+            margin-bottom: 1.5rem;
         }
         
         .section-title {
-            font-size: 1.1rem;
-            font-weight: 400;
-            color: var(--luxury-text);
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary-text);
             position: relative;
-            letter-spacing: 2px;
-            text-transform: uppercase;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--luxury-gold), transparent);
         }
         
         .actions-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 1.5rem;
-            margin-top: 2rem;
+            margin-top: 1.5rem;
         }
         
         .action-card {
-            background: var(--luxury-card);
-            border: 1px solid var(--luxury-border);
-            border-radius: 16px;
-            padding: 2.5rem 2rem;
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.9) 0%, rgba(15, 23, 42, 0.9) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2.5rem 1.5rem;
             text-align: center;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             cursor: pointer;
+            backdrop-filter: blur(10px);
             position: relative;
             overflow: hidden;
-            min-height: 200px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
         }
         
         .action-card::before {
@@ -277,109 +228,117 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(255, 255, 255, 0.02);
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1) 0%, transparent 50%);
             opacity: 0;
             transition: opacity 0.3s ease;
-        }
-        
-        .action-card:hover {
-            transform: translateY(-4px);
-            border-color: rgba(255, 255, 255, 0.2);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
         }
         
         .action-card:hover::before {
             opacity: 1;
         }
         
+        .action-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            border-color: rgba(255, 215, 0, 0.3);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 215, 0, 0.1);
+        }
+        
         .action-icon {
-            font-size: 2.5rem;
+            font-size: 3.5rem;
             margin-bottom: 1.5rem;
             position: relative;
             z-index: 2;
-            opacity: 0.9;
-            transition: all 0.3s ease;
+            filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.4));
+            transition: transform 0.3s ease;
         }
         
         .action-card:hover .action-icon {
             transform: scale(1.1);
-            opacity: 1;
         }
         
         .action-title {
-            font-weight: 500;
+            font-weight: 600;
             margin-bottom: 0.75rem;
-            color: var(--luxury-text);
-            font-size: 1rem;
+            color: var(--primary-text);
+            font-size: 1.2rem;
             position: relative;
             z-index: 2;
-            letter-spacing: 1px;
         }
         
         .action-description {
-            font-size: 0.85rem;
-            color: var(--luxury-text-secondary);
+            font-size: 0.9rem;
+            color: var(--secondary-text);
             line-height: 1.5;
             position: relative;
             z-index: 2;
             opacity: 0.8;
-            font-weight: 300;
         }
-        /* Minimal Account Status */
+        /* Luxury Account Status */
         
         .account-status {
-            background: var(--luxury-card);
-            border: 1px solid var(--luxury-border);
-            border-radius: 16px;
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.9) 0%, rgba(15, 23, 42, 0.9) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
             padding: 2rem;
             margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
             position: relative;
             overflow: hidden;
+        }
+        
+        .account-status::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.05) 0%, transparent 50%);
         }
         
         .status-badge {
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.75rem;
             padding: 0.75rem 1.5rem;
-            background: rgba(255, 255, 255, 0.05);
-            color: var(--luxury-text);
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 500;
-            border: 1px solid var(--luxury-border);
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.2) 0%, rgba(22, 163, 74, 0.1) 100%);
+            color: #22c55e;
+            border-radius: 25px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border: 1px solid rgba(34, 197, 94, 0.3);
             position: relative;
             z-index: 2;
-            letter-spacing: 1px;
+            backdrop-filter: blur(10px);
         }
         
         .status-verified::before {
             content: "✓";
             font-weight: bold;
-            font-size: 0.9rem;
+            font-size: 1rem;
         }
-        /* Ultra Minimal Transactions */
+        /* Transactions Section */
         
         .transactions-section {
-            margin-bottom: 4rem;
+            margin-bottom: 3rem;
         }
         
         .transactions-list {
-            background: var(--luxury-card);
-            border: 1px solid var(--luxury-border);
-            border-radius: 16px;
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.8) 0%, rgba(15, 23, 42, 0.8) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
             overflow: hidden;
+            backdrop-filter: blur(10px);
         }
         
         .transaction-item {
             display: grid;
             grid-template-columns: auto 1fr auto;
-            gap: 1.25rem;
+            gap: 1rem;
             padding: 1.5rem;
-            border-bottom: 1px solid var(--luxury-border);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             align-items: center;
-            transition: all 0.2s ease;
-            position: relative;
+            transition: all 0.3s ease;
         }
         
         .transaction-item:last-child {
@@ -387,87 +346,78 @@
         }
         
         .transaction-item:hover {
-            background: rgba(255, 255, 255, 0.02);
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateX(5px);
         }
         
         .transaction-icon {
-            width: 44px;
-            height: 44px;
+            width: 48px;
+            height: 48px;
             border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.1rem;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--luxury-border);
-            transition: all 0.2s ease;
-            position: relative;
-            z-index: 2;
+            font-size: 1.2rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
         }
         
         .transaction-icon.deposit {
-            background: rgba(255, 255, 255, 0.08);
-            color: var(--luxury-text);
+            background: rgba(34, 197, 94, 0.2);
+            color: #22c55e;
         }
         
         .transaction-icon.withdrawal {
-            background: rgba(255, 255, 255, 0.08);
-            color: var(--luxury-text);
+            background: rgba(239, 68, 68, 0.2);
+            color: #ef4444;
         }
         
         .transaction-icon.transfer {
-            background: rgba(255, 255, 255, 0.08);
-            color: var(--luxury-text);
+            background: rgba(59, 130, 246, 0.2);
+            color: #3b82f6;
         }
         
         .transaction-details {
             flex: 1;
-            position: relative;
-            z-index: 2;
         }
         
         .transaction-title {
-            font-weight: 500;
+            font-weight: 600;
             margin-bottom: 0.25rem;
-            color: var(--luxury-text);
-            font-size: 0.95rem;
+            color: var(--primary-text);
         }
         
         .transaction-description {
             font-size: 0.8rem;
-            color: var(--luxury-text-secondary);
-            opacity: 0.8;
+            color: var(--secondary-text);
         }
         
         .transaction-amount {
             text-align: right;
-            position: relative;
-            z-index: 2;
         }
         
         .amount-positive {
-            color: var(--luxury-text);
-            font-weight: 500;
-            font-size: 1rem;
+            color: #22c55e;
+            font-weight: 600;
+            font-size: 1.1rem;
         }
         
         .amount-negative {
-            color: var(--luxury-text);
-            font-weight: 500;
-            font-size: 1rem;
-            opacity: 0.9;
+            color: #ef4444;
+            font-weight: 600;
+            font-size: 1.1rem;
         }
         
         .transaction-date {
-            font-size: 0.75rem;
-            color: var(--luxury-text-tertiary);
+            font-size: 0.8rem;
+            color: var(--secondary-text);
             margin-top: 0.25rem;
         }
         
         .empty-state {
             text-align: center;
             padding: 3rem 2rem;
-            color: var(--luxury-text-secondary);
+            color: var(--secondary-text);
         }
         
         .empty-icon {
@@ -479,112 +429,35 @@
         .view-all-btn {
             padding: 0.75rem 1.5rem;
             background: transparent;
-            border: 1px solid var(--luxury-border);
-            border-radius: 20px;
-            color: var(--luxury-text);
+            border: 1px solid var(--border-color);
+            border-radius: 25px;
+            color: var(--primary-text);
             text-decoration: none;
             font-size: 0.8rem;
             transition: all 0.3s ease;
-            font-weight: 400;
-            letter-spacing: 1px;
         }
         
         .view-all-btn:hover {
-            background: rgba(255, 255, 255, 0.05);
-            border-color: rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--luxury-gold);
         }
-        /* Minimal Pending Requests */
-        
-        .pending-requests-status {
-            background: var(--luxury-card);
-            border: 1px solid var(--luxury-border);
-            border-radius: 16px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-        }
+        /* Pending Requests */
         
         .status-pending {
-            background: rgba(255, 255, 255, 0.05);
-            color: var(--luxury-text);
+            background: rgba(255, 193, 7, 0.2);
+            color: #ffc107;
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            padding: 0.75rem 1.5rem;
+            padding: 0.5rem 1rem;
             border-radius: 20px;
             font-size: 0.8rem;
-            font-weight: 500;
-            border: 1px solid var(--luxury-border);
+            font-weight: 600;
+            border: 1px solid rgba(255, 193, 7, 0.3);
         }
         
         .status-pending::before {
             content: "⏳";
-            font-size: 0.9rem;
-        }
-        
-        .pending-request-item {
-            padding: 1.25rem;
-            border-left: 2px solid var(--luxury-border);
-            margin-bottom: 0.75rem;
-            background: rgba(255, 255, 255, 0.02);
-            border-radius: 8px;
-            transition: all 0.2s ease;
-        }
-        
-        .pending-request-item:hover {
-            background: rgba(255, 255, 255, 0.03);
-        }
-        /* Stats Grid - Ultra Minimal */
-        
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 3rem;
-        }
-        
-        .stat-card {
-            background: var(--luxury-card);
-            border: 1px solid var(--luxury-border);
-            border-radius: 16px;
-            padding: 2rem 1.5rem;
-            text-align: center;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .stat-card:hover {
-            border-color: rgba(255, 255, 255, 0.1);
-            transform: translateY(-2px);
-        }
-        
-        .stat-icon {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            position: relative;
-            z-index: 2;
-            opacity: 0.8;
-        }
-        
-        .stat-value {
-            font-size: 1.8rem;
-            font-weight: 300;
-            margin-bottom: 0.25rem;
-            color: var(--luxury-text);
-            position: relative;
-            z-index: 2;
-            font-feature-settings: "tnum";
-        }
-        
-        .stat-label {
-            font-size: 0.75rem;
-            color: var(--luxury-text-secondary);
-            opacity: 0.8;
-            font-weight: 400;
-            position: relative;
-            z-index: 2;
-            text-transform: uppercase;
-            letter-spacing: 1px;
         }
         /* Luxury animations */
         
@@ -603,9 +476,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.02), transparent);
-            animation: shimmer 4s infinite;
-            z-index: 1;
+            background: linear-gradient( 90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            animation: shimmer 3s infinite;
         }
     </style>
 
@@ -680,25 +552,6 @@
                     </p>
                 </div>
 
-                <!-- Ultra Minimal Stats Grid - Add after Account Status -->
-                <div class="stats-grid">
-                    <div class="stat-card">
-                        <div class="stat-icon">↕️</div>
-                        <div class="stat-value" id="totalTransactions">0</div>
-                        <div class="stat-label" data-i18n="dashboard.total_transactions">Total Transactions</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-icon">📆</div>
-                        <div class="stat-value" id="monthlyVolume">0</div>
-                        <div class="stat-label" data-i18n="dashboard.monthly_volume">This Month</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-icon">✓</div>
-                        <div class="stat-value" id="successRate">100%</div>
-                        <div class="stat-label" data-i18n="dashboard.success_rate">Success Rate</div>
-                    </div>
-                </div>
-
                 <!-- Pending Requests Status -->
                 <div class="pending-requests-status" id="pendingRequestsStatus" style="display: none; margin-bottom: 2rem;">
                     <div class="status-badge status-pending" data-i18n="dashboard.pending_requests">Pending Requests</div>
@@ -727,11 +580,8 @@
                 <div class="balance-section">
                     <div class="bank-card">
                         <div class="shimmer"></div>
-                        <div class="card-header">
-                            <div class="card-chip"></div>
-                            <div class="card-type" data-i18n="dashboard.prime">PRIME</div>
-                        </div>
-                        <div class="card-number" id="cardNumber">•••• •••• •••• ••••</div>
+                        <div class="card-chip"></div>
+                        <div class="card-number" id="cardNumber">•••• •••• •••• 1234</div>
 
                         <div class="balance-display">
                             <div class="balance-label" data-i18n="dashboard.current_balance">Current Balance</div>
@@ -741,7 +591,7 @@
 
                         <div class="card-footer">
                             <div class="card-holder" id="cardHolder">USER NAME</div>
-                            <div class="card-expiry">MM/YY</div>
+                            <div class="card-expiry">12/28</div>
                         </div>
                     </div>
                 </div>
