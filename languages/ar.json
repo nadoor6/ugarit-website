@@ -415,7 +415,7 @@
     },
 
     "dashboard": {
-        "welcome": "مرحباً بعودتك،",
+        "welcome": "مرحباً بعودتك",
         "wallet_id": "معرف المحفظة:",
         "account_verified": "الحساب موثق",
         "account_active": "محفظة أوغاريت نشطة وجاهزة للمعاملات",

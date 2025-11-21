@@ -419,7 +419,7 @@
     },
 
     "dashboard": {
-        "welcome": "Welcome back,",
+        "welcome": "Welcome back",
         "wallet_id": "Wallet ID:",
         "account_verified": "Account Verified",
         "account_active": "Your Ugarit wallet is active and ready for transactions",
