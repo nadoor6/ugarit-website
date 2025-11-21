@@ -490,3 +490,64 @@ updateCardDetails() {
         document.querySelector('.card-expiry').textContent = formattedExpiry;
     }
 }
+
+// Add these methods to your UserDashboard class:
+
+updateStats() {
+    // Update total transactions
+    const totalTransactions = this.currentUser.transactions.length;
+    document.getElementById('totalTransactions').textContent = totalTransactions;
+
+    // Calculate monthly volume (simplified)
+    const monthlyVolume = this.currentUser.transactions
+        .filter(t => {
+            const transactionDate = new Date(t.timestamp);
+            const currentMonth = new Date().getMonth();
+            const currentYear = new Date().getFullYear();
+            return transactionDate.getMonth() === currentMonth &&
+                transactionDate.getFullYear() === currentYear;
+        })
+        .reduce((sum, t) => sum + t.amount, 0);
+
+    document.getElementById('monthlyVolume').textContent = monthlyVolume.toFixed(0);
+
+    // Calculate success rate
+    const completedTransactions = this.currentUser.transactions.filter(t => t.status === 'completed').length;
+    const successRate = totalTransactions > 0 ? ((completedTransactions / totalTransactions) * 100).toFixed(0) : 100;
+    document.getElementById('successRate').textContent = successRate + '%';
+}
+
+// Update the updateDashboard method
+updateDashboard() {
+    this.updateBalance();
+    this.updateTransactions();
+    this.updatePendingRequestsStatus();
+    this.updateStats();
+}
+
+// Enhanced card details with minimal styling
+updateCardDetails() {
+    const sessionData = localStorage.getItem('ugarit_session');
+    if (sessionData) {
+        const session = JSON.parse(sessionData);
+
+        // Update card holder name
+        const userName = session.fullName || 'User';
+        document.getElementById('cardHolder').textContent = userName.toUpperCase();
+
+        // Update card number with wallet ID
+        const walletId = session.walletId || '1234';
+        const lastFour = walletId.slice(-4);
+        document.getElementById('cardNumber').textContent = `•••• •••• •••• ${lastFour}`;
+
+        // Update displayed user name
+        document.getElementById('userName').textContent = userName;
+        document.getElementById('userWalletId').textContent = walletId;
+
+        // Update card expiry
+        const currentDate = new Date();
+        const expiryDate = new Date(currentDate.setFullYear(currentDate.getFullYear() + 3));
+        const formattedExpiry = `${(expiryDate.getMonth() + 1).toString().padStart(2, '0')}/${expiryDate.getFullYear().toString().slice(-2)}`;
+        document.querySelector('.card-expiry').textContent = formattedExpiry;
+    }
+}
